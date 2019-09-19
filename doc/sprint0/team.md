@@ -1,6 +1,6 @@
 Team Name: planiteam
 
-Name		    utorid
+Name		            utorid
 
 Anson Tran          trananso
 Brandon Shewnarain  shewnara
