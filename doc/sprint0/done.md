@@ -1,5 +1,5 @@
 
--Have a good understanding of user stories, what their priority realistically is and what it takes to implement them.
+- Have a good understanding of user stories, what their priority realistically is and what it takes to implement them.
 - Have a good variety of user stories for each part of the app
 - Have good personas that are characters that would use the app and differ from each other in their needs/desires.
 - Have a good idea of what the user interface will flow by looking at the artifact for the user interface.
