@@ -29,7 +29,7 @@ Our app is able to create a map of the itinerary you created which allows for ea
 
 Our app focuses more on creating an itinerary that fits the user’s preferences which might mean that creating a trip may take longer but will be more specialized and detailed.
 
-The app also covers many areas such as offers
+Their app also covers many other areas such as offers and promotions which the user may not want to be bothered with and may just want a concise and quick plan.
 
 TripAdvisor could fix this by having a sub site where they just go in depth with their planning rather than the whole trip.
 
