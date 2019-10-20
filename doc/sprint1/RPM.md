@@ -1,4 +1,5 @@
 Goals
+
 -Create itinerary
 -Functional software
 -Presentable front-end
@@ -6,6 +7,7 @@ Goals
 Review Requirements
 
 Risks
+
 -Some items take too long
 -Running out of time
 
@@ -15,16 +17,25 @@ Dependencies
 Acceptance Criteria
 
 
+Database
 
--Database
 -Mongodb
+
 Front end
+
 -Angular
+
 Back end
+
 -Express
+
 -NodeJS
+
 Build Tools
+
 -Maven
+
 Code repository
+
 -Github
 
