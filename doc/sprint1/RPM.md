@@ -12,7 +12,7 @@ Risks
 -Running out of time
 
 Dependencies
--none
+Google Places API
 
 Acceptance Criteria
 
