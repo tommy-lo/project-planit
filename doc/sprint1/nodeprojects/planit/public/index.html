@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html ng-app="app">
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>Plan it app</title>
+    </head>
+    <body>
+        <div class="container"  ng-controller="AppCtrl">
+        
+            <h1>Select your time</h1>
+            <table class="table">
+                    <thread>
+                    <tr>
+                        <th>Start time:<input type="text" name="Start" ng-model="date.start" ng-model-options="{ getterSetter: true }"/></th>
+                       
+
+                        <th>End time:<input type="text" name="end" ng-model="date.end"/>
+                            </th>
+                        
+                        
+                        
+                    </tr>
+                    <th><button ng-click="entertime()">Enter</button></th>
+                    
+                    </thread>
+                 </table>
+                 <h1>Select your distance</h1>
+                 <table class="table">
+                         <thread>
+                         <tr>
+                             <th>Distance(Km):<input class="form-control" ng-model="distance.d"></th>
+                         </tr>
+                         <th><button ng-click="enterdistance()">Enter</button></th>
+                         
+                         </thread>
+                      </table>
+                      <p>{{enter}}</p>
+                      <pre>Entered start time = <span ng-bind="date.start()"></span></pre>
+                      <pre>Entered end time = {{date.end}}</pre>
+                      <button class= "btn btn-primary" ng-click="addContact()">Add distance</button>
+        </div>
+  <!--      <input ng-model="test">
+     {{test}}-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js">
+    </script>
+  <!--   <script src="controllers/controller.js"></script>-->
+    <script src="controllers/AppCtrl.js"></script>
+    </body>
+</html>
