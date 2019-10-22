@@ -49,7 +49,7 @@ PLAN-2 Removing things they aren't interested in
 
 Sprint 1 Backlog Breakdown:
 
-Plant-22,23 Thomas Lo
+Plan-22,23 Thomas Lo
 
 Plan-16 Joon Hong
 
