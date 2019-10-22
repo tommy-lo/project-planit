@@ -1,0 +1,12 @@
+<div style="text-align: center;">
+    <h1> Get itinerary example from API</h1>
+</div>
+
+
+<button (click)="getItinerary()">Generate itinerary</button>
+
+<hr />
+
+<ul>
+    <li *ngFor="let item of itinerary$ | async"> Location : {{ item.name }} <br> Time: {{ item.time }}</li>
+</ul>

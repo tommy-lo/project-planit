@@ -1,3 +1,15 @@
+Participants:
+
+Thomas Lo
+
+Joon Hong
+
+Kia Naderi
+
+Brandon Shewnarain
+
+Anson Tran
+
 Goals
 
 -Create itinerary
@@ -40,3 +52,31 @@ Code repository
 
 -Github
 
+
+Release Plan
+
+Sprint 1
+PLANS:
+2
+4
+5
+12
+13
+16
+
+Sprint 2
+PLANS:
+1
+8
+11
+14
+15
+
+Sprint 3
+PLANS:
+3
+6
+7
+9
+10
+17
