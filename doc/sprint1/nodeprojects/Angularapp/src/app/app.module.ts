@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 //import { DataBindingComponent } from './app'; //app.ts above
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DistanceComponent } from './distance/distance.component';
+
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes} from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DistanceComponent
+    routingComponents,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

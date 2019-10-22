@@ -29,7 +29,9 @@ router.post('/', (req, res) => {
         name: req.body.name,
         distance: req.body.distance,
         start: req.body.start,
-        end: req.body.end
+        end: req.body.end,
+        budget: req.body.budget,
+        location: req.body.location
 
     });
     dis.save((err, doc) => {

@@ -1,3 +1,4 @@
+
   <div class="row">
     <form #distanceForm="ngForm" (ngSubmit)="onSubmit(distanceForm)">
      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="distanceService.selectedDistance._id">
@@ -19,12 +20,23 @@
                 <input type="text" name="end" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.end" placeholder="Enter End">
                 <label for="last_name">End</label>
         </div>
+        <div class="input-field col s2">
+                <input type="text" name="budget" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.budget" placeholder="Enter Budget">
+                <label for="last_name">Budget</label>
+        </div>
+        <div class="input-field col s2">
+                <input type="text" name="location" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.location" placeholder="Enter Location">
+                <label for="last_name">Location</label>
+        </div>
       </div>
      <!--Above is where you enter name,distance time etc, below is submit and reset button-->
      <div class="row">
          <div class="input-field col s2">
              <button class="btn btn-custom right" type="button" (click)="resetForm(distanceForm)">Reset</button>
              <button class="btn btn-custom right" type="button" (click)="onSubmit(distanceForm)">Submit</button>
+             <!--Below goes to the test.component, replace with name of yours to go to that one-->
+             <a routerLink="/test"><button class="btn btn-success" >Go to test </button></a>
+
          </div>
      </div> 
     </form>
@@ -38,6 +50,8 @@
                 <th>Distance</th>
                 <th>Start</th>
                 <th>End</th>
+                <th>Budget</th>
+                <th>Location</th>
             </tr>
             </thead>
             <tbody>
@@ -48,6 +62,8 @@
                 <td>{{ dis.distance }}</td>
                 <td>{{ dis.start }}</td>
                 <td>{{ dis.end }}</td>
+                <td>{{ dis.budget }}</td>
+                <td>{{ dis.location }}</td>
             </tr>
         </tbody>
         </table>
