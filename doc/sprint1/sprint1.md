@@ -31,7 +31,8 @@ PLAN-16 : As a user of the app I would like to make an account to personalize my
 
 - PLAN-19 Call API to make new user : need to insert username and password into database HTTP request type: PUT /createuser
 
-PLAN-13 No bloatware in itinerary, just what the user wants to see in an efficient manner(Priority: high , Point: 5                      
+PLAN-13 No bloatware in itinerary, just what the user wants to see in an efficient manner(Priority: high , Point: 5)
+
 PLAN-13 :As a user, I want a clear and concise itinerary to show me the locations I can visit as well as the activities I want to participate in based off of the filters that I have chosen so that I can plan my day based on my interests efficiently.
 
 - PLAN-21 Create itinerary :connect to google maps API and get response based on filter options the user has specified
