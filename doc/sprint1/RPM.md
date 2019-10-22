@@ -10,6 +10,8 @@ Brandon Shewnarain
 
 Anson Tran
 
+Meeting record : First, the goals of the project were discussed. We came to the conclusion that we would focus on getting a functional program that would create an itinerary and then we would move on to other optional features. The greatest risk facing the completion of our project is that we might underestimate the amount of work a certain task might take. To decrease the risk we decided to spend some time with the tools and services we needed to use for each task so that we can plan more accurately. We spent most of our time on choosing what platforms to use for our project the decision was made based on how familiar we were with each platform and how well it would help us create our app.
+
 Goals
 
 -Create itinerary
@@ -17,6 +19,7 @@ Goals
 -Presentable front-end
 
 Review Requirements
+
 
 Risks
 
@@ -57,26 +60,26 @@ Release Plan
 
 Sprint 1
 PLANS:
-2
-4
-5
-12
-13
-16
+PLAN - 2
+PLAN - 4
+PLAN - 5
+PLAN - 12
+PLAN - 13
+PLAN - 16
 
 Sprint 2
 PLANS:
-1
-8
-11
-14
-15
+PLAN - 1
+PLAN - 8
+PLAN - 11
+PLAN - 14
+PLAN - 15
 
 Sprint 3
 PLANS:
-3
-6
-7
-9
-10
-17
+PLAN - 3
+PLAN - 6
+PLAN - 7
+PLAN - 9
+PLAN - 10
+PLAN - 17
