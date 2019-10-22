@@ -1,3 +1,15 @@
+Participants:
+
+Thomas Lo
+
+Joon Hong
+
+Kia Naderi
+
+Brandon Shewnarain
+
+Anson Tran
+
 Goals
 
 -Create itinerary
