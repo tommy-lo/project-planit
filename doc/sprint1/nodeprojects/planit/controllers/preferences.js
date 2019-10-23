@@ -3,7 +3,7 @@ var router = express.Router();
 var { User } = require('../models/User');
 
 // => localhost:3000/users/addPreference/:name
-router.post('/addPreference/:name', function(req, res) {
+router.put('/addPreference/:name', function(req, res) {
     // Get the user from the database
     User.findById(req.params.name, function(err, doc) {
         if (err){console.log('Error in finding user : ' + JSON.stringify(err, undefined, 2)); return}
@@ -16,7 +16,7 @@ router.post('/addPreference/:name', function(req, res) {
 })
 
 // => localhost:3000/users/addHistory/:name
-router.post('/addHistory/:name', function(req, res) {
+router.put('/addHistory/:name', function(req, res) {
     // Get the user from the database
     User.findById(req.params.name, function(err, doc) {
         if (err){console.log('Error in finding user : ' + JSON.stringify(err, undefined, 2)); return}
