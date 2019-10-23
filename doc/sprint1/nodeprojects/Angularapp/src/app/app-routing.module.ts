@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { DistanceComponent } from './distance/distance.component';
 import { TestComponent } from './test/test.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/distances', pathMatch: 'full'},
   {path: 'distances', component: DistanceComponent},
   {path: 'test', component: TestComponent},
+  {path: 'signup', component: SignupComponent},
+
   //Have least specific on the bottom otherwise you will always get page not found
   {path: "**", component: PageNotFoundComponent}
 ];
@@ -18,4 +21,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [DistanceComponent, TestComponent, PageNotFoundComponent]
+export const routingComponents = [DistanceComponent, TestComponent, PageNotFoundComponent, SignupComponent]
