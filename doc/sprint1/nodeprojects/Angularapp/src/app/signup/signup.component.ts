@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     this.userService.addUser(form.value).subscribe((res) => {
       this.resetForm(form);
       // Indicates save
-      //M.toast({ html: 'Saved success', classes: 'rounded'});
+      M.toast({ html: 'Sign up sucess', classes: 'rounded'});
   });
   
  } 

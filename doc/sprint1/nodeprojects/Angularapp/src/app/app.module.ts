@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PfiltersComponent } from './pfilters/pfilters.component';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { PfiltersComponent } from './pfilters/pfilters.component';
     AppComponent,
     routingComponents,
     PageNotFoundComponent,
-    PfiltersComponent
+    PfiltersComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
