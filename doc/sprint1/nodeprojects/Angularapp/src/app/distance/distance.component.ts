@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router, NavigationExtras} from '@angular/router';
 //local import
 import { DistanceService } from '../shared/distance.service';
 import { Distance } from '../shared/distance.=model';
@@ -51,7 +51,14 @@ export class DistanceComponent implements OnInit {
 
  goToPage(){
    //this.router.navigate([`${pageName}`]);
-   this.router.navigateByUrl('http://localhost:4200/test');
+  let NavigationExtras: NavigationExtras = {
+     queryParams: {
+      "firstname": "John",
+      "lastname": "Lonn"
+     }
+  }
+   //this.router.navigateByUrl('http://localhost:4200/test');
+   this.router.navigate(["test"], NavigationExtras);
  }
   refreshDistanceList(){
     // Uses the get request to get all the info in db.
