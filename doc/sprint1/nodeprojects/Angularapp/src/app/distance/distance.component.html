@@ -37,6 +37,7 @@
              <!--Below goes to the test.component, replace with name of yours to go to that one-->
              <a routerLink="/test"><button class="btn btn-success" >Go to test </button></a>
              <a routerLink="/pfilters"><button class="btn btn-success" >Go to Personalized filters </button></a>
+             <button class="btn btn-custom right" type="button" (click)="goToPage()">Newtest</button>
 
          </div>
      </div> 
@@ -69,3 +70,42 @@
         </tbody>
         </table>
     </div>
+    <form [formGroup]="sform">
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" formControlName="UserName" id="UserName" class="form-control" >
+                            <label for="UserName">Your UserName</label>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-user-secret prefix grey-text"></i>
+                            <input type="text" id="Distance" formControlName="Distance" class="form-control" >
+                             <label for="Distance">Distance</label>
+                            </div>
+                            <div class="md-form">
+                                    <i class="fa fa-user-secret prefix grey-text"></i>
+                                    <input type="text" id="Start" formControlName="Start" class="form-control" >
+                                     <label for="Start">Start</label>
+                                    </div>
+                                    <div class="md-form">
+                                            <i class="fa fa-user-secret prefix grey-text"></i>
+                                            <input type="text" id="End" formControlName="End" class="form-control" >
+                                             <label for="End">End</label>
+                                            </div>
+                                            <div class="md-form">
+                                                    <i class="fa fa-user-secret prefix grey-text"></i>
+                                                    <input type="text" id="Budget" formControlName="Budget" class="form-control" >
+                                                     <label for="Budget">Budget</label>
+                                                    </div>
+                                                    <div class="md-form">
+                                                            <i class="fa fa-user-secret prefix grey-text"></i>
+                                                            <input type="text" id="Location" formControlName="Location" class="form-control" >
+                                                             <label for="Location">Location</label>
+                                                            </div>
+                            
+                            <button class="btn btn-custom right" type="button" (click)="form()">testing</button>
+            </div>
+         </div>
+    </form>

@@ -15,16 +15,12 @@ import { ActivatedRoute } from "@angular/router";
   export class TestComponent implements OnInit {
     firstname: string;
     lastname: string;
-    test: "testing";
-    constructor(private testService: TestService, private route: ActivatedRoute) {
-      this.route.queryParams.subscribe(params =>{
-        this.firstname = params["firstname"];
-        this.lastname = params["lastname"];
-      });
-      console.log("blahhhhhhh");
-      console.log(this.test);
+    constructor(private testService: TestService, public aroute: ActivatedRoute) {
+
     }
-    ngOnInit() {
+    ngOnInit() { 
+      let dataRev = this.aroute.snapshot.paramMap.get('name');
+      console.log(dataRev);
 
       }
 
