@@ -14,19 +14,19 @@
         </div>
         <div class="input-field col s2">
                 <input type="text" name="start" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.start" placeholder="Enter Start">
-                <label for="last_name">Start</label>
+                <label for="start">Start</label>
         </div>
         <div class="input-field col s2">
                 <input type="text" name="end" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.end" placeholder="Enter End">
-                <label for="last_name">End</label>
+                <label for="end">End</label>
         </div>
         <div class="input-field col s2">
                 <input type="text" name="budget" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.budget" placeholder="Enter Budget">
-                <label for="last_name">Budget</label>
+                <label for="budget">Budget</label>
         </div>
         <div class="input-field col s2">
                 <input type="text" name="location" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.location" placeholder="Enter Location">
-                <label for="last_name">Location</label>
+                <label for="location">Location</label>
         </div>
       </div>
      <!--Above is where you enter name,distance time etc, below is submit and reset button-->
@@ -37,6 +37,7 @@
              <!--Below goes to the test.component, replace with name of yours to go to that one-->
              <a routerLink="/test"><button class="btn btn-success" >Go to test </button></a>
              <a routerLink="/pfilters"><button class="btn btn-success" >Go to Personalized filters </button></a>
+             <button class="btn btn-custom right" type="button" (click)="goToPage()">Newtest</button>
 
          </div>
      </div> 
@@ -69,3 +70,42 @@
         </tbody>
         </table>
     </div>
+    <form [formGroup]="sform">
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" formControlName="UserName" id="UserName" class="form-control" >
+                            <label for="UserName">Your UserName</label>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-user-secret prefix grey-text"></i>
+                            <input type="text" id="Distance" formControlName="Distance" class="form-control" >
+                             <label for="Distance">Distance</label>
+                            </div>
+                            <div class="md-form">
+                                    <i class="fa fa-user-secret prefix grey-text"></i>
+                                    <input type="text" id="Start" formControlName="Start" class="form-control" >
+                                     <label for="Start">Start</label>
+                                    </div>
+                                    <div class="md-form">
+                                            <i class="fa fa-user-secret prefix grey-text"></i>
+                                            <input type="text" id="End" formControlName="End" class="form-control" >
+                                             <label for="End">End</label>
+                                            </div>
+                                            <div class="md-form">
+                                                    <i class="fa fa-user-secret prefix grey-text"></i>
+                                                    <input type="text" id="Budget" formControlName="Budget" class="form-control" >
+                                                     <label for="Budget">Budget</label>
+                                                    </div>
+                                                    <div class="md-form">
+                                                            <i class="fa fa-user-secret prefix grey-text"></i>
+                                                            <input type="text" id="Location" formControlName="Location" class="form-control" >
+                                                             <label for="Location">Location</label>
+                                                            </div>
+                            
+                            <button class="btn btn-custom right" type="button" (click)="form()">testing</button>
+            </div>
+         </div>
+    </form>
