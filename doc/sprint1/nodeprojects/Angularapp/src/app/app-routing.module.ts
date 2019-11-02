@@ -10,7 +10,7 @@ import { PfiltersComponent } from './pfilters/pfilters.component';
 const routes: Routes = [
   {path: '', redirectTo: '/distances', pathMatch: 'full'},
   {path: 'distances', component: DistanceComponent},
-  {path: 'test/:name', component: TestComponent},
+  {path: 'test/:user/:distance/:start/:end/:budget/:location', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'pfilters', component: PfiltersComponent},
 

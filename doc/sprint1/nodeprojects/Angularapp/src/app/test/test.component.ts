@@ -13,14 +13,32 @@ import { ActivatedRoute } from "@angular/router";
   })
 
   export class TestComponent implements OnInit {
-    firstname: string;
-    lastname: string;
+    user: any;
+    dis: any;
+    start: any;
+    end: any;
+    budget: any;
+    location: any;
     constructor(private testService: TestService, public aroute: ActivatedRoute) {
 
     }
     ngOnInit() { 
-      let dataRev = this.aroute.snapshot.paramMap.get('name');
-      console.log(dataRev);
+      // Below gets the filter from the part of the url which matches 
+      // the path in the app.routing module
+      this.dis = this.aroute.snapshot.paramMap.get('distance');
+      this.user = this.aroute.snapshot.paramMap.get('user');
+      this.start = this.aroute.snapshot.paramMap.get('start');
+      this.end = this.aroute.snapshot.paramMap.get('end');
+      this.budget = this.aroute.snapshot.paramMap.get('budget');
+      this.location = this.aroute.snapshot.paramMap.get('location');
+      // Displays info in console to see that it works
+      console.log(this.user);
+      console.log(this.dis);
+      console.log(this.start);
+      console.log(this.end);
+      console.log(this.budget);
+      console.log(this.location);
+      
 
       }
 

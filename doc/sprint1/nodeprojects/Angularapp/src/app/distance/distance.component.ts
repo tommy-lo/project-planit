@@ -22,6 +22,10 @@ export class DistanceComponent implements OnInit {
   sform: FormGroup;
   user: any;
   dis: any;
+  start: any;
+  end: any;
+  budget: any;
+  location: any;
   constructor(
      private distanceService: DistanceService,
      private router: Router,
@@ -41,10 +45,23 @@ export class DistanceComponent implements OnInit {
 
   }
   form(){
-   // this.user = this.sform.value;
+   // Gets the value that is in the form based on it's name.
     this.dis = this.sform.controls['Distance'].value;
-   // console.log(this.user)
-    console.log(this.dis)
+    this.start = this.sform.controls['Start'].value;
+    this.end = this.sform.controls['End'].value;
+    this.budget = this.sform.controls['Budget'].value;
+    this.location = this.sform.controls['Location'].value;
+    this.user = this.sform.controls['UserName'].value;
+   // Displays the contents to the console
+    console.log(this.dis);
+    console.log(this.start)
+    console.log(this.end)
+    console.log(this.budget)
+    console.log(this.location)
+    console.log(this.user)
+    // Navigates to a page called /test and then add url based on above
+    // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
+    this.router.navigate(['test',this.user, this.dis, this.start, this.end, this.budget, this.location])
 
   }
 
