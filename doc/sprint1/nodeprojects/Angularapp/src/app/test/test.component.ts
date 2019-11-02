@@ -38,7 +38,7 @@ import { ActivatedRoute } from "@angular/router";
       console.log(this.end);
       console.log(this.budget);
       console.log(this.location);
-      
+       
 
       }
 
