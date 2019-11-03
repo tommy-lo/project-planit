@@ -35,6 +35,7 @@ export class SigninComponent implements OnInit {
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
       // navigate to itinerary page
+      this.router.navigateByUrl('/distances');
   });
   }
 }
