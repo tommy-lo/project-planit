@@ -7,18 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectionsComponent implements OnInit {
 
-  public lat: Number = 24.799448
-  public lng: Number = 120.979021
+  public lat: Number = 43.6532
+  public lng: Number = -79.3832
   
   public origin: any
   public destination: any
   
   ngOnInit() {
-    this.getDirection()
+    //this.getDirection()
   }
   
   getDirection() {
-    this.origin = { lat: 24.799448, lng: 120.979021 }
-    this.destination = { lat: 24.799524, lng: 120.975017 }
+    this.origin = { lat: 43.6532, lng: -79.3832 }
+    this.destination = { lat: 45.4215, lng: -75.6972 }
+  }
+
+  public setPanel(){
+    return document.querySelector('#myPanel');
   }
 }
