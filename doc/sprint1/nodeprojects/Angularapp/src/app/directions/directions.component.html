@@ -1,4 +1,8 @@
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-direction [origin]="origin" [destination]="destination">
+
+<button (click)="getDirection()">Get Directions</button>
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-direction [origin]="origin" [destination]="destination" [panel]="setPanel()">
     </agm-direction>
+      
   </agm-map>
+  <div id="myPanel"></div>
