@@ -7,10 +7,15 @@ import { User } from './user.=model';
 })
 export class UserService {
   newuser: User;
+  user: User;
   readonly baseURL = 'http://localhost:3000/users';
   constructor(private http: HttpClient) { }
 
   addUser(user: User){
     return this.http.post(this.baseURL + "/addUser", user);
+  }
+  
+  getUser(user:User) {
+    return this.http.post(this.baseURL + "/getUser", user);
   }
 }

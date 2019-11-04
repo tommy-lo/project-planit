@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+//import { google } from '@google/maps';
+
 
 @Component({
   selector: 'app-iten-b',
