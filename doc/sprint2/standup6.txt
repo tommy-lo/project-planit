@@ -1,1 +1,4 @@
 
+PLAN-36 working on other way to send data
+
+Can now type info and the component will be able to use on the lower half of the page, plan to use that info to pass into new page with url that are those values, added exports/imports that were needed for the distance folder into the app files
