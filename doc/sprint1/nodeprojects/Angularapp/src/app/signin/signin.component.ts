@@ -34,7 +34,15 @@ export class SigninComponent implements OnInit {
     // get user
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
+      let user = JSON.parse(JSON.stringify(res));
+      let preferences = user[0].preferences;
+      let history = user[0].history;
+
       // navigate to itinerary page
+      if (user != "") {
+        // add user history and preferences
+        this.router.navigate(['/distances', preferences, history]);
+      }
   });
   }
 }
