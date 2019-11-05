@@ -12,10 +12,19 @@ import { Pfilters } from '../shared/pfilters.model';
   providers: [PfiltersService]
 })
 export class PfiltersComponent implements OnInit {
+  parks = true;
+  museums = true;
+  restaurants = true;
+  movies = true;
+
+  onToggleFilter(filter){
+    // Update the user's database for the filter
+    alert(filter);
+
+  }
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
