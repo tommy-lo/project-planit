@@ -51,7 +51,7 @@ Sprint 1 Backlog Breakdown:
 
 Plan-7,8,29,30,31 Thomas Lo
 
-Plan-37,38 Joon Hong
+Plan-37,38 (Created a login page) Joon Hong
 
 Plan-28,32,33 Kia Naderi
 
