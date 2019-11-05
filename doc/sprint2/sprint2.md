@@ -50,7 +50,7 @@ Plan-7,8,29,30,31 Thomas Lo
 
 Plan-37,38 Joon Hong
 
-Plan-26,32,33 Kia Naderi
+Plan-28,32,33 Kia Naderi
 
 Plan-3,34,36(created filters screen then Anson took over) Brandon Shewnarain
 
