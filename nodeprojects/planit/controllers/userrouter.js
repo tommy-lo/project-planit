@@ -24,18 +24,21 @@ router.post("/getUser", function (req, res) {
     });
 })
 
-router.post("/updateUser", function(req,res) {
+router.put("/updateUser", function(req,res) {
     console.log("updating user " + req.body.username);
-    User.find({name: req.body.username}, function (err, doc) {
-        if (!err) {
-            // Add location history
-            doc.history.push(req.body.history);
-            // Modify preferences
-            doc.preferences = req.body.preferences;
-            // Save the document
-            doc.save();
-        }
-        else { console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
+    if(!ObjectId.isValid(req.params.id))
+        return res.status(400);
+
+    var usr = {
+        name: req.body.name,
+        password: req.body.password,
+        history: req.body.history,
+        preferences: req.body.preferences
+    }
+
+    User.findByIdAndUpdate(req.params.id, { $set: usr}, {new: true}, (err, doc) => {
+        if (!err) {res.send(doc);}
+        else {console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
     });
 })
 
