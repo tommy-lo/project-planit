@@ -1,2 +1,4 @@
+Oct 31
+
 PLAN 29 PLAN 30 PLAN 31
 Added the text panel next to the map to show which path to take in text. Uses the Google Directions API to get the list of directions
