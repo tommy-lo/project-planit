@@ -22,12 +22,9 @@ PLAN-7 Open up a map to view how to get there.
 - PLAN-29	Connect to Google directions API and itinerary to generate map
 - PLAN-30 Create map screen and navigation
 
-PLAN-28 Create ItineraryBuilder to generate itineraries Assigned to Kia Naderi
-Description : The generated Itinerary should now be based on start time, radius and location that the user has specified.
-- PLAN-32	Connect to db to get filter options and user preferences Assigned to Kia Naderi
-Description : Itenrary will take into account preference options it gets from the database.
-- PLAN-33	Order activities based on estimated wait times and time spent on activities and opening/closing times Assigned to Kia Naderi
-Description : Activities will be ordered based on start time but average wait time will be arbitrary.
+PLAN-28 Create ItineraryBuilder to generate itineraries
+- PLAN-32	Connect to db to get filter options and user preferences 
+- PLAN-33	Order activities based on estimated wait times and time spent on activities and opening/closing times
 
 PLAN-8 Find shortest route to destination
 - PLAN-31	Connect to Google directions API to get shortest route
@@ -69,4 +66,4 @@ Plan-1,6,35,36 Anson
 
 Doing those plans because they involve personalized filters which is on a different page so they all are simlilar.
 
-Plan-11 Not implemented due to the api not supporting it's function
+Plan-11 Not implemented due to the api not supporting it's function 
