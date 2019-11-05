@@ -41,7 +41,7 @@ PLAN-6 Set optional time to eat
 - PLAN-35	Add to second filters page
 
 PLAN-1 Select types of places preferred
--PLAN-36	Add checkbox to second filter screen
+- PLAN-36	Add checkbox to second filter screen
 
 
 Sprint 1 Backlog Breakdown:
