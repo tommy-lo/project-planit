@@ -19,7 +19,8 @@ Sprint Backlog:
 
 
 PLAN-7 Open up a map to view how to get there.
-- PLAN-29	   Connect to Google directions API and itinerary to generate map
+- PLAN-29	Connect to Google directions API and itinerary to generate map
+- PLAN-30 Create map screen and navigation
 
 PLAN-28 Create ItineraryBuilder to generate itineraries
 - PLAN-32	Connect to db to get filter options and user preferences
@@ -42,28 +43,15 @@ PLAN-6 Set optional time to eat
 PLAN-1 Select types of places preferred
 -PLAN-36	Add checkbox to second filter screen
 
---- [PLAN-2 and PLAN-12] was not started in this task because it depends on the completion of PLAN-13(generating itinerary). We initially planned on finishing PLAN-13 and then start working on [PLAN-2 and PLAN-12] but this did not work out because we were not very familiar with angular and integrating google places API into our app turned out to be quite difficult. For instance, we first tried google places API as sending an https request and tried to get a response but we encountered lots of errors mainly CORS (Access-Control-Allow-Origin) then we had to move to use google places library to get it to work.
-
-PLAN-12 Remove items that they don't like on the generated itinerary
-
-PLAN-24 StoreUser preferences to user account
-
-PLAN-25 Recreate itinerary
-
-PLAN-2 Removing things they aren't interested in
-
-PLAN-26 Suggest items to user
-
-PLAN-27 Add liked suggestions to itinerary
 
 Sprint 1 Backlog Breakdown:
 
-Plan-22,23 Thomas Lo
+Plan-7,8,11,29,30,31 Thomas Lo
 
-Plan-16 Joon Hong
+Plan-37,38 Joon Hong
 
-Plan-21 Kia Naderi
+Plan-26,32,33 Kia Naderi
 
-Plan-4,20 Brandon Shewnarain
+Plan-3,34,36(created filters screen then Anson took over) Brandon Shewnarain
 
-Plan-12 Anson
+Plan-1,6,35,36 Anson
