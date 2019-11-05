@@ -3,4 +3,4 @@ Oct 31
 PLAN 29 PLAN 30 PLAN 31
 Added the text panel next to the map to show which path to take in text. Uses the Google Directions API to get the list of directions
 PLAN 35 PLAN 36
-Added checkbox and preference filters to the pfilters page
+Added checkbox and preference filters for the types of places that the user wants to visit to the pfilters page
