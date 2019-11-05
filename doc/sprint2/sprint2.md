@@ -46,7 +46,7 @@ PLAN-1 Select types of places preferred
 
 Sprint 1 Backlog Breakdown:
 
-Plan-7,8,11,29,30,31 Thomas Lo
+Plan-7,8,29,30,31 Thomas Lo
 
 Plan-37,38 Joon Hong
 
@@ -55,3 +55,5 @@ Plan-26,32,33 Kia Naderi
 Plan-3,34,36(created filters screen then Anson took over) Brandon Shewnarain
 
 Plan-1,6,35,36 Anson
+
+Plan-11 Not implemented due to the api not supporting it's function
