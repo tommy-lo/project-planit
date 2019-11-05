@@ -12,9 +12,13 @@ export class DirectionsComponent implements OnInit {
   
   public origin: any
   public destination: any
+
+  public travelMode: any
   
   ngOnInit() {
     //this.getDirection()
+    this.setTravelModeDriving(); //Default
+    //this.setTravelModeTransit();
   }
   
   getDirection() {
@@ -25,4 +29,21 @@ export class DirectionsComponent implements OnInit {
   public setPanel(){
     return document.querySelector('#myPanel');
   }
+  
+  public setTravelModeDriving(){
+    this.travelMode = 'DRIVING';
+  }
+
+  public setTravelModeTransit(){
+    this.travelMode = 'TRANSIT';
+  }
+
+  public setTravelModeWalk(){
+    this.travelMode = 'WALKING';
+  }
+
+  public setTravelModeBicycle(){
+    this.travelMode = 'BICYCLING';
+  }
+
 }

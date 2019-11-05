@@ -1,7 +1,7 @@
 
 <button (click)="getDirection()">Get Directions</button>
   <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-direction [origin]="origin" [destination]="destination" [panel]="setPanel()">
+    <agm-direction [origin]="origin" [destination]="destination" [panel]="setPanel()" [travelMode]="travelMode">
     </agm-direction>
       
   </agm-map>
