@@ -26,18 +26,19 @@ export class SignupComponent implements OnInit {
       // Indicates save
       M.toast({ html: 'Sign up sucess', classes: 'rounded'});
   });
-  
- } 
+
+ }
  resetForm(form?: NgForm) {
-  if (form)
+  if (form){
     form.reset();
     this.userService.newuser = {
-      _id:"",
-      name:"",
-      password:"",
-      history:[""],
-      preferences:[""]
+      _id: '',
+      name: '',
+      password: '',
+      history: [''],
+      preferences: ''
     };
+  }
  }
 
  goToPage(){

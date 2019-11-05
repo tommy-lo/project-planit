@@ -20,26 +20,27 @@ export class SigninComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-    if (form)
+    if (form){
       form.reset();
       this.userService.user = {
-        _id:"",
-        name:"",
-        password:"",
-        history:[""],
-        preferences:[""]
+        _id: '',
+        name: '',
+        password: '',
+        history: [''],
+        preferences: ''
       };
+    }
    }
   onSubmit(form : NgForm){
     // get user
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
-      let user = JSON.parse(JSON.stringify(res));
-      let preferences = user[0].preferences;
-      let history = user[0].history;
+      const user = JSON.parse(JSON.stringify(res));
+      const preferences = user[0].preferences;
+      const history = user[0].history;
 
       // navigate to itinerary page
-      if (user != "") {
+      if (user != '') {
         // add user history and preferences
         this.router.navigate(['/distances', preferences, history]);
       }

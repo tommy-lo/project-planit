@@ -1,4 +1,45 @@
-<p>Parks</p><button (click)="onToggleFilter('parks')">Toggle Parks</button>
-<p>Museums</p><button (click)="onToggleFilter('museums')">Toggle Museums</button>
-<p>Restaurants</p><button (click)="onToggleFilter('restaurants')">Toggle Restaurants</button>
-<p>Movies</p><button (click)="onToggleFilter('movies')">Toggle Movies</button>
+<!DOCTYPE html>
+<html>
+
+<body ng-app="Pfilters" class="ng-scope">
+  <form #PFiltersForm="ngForm" (ngSubmit)="onSubmit(PFiltersForm)">
+    <div ng-controller="pfiltercontroller" class="ng-scope">
+      <div>
+        <mat-slide-toggle name="parks" [(ngModel)]="userService.parks">
+          Parks
+        </mat-slide-toggle><br>
+
+        <mat-slide-toggle name="museums" [(ngModel)]="userService.museums">
+          Museums
+        </mat-slide-toggle><br>
+
+        <mat-slide-toggle name="restaurants" [(ngModel)]="userService.restaurants">
+          Restaurants
+        </mat-slide-toggle><br>
+
+        <mat-slide-toggle name="movies" [(ngModel)]="userService.movies">
+          Movies
+        </mat-slide-toggle><br>
+      </div>
+
+      <div>
+        <label>Breakfast
+          <input name = "breakfast" #breakfast="ngModel" [(ngModel)]="userService.breakfast" type="range"  min="1" max="47" value="24">
+        </label>
+
+        <label>Lunch
+          <input name = "lunch" #lunch="ngModel" [(ngModel)]="userService.lunch" type="range" min="1" max="47" value="24">
+        </label>
+
+        <label>Dinner
+          <input name = "dinner" #dinner="ngModel" [(ngModel)]="userService.dinner" type="range" min="1" max="47" value="24">
+        </label>
+      </div>
+
+      <div>
+          <button class="btn btn-custom right" type="submit" (click)="onSubmit(PFiltersForm)">Save</button>
+      </div>
+    </div>
+  </form>
+</body>
+</html>
