@@ -24,4 +24,19 @@ router.post("/getUser", function (req, res) {
     });
 })
 
+router.post("/updateUser", function(req,res) {
+    console.log("updating user " + req.body.username);
+    User.find({name: req.body.username}, function (err, doc) {
+        if (!err) {
+            // Add location history
+            doc.history.push(req.body.history);
+            // Modify preferences
+            doc.preferences = req.body.preferences;
+            // Save the document
+            doc.save();
+        }
+        else { console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
+    });
+})
+
 module.exports = router;
