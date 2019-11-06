@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router} from '@angular/router';
+
 import { UserService } from '../shared/user.service';
 import { User } from '../shared/user.=model';
 declare var M: any;
@@ -11,6 +12,7 @@ declare var M: any;
   styleUrls: ['./signup.component.css'],
   providers: [UserService]
 })
+
 export class SignupComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
@@ -35,8 +37,9 @@ export class SignupComponent implements OnInit {
       _id: '',
       name: '',
       password: '',
-      history: [''],
-      preferences: ''
+      history: [],
+      preferences: [],
+      meals: []
     };
   }
  }

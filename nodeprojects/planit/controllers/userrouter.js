@@ -33,7 +33,8 @@ router.put("/updateUser", function(req,res) {
         name: req.body.name,
         password: req.body.password,
         history: req.body.history,
-        preferences: req.body.preferences
+        preferences: req.body.preferences,
+        meals: req.body,meals
     }
 
     User.findByIdAndUpdate(req.params.id, { $set: usr}, {new: true}, (err, doc) => {

@@ -26,8 +26,9 @@ export class SigninComponent implements OnInit {
         _id: '',
         name: '',
         password: '',
-        history: [''],
-        preferences: ''
+        history: [],
+        preferences: [],
+        meals: []
       };
     }
    }

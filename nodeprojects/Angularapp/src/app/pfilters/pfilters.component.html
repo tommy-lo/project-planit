@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html>
 
-<body ng-app="Pfilters" class="ng-scope">
+<body ng-app="pfilters" class="ng-scope">
   <form #PFiltersForm="ngForm" (ngSubmit)="onSubmit(PFiltersForm)">
-    <div ng-controller="pfiltercontroller" class="ng-scope">
+      Personalized Filters:
+      <ul>
+        <li><mat-slide-toggle ng-model="userService.parks">Parks</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle ng-model="userService.restaurants">Restaurants</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle ng-model="userService.museums">Museums</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle ng-model="userService.movies">Movies</mat-slide-toggle><br></li>
+      </ul>
+
+      Meals:
       <div>
-        <mat-slide-toggle name="parks" [(ngModel)]="userService.parks">
-          Parks
-        </mat-slide-toggle><br>
+          <label>Breakfast
+            <input name = "breakfast" [(ngModel)]="userService.breakfast" type="range"  min="1" max="47" value="24">
+          </label>
 
-        <mat-slide-toggle name="museums" [(ngModel)]="userService.museums">
-          Museums
-        </mat-slide-toggle><br>
+          <label>Lunch
+            <input name = "lunch" [(ngModel)]="userService.lunch" type="range" min="1" max="47" value="24">
+          </label>
 
-        <mat-slide-toggle name="restaurants" [(ngModel)]="userService.restaurants">
-          Restaurants
-        </mat-slide-toggle><br>
-
-        <mat-slide-toggle name="movies" [(ngModel)]="userService.movies">
-          Movies
-        </mat-slide-toggle><br>
+          <label>Dinner
+            <input name = "dinner" [(ngModel)]="userService.dinner" type="range" min="1" max="47" value="24">
+          </label>
       </div>
-
-      <div>
-        <label>Breakfast
-          <input name = "breakfast" #breakfast="ngModel" [(ngModel)]="userService.breakfast" type="range"  min="1" max="47" value="24">
-        </label>
-
-        <label>Lunch
-          <input name = "lunch" #lunch="ngModel" [(ngModel)]="userService.lunch" type="range" min="1" max="47" value="24">
-        </label>
-
-        <label>Dinner
-          <input name = "dinner" #dinner="ngModel" [(ngModel)]="userService.dinner" type="range" min="1" max="47" value="24">
-        </label>
-      </div>
-
       <div>
           <button class="btn btn-custom right" type="submit" (click)="onSubmit(PFiltersForm)">Save</button>
       </div>
-    </div>
   </form>
 </body>
 </html>

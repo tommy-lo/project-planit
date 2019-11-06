@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.=model';
-import { Pfilters} from './pfilters.model';
+import { PFilters } from './pfilters.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,8 @@ import { Pfilters} from './pfilters.model';
 export class UserService {
   newuser: User;
   user: User;
-  pfilters: Pfilters;
+  preferences: PFilters;
+
   readonly baseURL = 'http://localhost:3000/users';
   constructor(private http: HttpClient) { }
 
@@ -23,5 +24,16 @@ export class UserService {
 
   updateUser(user:User){
     return this.http.put(this.baseURL + '/updateUser', user);
+  }
+
+  updateUserPreferences(user: User, preferences: PFilters){
+    let checked = [];
+    for (let filter of Object.keys(preferences)){
+      if (preferences[filter]){
+        checked.push(filter);
+      }
+    }
+    user.preferences = checked;
+    this.updateUser(user);
   }
 }
