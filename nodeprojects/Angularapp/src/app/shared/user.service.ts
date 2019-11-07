@@ -9,10 +9,10 @@ import { PFilters } from './pfilters.model';
 export class UserService {
   newuser: User;
   user: User;
-  preferences: PFilters;
+  pfilters: PFilters;
 
   readonly baseURL = 'http://localhost:3000/users';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addUser(user: User){
     return this.http.post(this.baseURL + '/addUser', user);
@@ -26,14 +26,9 @@ export class UserService {
     return this.http.put(this.baseURL + '/updateUser', user);
   }
 
-  updateUserPreferences(user: User, preferences: PFilters){
-    let checked = [];
-    for (let filter of Object.keys(preferences)){
-      if (preferences[filter]){
-        checked.push(filter);
-      }
-    }
-    user.preferences = checked;
+  updateUserPreferences(user: User, pfilters: PFilters){
+    user.preferences = pfilters.preferences;
+    user.meals = pfilters.meals;
     this.updateUser(user);
   }
 }

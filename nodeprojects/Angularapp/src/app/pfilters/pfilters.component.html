@@ -5,24 +5,24 @@
   <form #PFiltersForm="ngForm" (ngSubmit)="onSubmit(PFiltersForm)">
       Personalized Filters:
       <ul>
-        <li><mat-slide-toggle ng-model="userService.parks">Parks</mat-slide-toggle><br></li>
-        <li><mat-slide-toggle ng-model="userService.restaurants">Restaurants</mat-slide-toggle><br></li>
-        <li><mat-slide-toggle ng-model="userService.museums">Museums</mat-slide-toggle><br></li>
-        <li><mat-slide-toggle ng-model="userService.movies">Movies</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="parks" [(ngModel)]="preferences.parks">Parks</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="restaurants" [(ngModel)]="preferences.restaurants">Restaurants</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="museums" [(ngModel)]="preferences.museums">Museums</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="movies" [(ngModel)]="preferences.movies">Movies</mat-slide-toggle><br></li>
       </ul>
 
       Meals:
       <div>
           <label>Breakfast
-            <input name = "breakfast" [(ngModel)]="userService.breakfast" type="range"  min="1" max="47" value="24">
+            <input name = "breakfast" [(ngModel)]="meals.breakfast" type="range"  min="1" max="47" value="24">
           </label>
 
           <label>Lunch
-            <input name = "lunch" [(ngModel)]="userService.lunch" type="range" min="1" max="47" value="24">
+            <input name = "lunch" [(ngModel)]="meals.lunch" type="range" min="1" max="47" value="24">
           </label>
 
           <label>Dinner
-            <input name = "dinner" [(ngModel)]="userService.dinner" type="range" min="1" max="47" value="24">
+            <input name = "dinner" [(ngModel)]="meals.dinner" type="range" min="1" max="47" value="24">
           </label>
       </div>
       <div>
