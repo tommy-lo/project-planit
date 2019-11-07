@@ -1,110 +1,40 @@
 
-  <div class="row">
-    <form #distanceForm="ngForm" (ngSubmit)="onSubmit(distanceForm)">
-     <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="distanceService.selectedDistance._id">
-      <div class="row">
-        <div class="input-field col s2">
-            
-                <input type="text" name="name" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.name" placeholder="Enter name">
-                 <label for="first_name">Name</label>
-        </div>
-        <div class="input-field col s2">
-                <input type="text" name="distance" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.distance" placeholder="Enter Distance">
-                <label for="last_name">Distance</label>
-        </div>
-        <div class="input-field col s2">
-                <input type="text" name="start" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.start" placeholder="Enter Start">
-                <label for="start">Start</label>
-        </div>
-        <div class="input-field col s2">
-                <input type="text" name="end" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.end" placeholder="Enter End">
-                <label for="end">End</label>
-        </div>
-        <div class="input-field col s2">
-                <input type="text" name="budget" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.budget" placeholder="Enter Budget">
-                <label for="budget">Budget</label>
-        </div>
-        <div class="input-field col s2">
-                <input type="text" name="location" #name="ngModel" [(ngModel)]="distanceService.selectedDistance.location" placeholder="Enter Location">
-                <label for="location">Location</label>
-        </div>
-      </div>
-     <!--Above is where you enter name,distance time etc, below is submit and reset button-->
-     <div class="row">
-         <div class="input-field col s2">
-             <button class="btn btn-custom right" type="button" (click)="resetForm(distanceForm)">Reset</button>
-             <button class="btn btn-custom right" type="button" (click)="onSubmit(distanceForm)">Submit</button>
-             <!--Below goes to the test.component, replace with name of yours to go to that one-->
-             <a routerLink="/test"><button class="btn btn-success" >Go to test </button></a>
-             <a routerLink="/pfilters"><button class="btn btn-success" >Go to Personalized filters </button></a>
-             <button class="btn btn-custom right" type="button" (click)="goToPage()">Newtest</button>
 
-         </div>
-     </div> 
-    </form>
-
-  </div>
-  <div class="col s7">
-        <table class="responsive-table highlight">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Distance</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Budget</th>
-                <th>Location</th>
-            </tr>
-            </thead>
-            <tbody>
-                <!--Not working, should display all the data in the database-->
-            <tr *ngFor="let dis of DistanceService">
-                <!--one directional binding-->
-                <td>{{ dis.name }}</td>
-                <td>{{ dis.distance }}</td>
-                <td>{{ dis.start }}</td>
-                <td>{{ dis.end }}</td>
-                <td>{{ dis.budget }}</td>
-                <td>{{ dis.location }}</td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
     <form [formGroup]="sform">
         <div class="row">
             <div class="col-md-6">
                     <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" formControlName="UserName" id="UserName" class="form-control" >
-                            <label for="UserName">Your UserName</label>
+                            <input type="text" formControlName="Budget" id="Budget" class="form-control" >
+                            <label for="Budget">Budget</label>
                             </div>
                             <br>
                             <div class="md-form">
                             <i class="fa fa-user-secret prefix grey-text"></i>
                             <input type="text" id="Distance" formControlName="Distance" class="form-control" >
-                             <label for="Distance">Distance</label>
+                             <label for="Distance">Radius</label>
                             </div>
                             <div class="md-form">
                                     <i class="fa fa-user-secret prefix grey-text"></i>
                                     <input type="text" id="Start" formControlName="Start" class="form-control" >
-                                     <label for="Start">Start</label>
+                                     <label for="Start">Longitude</label>
                                     </div>
                                     <div class="md-form">
                                             <i class="fa fa-user-secret prefix grey-text"></i>
                                             <input type="text" id="End" formControlName="End" class="form-control" >
-                                             <label for="End">End</label>
+                                             <label for="End">Latitude</label>
                                             </div>
                                             <div class="md-form">
                                                     <i class="fa fa-user-secret prefix grey-text"></i>
-                                                    <input type="text" id="Budget" formControlName="Budget" class="form-control" >
-                                                     <label for="Budget">Budget</label>
+                                                    <input type="text" id="Starti" formControlName="Starti" class="form-control" >
+                                                     <label for="Starti">Start time</label>
                                                     </div>
                                                     <div class="md-form">
                                                             <i class="fa fa-user-secret prefix grey-text"></i>
-                                                            <input type="text" id="Location" formControlName="Location" class="form-control" >
-                                                             <label for="Location">Location</label>
+                                                            <input type="text" id="Endi" formControlName="Endi" class="form-control" >
+                                                             <label for="Endi">End</label>
                                                             </div>
-                            
+
                             <button class="btn btn-custom right" type="button" (click)="form()">testing</button>
             </div>
          </div>

@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TestComponent implements OnInit {
   public showContent = false;
-  latitude: number;
   date = '';
   title = 'l';
   titleone = 'l';
@@ -16,7 +15,8 @@ export class TestComponent implements OnInit {
   titlethree = 'l';
   titlefour = 'l';
   titlefive = 'l';
-  longitude: number;
+  longitude: any;
+  latitude: any;
   zoom: number;
   request: any;
   result: any;
@@ -25,15 +25,17 @@ export class TestComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
+    this.latitude = this.activatedRoute.snapshot.paramMap.get('start');
+    this.longitude = this.activatedRoute.snapshot.paramMap.get('end');
     this.result = this.initialize();
   }
 
   ngOnInit() {}
 
 // Get Current Location Coordinates
-private initialize(): any {
-    let k;
-    const sydney = new google.maps.LatLng(-33.867, 151.195);
+private initialize() {
+    let k:any;
+    const sydney = new google.maps.LatLng(this.latitude, this.longitude);
     this.map = new google.maps.Map(
         document.getElementById('map'), {center: sydney, zoom: 15});
     this.request = {
@@ -48,9 +50,6 @@ private initialize(): any {
           k = results;
         }
         });
-    if (k[0].open > 5){
-      //
-    }
     setTimeout(() => this.titleone = k[0], 6000);
     setTimeout(() => this.titletwo = k[1], 6000);
     setTimeout(() => this.titlethree = k[2], 6000);

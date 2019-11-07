@@ -26,17 +26,20 @@ export class DistanceComponent implements OnInit {
   end: any;
   budget: any;
   location: any;
+  starti: any;
+  endi: any;
   constructor(
      private distanceService: DistanceService,
      private router: Router,
-     private fb: FormBuilder) { 
+     private fb: FormBuilder) {
       this.sform = fb.group({
-        UserName: ['', Validators.required],
         Distance: ['', Validators.required],
         Start: ['', Validators.required],
         End: ['', Validators.required],
         Budget: ['', Validators.required],
-        Location: ['', Validators.required]
+       // Location: ['', Validators.required],
+        Starti: ['', Validators.required],
+        Endi: ['', Validators.required]
       });
     }
   ngOnInit() {
@@ -50,8 +53,10 @@ export class DistanceComponent implements OnInit {
     this.start = this.sform.controls['Start'].value;
     this.end = this.sform.controls['End'].value;
     this.budget = this.sform.controls['Budget'].value;
-    this.location = this.sform.controls['Location'].value;
-    this.user = this.sform.controls['UserName'].value;
+    this.starti = this.sform.controls['Starti'].value ;
+    this.endi = this.sform.controls['Endi'].value;
+    // this.location = this.sform.controls['Location'].value;
+  //  this.user = this.sform.controls['UserName'].value;
    // Displays the contents to the console
     console.log(this.dis);
     console.log(this.start)
@@ -61,7 +66,7 @@ export class DistanceComponent implements OnInit {
     console.log(this.user)
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['test',this.user, this.dis, this.start, this.end, this.budget, this.location])
+    this.router.navigate(['test', this.dis, this.start, this.end, this.budget, this.starti, this.endi])
 
   }
 
@@ -86,8 +91,8 @@ export class DistanceComponent implements OnInit {
       // Indicates save
       M.toast({ html: 'Saved success', classes: 'rounded'});
   });
-  
- } 
+
+ }
 
  goToPage(){
    //this.router.navigate([`${pageName}`]);
@@ -98,7 +103,7 @@ export class DistanceComponent implements OnInit {
   refreshDistanceList(){
     // Uses the get request to get all the info in db.
     this.distanceService.getDistanceList().subscribe((res) => {
-      this.distanceService.distances = res as Distance[]; 
+      this.distanceService.distances = res as Distance[];
     });
   }
 }
