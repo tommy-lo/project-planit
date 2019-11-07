@@ -14,7 +14,5 @@ agm-map {
 }
 
 button{
-    position: absolute;
-    left: 100px;
-    top: 450px;
+    float: right;
 }

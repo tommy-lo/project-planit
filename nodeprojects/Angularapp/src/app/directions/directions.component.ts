@@ -24,6 +24,7 @@ export class DirectionsComponent implements OnInit {
   getDirection() {
     this.origin = { lat: 43.6532, lng: -79.3832 }
     this.destination = { lat: 45.4215, lng: -75.6972 }
+    console.log(this.origin)
   }
 
   public setPanel(){

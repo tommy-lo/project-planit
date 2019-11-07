@@ -12,6 +12,9 @@ import { RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TestComponent } from './test/test.component';
 import { PfiltersComponent } from './pfilters/pfilters.component';
+import { AgmCoreModule } from '@agm/core'            // @agm/core
+import { AgmDirectionModule } from 'agm-direction'   // agm-direction
+import { DirectionsComponent } from './directions/directions.component';
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { PfiltersComponent } from './pfilters/pfilters.component';
     routingComponents,
     PageNotFoundComponent,
     TestComponent,
-    PfiltersComponent
+    PfiltersComponent,
+    DirectionsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,11 @@ import { PfiltersComponent } from './pfilters/pfilters.component';
     FormsModule,
     HttpClientModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({ // @agm/core
+      apiKey: 'AIzaSyDFTKbcSXEN22pUx3zfaabEOGyy7oOZtmI',
+    }),
+    AgmDirectionModule     // agm-direction
   ],
   providers: [],
   bootstrap: [AppComponent]
