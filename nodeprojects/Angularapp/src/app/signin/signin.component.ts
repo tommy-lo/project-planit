@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit {
       // navigate to itinerary page
       if (user != '') {
         // add user history and preferences
-        this.router.navigate(['/distances', preferences, history]);
+        this.router.navigate(['/distances/', preferences, history]);
       }
   });
   }

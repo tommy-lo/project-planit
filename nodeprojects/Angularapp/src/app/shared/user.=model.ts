@@ -3,6 +3,6 @@ export class User {
     name: string;
     password: string;
 	  history: string[];
-    preferences: string[];
-    meals: number[];
+    preferences: object[];
+    meals: object[];
 }

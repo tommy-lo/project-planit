@@ -24,14 +24,6 @@ router.post("/getUser", function (req, res) {
     });
 })
 
-//router.put("/updatePFilter", function(req,res) {
-//    console.log("updating pfilters for user with id " + req.params.id);
-//    if (!ObjectId.isValid(req.params.id))
-//        return res.status(400);
-//    User.findByIdAndUpdate(req.params.id, )
-//})
-
-
 
 
 

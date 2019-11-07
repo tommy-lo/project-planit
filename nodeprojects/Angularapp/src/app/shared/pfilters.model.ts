@@ -1,5 +1,4 @@
 export class PFilters {
-  _id: string;
-  preferences: string[];
-  meals: number[];
+  preferences: object;
+  meals: object;
 }

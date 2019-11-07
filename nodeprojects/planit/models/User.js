@@ -5,8 +5,8 @@ var UserSchema = new Schema({
 	name: 			{type: String, 		default: "", unique : true},
 	password:  		{type: String, 		default: ""},
 	history: 		{type: [String], 	default: []},
-	preferences: 	{type: [String],	default: []},
-	meals: 			{type: [Number],	default: []}
+	preferences: 	{type: [{place: String, toggle: Boolean}],	default: []},
+	meals: 			{type: [{name: String, time: Number}],	default: []}
 });
 
 var User = mongoose.model('User', UserSchema);

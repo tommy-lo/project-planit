@@ -5,28 +5,28 @@
   <form #PFiltersForm="ngForm" (ngSubmit)="onSubmit(PFiltersForm)">
       Personalized Filters:
       <ul>
-        <li><mat-slide-toggle name="parks" [(ngModel)]="preferences.parks">Parks</mat-slide-toggle><br></li>
-        <li><mat-slide-toggle name="restaurants" [(ngModel)]="preferences.restaurants">Restaurants</mat-slide-toggle><br></li>
-        <li><mat-slide-toggle name="museums" [(ngModel)]="preferences.museums">Museums</mat-slide-toggle><br></li>
-        <li><mat-slide-toggle name="movies" [(ngModel)]="preferences.movies">Movies</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="parks" [(ngModel)]="userService.user.preferences[0].toggle">Parks</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="restaurants" [(ngModel)]="userService.user.preferences[1].toggle">Restaurants</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="museums" [(ngModel)]="userService.user.preferences[2].toggle">Museums</mat-slide-toggle><br></li>
+        <li><mat-slide-toggle name="movies" [(ngModel)]="userService.user.preferences[3].toggle">Movies</mat-slide-toggle><br></li>
       </ul>
 
       Meals:
       <div>
           <label>Breakfast
-            <input name = "breakfast" [(ngModel)]="meals.breakfast" type="range"  min="1" max="47" value="24">
+            <input name = "breakfast" [(ngModel)]="userService.user.meals[0].time" type="range"  min="1" max="47" value="24">
           </label>
 
           <label>Lunch
-            <input name = "lunch" [(ngModel)]="meals.lunch" type="range" min="1" max="47" value="24">
+            <input name = "lunch" [(ngModel)]="userService.user.meals[1].time" type="range" min="1" max="47" value="24">
           </label>
 
           <label>Dinner
-            <input name = "dinner" [(ngModel)]="meals.dinner" type="range" min="1" max="47" value="24">
+            <input name = "dinner" [(ngModel)]="userService.user.meals[2].time" type="range" min="1" max="47" value="24">
           </label>
       </div>
       <div>
-          <button class="btn btn-custom right" type="submit" (click)="onSubmit(PFiltersForm)">Save</button>
+          <button class="btn btn-custom right" type="submit">Save</button>
       </div>
   </form>
 </body>

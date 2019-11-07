@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router} from '@angular/router';
 
 import { UserService } from '../shared/user.service';
-import { PFilters } from '../shared/pfilters.model';
+import { User } from '../shared/user.=model';
 declare var M: any;
 
 @Component({
@@ -14,46 +14,48 @@ declare var M: any;
 })
 
 export class PfiltersComponent implements OnInit {
-  preferences: object;
-  meals: object;
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
+    // Need to get the current signed in user
+    // Use a test user for now
+    this.userService.user = {
+      _id: "5dc472f6e71c901c7588db94",
+      meals: [],
+      preferences: [],
+      history: [],
+      password: 'd',
+      name: 'c' };
+
     this.resetForm();
     this.refreshUserPFilters();
   }
 
-  refreshUserPFilters(){
-    this.preferences = {
-      parks: true,
-      restaurants: true,
-      museums: true,
-      movies: true
-    };
-    this.meals = {
-      breakfast: 16,
-      lunch: 24,
-      dinner: 36
-    };
+  refreshUserPFilters() {
+    console.log(this.userService.user);
+    this.userService.user.preferences = [
+      {place: 'parks', toggle: true},
+      {place: 'restaurants', toggle: true},
+      {place: 'museums', toggle: true},
+      {place: 'movies', toggle: true}
+    ];
+    this.userService.user.meals = [
+      {name: 'breakfast', time: 16},
+      {name: 'lunch', time: 24},
+      {name: 'dinner', time: 36}
+    ];
   }
 
 
-  resetForm(form?: NgForm){
-    if (form){
+  resetForm(form?: NgForm) {
+    if (form) {
       form.reset();
-      this.userService.pfilters = {
-        _id: '',
-        preferences: [],
-        meals: []
-      }
     }
   }
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     console.log(form.value);
-    this.userService.pfilters.preferences = Object.getOwnPropertyNames(this.preferences);
-    this.userService.pfilters.meals = Object.keys(this.meals).map(Number);
-    this.userService.updateUserPreferences(this.userService.user, this.userService.pfilters);
+    this.userService.updateUser(form.value);
   }
 
 
