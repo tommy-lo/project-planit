@@ -17,6 +17,10 @@ Anson Tran
 
 Sprint Backlog:
 
+PLAN-15 Link to reservations/ reserve for them
+  - PLAN-39 redirect user to website of location
+  - PLAN-44 design itenary screen
+  - PLAN-45 Dsiplays time to get to a place using directions 
 
 PLAN-7 Open up a map to view how to get there.
 - PLAN-29	Connect to Google directions API and itinerary to generate map
