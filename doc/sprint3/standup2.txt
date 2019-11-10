@@ -1,0 +1,3 @@
+Oct 24
+worked on retrieving data from url (distance component) and used it to generate itinerary 
+Made sure itinerry items are all withing the time frame given
