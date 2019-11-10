@@ -1,11 +1,1 @@
-Oct 30
-
-PLAN-37 added httrequest to get user from db
-
-PLAN-3/34 working on other way to send data(Note: Committed to PLAN-36 by accident)
-
-Can now type info and the component will be able to use on the lower half of the page, plan to use that info to pass into new page with url that are those values, added exports/imports that were needed for the distance folder into the app files
--Brandon Shewnarain
-
-PLAN 29 PLAN 30
-Added the implementation of Google Directions API. When given two sets of longitude and latitude, the Google Map will show the shortest available path between them
+Nov 14
