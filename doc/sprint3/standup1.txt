@@ -1,3 +1,1 @@
-Oct 23
-PLAN-16 Joon Hong:
-moved signup page and added user service and model
+Nov 7
