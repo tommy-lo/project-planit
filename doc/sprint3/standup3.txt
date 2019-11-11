@@ -1,1 +1,3 @@
 Nov 11
+
+PLAN-42 is complete, Brandon Shewnarain is now working on PLAN-46/41
