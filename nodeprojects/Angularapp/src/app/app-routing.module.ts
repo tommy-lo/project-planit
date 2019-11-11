@@ -7,16 +7,19 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { PfiltersComponent } from './pfilters/pfilters.component';
 import { DirectionsComponent } from './directions/directions.component';
+import { StartpageComponent } from './startpage/startpage.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/distances', pathMatch: 'full'},
+  {path: '', redirectTo: '/startpage', pathMatch: 'full'},
   {path: 'distances', component: DistanceComponent},
   {path: 'directions', component: DirectionsComponent},
   {path: 'test/:distance/:start/:end/:budget/:starti/:endi', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'pfilters', component: PfiltersComponent},
+  {path: 'startpage', component: StartpageComponent},
+
 
   //Have least specific on the bottom otherwise you will always get page not found
   {path: "**", component: PageNotFoundComponent}
@@ -27,4 +30,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [DistanceComponent, TestComponent, PageNotFoundComponent, SignupComponent, SigninComponent, PfiltersComponent]
+export const routingComponents = [DistanceComponent, TestComponent, PageNotFoundComponent, SignupComponent, SigninComponent, PfiltersComponent,
+DirectionsComponent, StartpageComponent]
