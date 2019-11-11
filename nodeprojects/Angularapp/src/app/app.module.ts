@@ -27,7 +27,7 @@ import { StartpageComponent } from './startpage/startpage.component';
     PfiltersComponent,
     DirectionsComponent,
     StartpageComponent
-
+ 
   ],
   imports: [
     BrowserModule,
