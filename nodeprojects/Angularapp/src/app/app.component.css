@@ -1,0 +1,8 @@
+.divider{
+    width:20px;
+    height:auto;
+    display:inline-block;
+}
+.background{
+    background-color: rgb(86, 76, 175); 
+}

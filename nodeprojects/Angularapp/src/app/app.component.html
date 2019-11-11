@@ -1,33 +1,48 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: #b1b1b1;
+}
+/*
+h3 {
+    background-color: #e21a1a;
+}
+p {
+    background-color: #FFFFFF;
+}*/
+</style>
+</head>
+<body>
+        <div style="text-align:center">
+                <h3>
+                    Navigation Bar
+                </h3>
+                </div>
+                <nav class="background">
+                        <div style="text-align:center">
+                        <ol>
+                    <a routerLink="/distances" routerLinkActive="active">Basic Filters</a>
+                    <div class="divider"></div>
+                    <a routerLink="/signup" routerLinkActive="active">Signup</a>
+                    <div class="divider"></div>
+                    <a routerLink="/signin" routerLinkActive="active">Signin</a>
+                    <div class="divider"></div>
+                
+                    <a routerLink="/test" routerLinkActive="active">Test</a>
+                    <div class="divider"></div>
+                    <a routerLink="/pfilters" routerLinkActive="active">Personalized filters</a>
+                    <div class="divider"></div>
+                    <a routerLink="/directions" routerLinkActive="active">directions</a>
+                    <div class="divider"></div>
+                    <a routerLink="/startpage" routerLinkActive="active">startpage</a>
+                        </ol>
+                        </div>
+                </nav>
+                <router-outlet></router-outlet>
+</body>
 
-<div style="text-align:center">
-<h1>
-    Navigation Bar
-</h1>
-</div>
-<nav>
-    <a routerLink="/distances" routerLinkActive="active">Basic Filters</a>
+</html>
 
-    <a routerLink="/signup" routerLinkActive="active">Signup</a>
-    <a routerLink="/signin" routerLinkActive="active">Signin</a>
-
-
-    <a routerLink="/test" routerLinkActive="active">Test</a>
-    <a routerLink="/pfilters" routerLinkActive="active">Personalized filters</a>
-    <a routerLink="/directions" routerLinkActive="active">directions</a>
-    <a routerLink="/startpage" routerLinkActive="active">startpage</a>
-</nav>
-
-
-
-
-
-<router-outlet></router-outlet>
 
