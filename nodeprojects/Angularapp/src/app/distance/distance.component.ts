@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { NgForm, ReactiveFormsModule } from '@angular/forms';
+import { Router, NavigationExtras} from '@angular/router';
 //local import
 import { DistanceService } from '../shared/distance.service';
 import { Distance } from '../shared/distance.=model';
 import {  FormBuilder, FormGroup,  Validators } from '@angular/forms';
 
 
+import { map } from 'rxjs/operators';
 // for toast value which indicates save
 declare var M: any;
 @Component({
@@ -30,7 +31,7 @@ export class DistanceComponent implements OnInit {
   constructor(
      private distanceService: DistanceService,
      private router: Router,
-     fb: FormBuilder) {
+     private fb: FormBuilder) {
       this.sform = fb.group({
         Distance: ['', Validators.required],
         Start: ['', Validators.required],
@@ -85,7 +86,7 @@ export class DistanceComponent implements OnInit {
 
   onSubmit(form : NgForm){
     // Uses the post request to add to the db.
-    this.distanceService.postDistance(form.value).subscribe(() => {
+    this.distanceService.postDistance(form.value).subscribe((res) => {
       this.resetForm(form);
       // Indicates save
       M.toast({ html: 'Saved success', classes: 'rounded'});
