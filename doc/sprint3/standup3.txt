@@ -1,3 +1,5 @@
 Nov 11
 
 PLAN-42 is complete, Brandon Shewnarain is now working on PLAN-46/41
+
+PLAN-48/49 Working on connecting components and adding additional options
