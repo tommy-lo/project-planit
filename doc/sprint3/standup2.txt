@@ -1,2 +1,4 @@
 Nov 8
 PLAN-41 Brandon Shewnarain is still workong on creating a start page with signup/signin page
+
+PLAN-49 Thomas Lo still working on connecting the components
