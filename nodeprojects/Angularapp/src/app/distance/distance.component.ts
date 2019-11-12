@@ -27,18 +27,21 @@ export class DistanceComponent implements OnInit {
   location: any;
   starti: any;
   endi: any;
+  longitude: any;
+  latitude: any;
+
   constructor(
      private distanceService: DistanceService,
      private router: Router,
      fb: FormBuilder) {
       this.sform = fb.group({
         Distance: ['', Validators.required],
-        Start: ['', Validators.required],
-        End: ['', Validators.required],
+        Longitude: ['', Validators.required],
+        Latitude: ['', Validators.required],
         Budget: ['', Validators.required],
        // Location: ['', Validators.required],
-        Starti: ['', Validators.required],
-        Endi: ['', Validators.required]
+        Start: ['', Validators.required],
+        End: ['', Validators.required]
       });
     }
   ngOnInit() {
@@ -49,23 +52,24 @@ export class DistanceComponent implements OnInit {
   form(){
    // Gets the value that is in the form based on it's name.
     this.dis = this.sform.controls['Distance'].value;
+    this.longitude = this.sform.controls['Longitude'].value;
+    this.latitude = this.sform.controls['Latitude'].value;
+    this.budget = this.sform.controls['Budget'].value;
     this.start = this.sform.controls['Start'].value;
     this.end = this.sform.controls['End'].value;
-    this.budget = this.sform.controls['Budget'].value;
-    this.starti = this.sform.controls['Starti'].value ;
-    this.endi = this.sform.controls['Endi'].value;
     // this.location = this.sform.controls['Location'].value;
   //  this.user = this.sform.controls['UserName'].value;
    // Displays the contents to the console
     console.log(this.dis);
-    console.log(this.start)
-    console.log(this.end)
-    console.log(this.budget)
-    console.log(this.location)
-    console.log(this.user)
+    console.log(this.budget);
+    console.log(this.longitude);
+    console.log(this.latitude);
+    //console.log(this.location)
+    console.log(this.start);
+    console.log(this.end);
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['test', this.dis, this.start, this.end, this.budget, this.starti, this.endi])
+    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end])
 
   }
 

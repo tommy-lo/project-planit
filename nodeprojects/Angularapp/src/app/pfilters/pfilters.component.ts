@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 //local import
 import { PfiltersService } from '../shared/pfilters.service';
 import { Pfilters } from '../shared/pfilters.model';
@@ -17,14 +17,39 @@ export class PfiltersComponent implements OnInit {
   restaurants = true;
   movies = true;
 
+  zoom: number;
+  request: any;
+  result: any;
+  map: google.maps.Map;
+  location: any;
+  distance: any;
+  longitude: any;
+  latitude: any;
+  budget: any;
+  starttime: any;
+  endtime: any;
+
+
   onToggleFilter(filter){
     // Update the user's database for the filter
     alert(filter);
 
   }
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
+  this.location = this.activatedRoute.snapshot.paramMap.get('distance');
+  this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
+  this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
+  this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
+  this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
+  this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
+  console.count(this.longitude);
 
+  }
   ngOnInit() {}
 
+  test(){
+    this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, this.endtime])
+
+  }
 }
