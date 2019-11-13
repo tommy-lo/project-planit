@@ -15,6 +15,7 @@ import { PfiltersComponent } from './pfilters/pfilters.component';
 import { AgmCoreModule } from '@agm/core'            // @agm/core
 import { AgmDirectionModule } from 'agm-direction'   // agm-direction
 import { DirectionsComponent } from './directions/directions.component';
+import { StartpageComponent } from './startpage/startpage.component';
 
 
 @NgModule({
@@ -24,8 +25,9 @@ import { DirectionsComponent } from './directions/directions.component';
     PageNotFoundComponent,
     TestComponent,
     PfiltersComponent,
-    DirectionsComponent
-
+    DirectionsComponent,
+    StartpageComponent
+ 
   ],
   imports: [
     BrowserModule,

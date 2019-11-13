@@ -22,15 +22,32 @@ export class TestComponent implements OnInit {
   result: any;
   map: google.maps.Map;
   location: any;
+  museums: any;
+  restaurants: any;
+  movies: any;
+  parks: any;
+  budget: any;
+  starttime: any;
+  endtime: any;
 
   constructor(private activatedRoute: ActivatedRoute) {
+
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
-    this.latitude = this.activatedRoute.snapshot.paramMap.get('start');
-    this.longitude = this.activatedRoute.snapshot.paramMap.get('end');
+    this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
+    this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
+    this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
+    this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
+    this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
+    this.museums = this,activatedRoute.snapshot.paramMap.get('museums');
+    this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
+    this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
+    this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
     this.result = this.initialize();
   }
 
-  ngOnInit() {}
+  ngOnInit(){
+    console.log(this.parks);
+  } 
 
 // Get Current Location Coordinates
 private initialize() {
