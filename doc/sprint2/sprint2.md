@@ -44,7 +44,7 @@ PLAN-1 Select types of places preferred
 - PLAN-36	Add checkbox to second filter screen
 
 
-Sprint 1 Backlog Breakdown:
+Sprint 2 Backlog Breakdown:
 
 Plan-7,8,29,30,31 Thomas Lo
 

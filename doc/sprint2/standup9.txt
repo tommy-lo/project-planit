@@ -1,1 +1,6 @@
 Nov 3
+
+PLAN 29 PLAN 30 PLAN 31
+Added travel mode option feature which allows user to enter method of transportation which will apply to the map
+
+PLAN 37 fixed a bug where user could sign in without proper username and password
