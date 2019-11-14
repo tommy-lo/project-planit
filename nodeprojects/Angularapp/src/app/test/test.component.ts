@@ -38,7 +38,7 @@ export class TestComponent implements OnInit {
     this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
     this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
-    this.museums = this,activatedRoute.snapshot.paramMap.get('museums');
+    this.museums = this.activatedRoute.snapshot.paramMap.get('museums');
     this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
     this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
     this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
@@ -46,7 +46,7 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log(this.parks);
+
   } 
 
 // Get Current Location Coordinates

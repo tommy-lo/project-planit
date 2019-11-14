@@ -28,6 +28,14 @@ export class PfiltersComponent implements OnInit {
   set2: number;
   set3: number;
   set4: number;
+  togglepark: boolean;
+  togglemov: boolean;
+  toggleres: boolean;
+  togglemus: boolean;
+  statuspark: any;
+  statusmov: any;
+  statusres: any;
+  statusmus: any;
 
   onToggleFilter(filter){
     // Update the user's database for the filter
@@ -43,6 +51,7 @@ export class PfiltersComponent implements OnInit {
   this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
   this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
   this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
+  
 
   }
   ngOnInit() {
@@ -50,11 +59,22 @@ export class PfiltersComponent implements OnInit {
     this.set2 = 0;
     this.set3 = 0;
     this.set4 = 0;
+    this.togglepark = true;
+    this.toggleres = true;
+    this.togglemov = true;
+    this.togglemus = true;
+    this.statuspark = 'Enable';
+    this.statusres = 'Enable';
+    this.statusmus = 'Enable';
+    this.statusmov = 'Enable';
   }
   onClickpark(){
+    this.togglepark = !this.togglepark;
+    this.statuspark = this.togglepark ? 'Enable' : 'Disable';
     if (this.set1 == 0){
         this.parks = true;
         this.set1 = 1;
+        
         M.toast({ html: 'Park toggled on', classes: 'rounded'});
     }
     else{
@@ -64,7 +84,8 @@ export class PfiltersComponent implements OnInit {
     }
   }
   onClickmuseum(){
-
+    this.togglemus = !this.togglemus;
+    this.statusmus = this.togglemus ? 'Enable' : 'Disable';
     if (this.set2 == 0){
         this.museums = true;
         this.set2 = 1;
@@ -77,10 +98,11 @@ export class PfiltersComponent implements OnInit {
     }
   }
   onClickrestaurant(){
-
+    this.toggleres = !this.toggleres;
+    this.statusres = this.toggleres ? 'Enable' : 'Disable';
     if (this.set3 == 0){
         this.restaurants = true;
-        this.set4 = 1;
+        this.set3 = 1;
         M.toast({ html: 'Restaurant toggled on', classes: 'rounded'});
     }
     else{
@@ -90,7 +112,8 @@ export class PfiltersComponent implements OnInit {
     }
   }
   onClickmovie(){
-
+    this.togglemov = !this.togglemov;
+    this.statusmov = this.togglemov ? 'Enable' : 'Disable';
     if (this.set4 == 0){
         this.movies = true;
         this.set4 = 1;

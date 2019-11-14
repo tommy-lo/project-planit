@@ -1,3 +1,5 @@
 Nov 13
 
 PLAN-40 working on getting user in parameters for itinerary
+
+PLAN-41 fixed issue with restaurant button for pfilters and getting the value of museum from the url
