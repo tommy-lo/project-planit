@@ -55,6 +55,7 @@ export class PfiltersComponent implements OnInit {
     if (this.set1 == 0){
         this.parks = true;
         this.set1 = 1;
+        
         M.toast({ html: 'Park toggled on', classes: 'rounded'});
     }
     else{
@@ -80,7 +81,7 @@ export class PfiltersComponent implements OnInit {
 
     if (this.set3 == 0){
         this.restaurants = true;
-        this.set4 = 1;
+        this.set3 = 1;
         M.toast({ html: 'Restaurant toggled on', classes: 'rounded'});
     }
     else{
