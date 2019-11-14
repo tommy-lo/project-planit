@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -12,6 +12,7 @@ import { Router} from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
+  history:any;
   constructor(private userService: UserService, private router: Router) { }
 
 
@@ -35,13 +36,14 @@ export class SigninComponent implements OnInit {
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
       let user = JSON.parse(JSON.stringify(res));
-      let preferences = user[0].preferences;
-      let history = user[0].history;
+      //let preferences = user[0].preferences;
+      this.history = user[0].history;
 
       // navigate to itinerary page
       if (user != "") {
         // add user history and preferences
-        this.router.navigate(['/distances']);
+        console.log(this.history)
+        this.router.navigate(['/distances', {history: [this.history]}]);
       }
   });
   }

@@ -24,6 +24,7 @@ export class PfiltersComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+  history: any;
   set1: number;
   set2: number;
   set3: number;
@@ -43,13 +44,17 @@ export class PfiltersComponent implements OnInit {
   this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
   this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
   this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
-
+  this.history = this.activatedRoute.snapshot.paramMap.get('history');
+  console.log(this.activatedRoute.snapshot.paramMap);
   }
   ngOnInit() {
     this.set1 = 0;
     this.set2 = 0;
     this.set3 = 0;
     this.set4 = 0;
+    this.activatedRoute.params.subscribe(routeParams => {
+      this.history = routeParams.history
+    });
   }
   onClickpark(){
     if (this.set1 == 0){
@@ -105,7 +110,7 @@ export class PfiltersComponent implements OnInit {
 
   test(){
     this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
-    this.endtime, this.parks, this.museums, this.restaurants, this.movies])
+    this.endtime, this.parks, this.museums, this.restaurants, this.movies, {history: [this.history]}])
 
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 //local import
 import { DistanceService } from '../shared/distance.service';
 import { Distance } from '../shared/distance.=model';
@@ -29,11 +29,16 @@ export class DistanceComponent implements OnInit {
   endi: any;
   longitude: any;
   latitude: any;
+  history: any;
 
+  
   constructor(
-     private distanceService: DistanceService,
-     private router: Router,
-     fb: FormBuilder) {
+    private activatedRoute: ActivatedRoute,
+    private distanceService: DistanceService,
+    private router: Router,
+    fb: FormBuilder) {
+      this.history = this.activatedRoute.snapshot.paramMap.get('history');
+      console.log(this.activatedRoute.snapshot.paramMap);
       this.sform = fb.group({
         Distance: ['', Validators.required],
         Longitude: ['', Validators.required],
@@ -67,9 +72,12 @@ export class DistanceComponent implements OnInit {
     //console.log(this.location)
     console.log(this.start);
     console.log(this.end);
+    console.log(this.history);
+
+
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end])
+    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end, {history: [this.history]}])
 
   }
 

@@ -29,6 +29,7 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+  history: any;
 
   constructor(private activatedRoute: ActivatedRoute) {
 
@@ -42,6 +43,7 @@ export class TestComponent implements OnInit {
     this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
     this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
     this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
+    this.history = this.activatedRoute.snapshot.paramMap.get('history');
     this.result = this.initialize();
   }
 

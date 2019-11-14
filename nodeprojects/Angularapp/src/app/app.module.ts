@@ -15,7 +15,9 @@ import { PfiltersComponent } from './pfilters/pfilters.component';
 import { AgmCoreModule } from '@agm/core'            // @agm/core
 import { AgmDirectionModule } from 'agm-direction'   // agm-direction
 import { DirectionsComponent } from './directions/directions.component';
-import { StartpageComponent } from './startpage/startpage.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 @NgModule({
@@ -26,8 +28,8 @@ import { StartpageComponent } from './startpage/startpage.component';
     TestComponent,
     PfiltersComponent,
     DirectionsComponent,
-    StartpageComponent
- 
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
