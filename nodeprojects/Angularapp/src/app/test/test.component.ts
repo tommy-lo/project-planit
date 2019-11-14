@@ -46,10 +46,7 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log(this.parks);
-    console.log(this.museums);
-    console.log(this.restaurants);
-    console.log(this.movies);
+
   } 
 
 // Get Current Location Coordinates
