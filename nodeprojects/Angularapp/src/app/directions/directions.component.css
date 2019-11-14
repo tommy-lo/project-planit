@@ -11,6 +11,7 @@ agm-map {
     width: 400px;
     float: left;
     overflow: auto;
+    padding: 5px;
 }
 
 button{
