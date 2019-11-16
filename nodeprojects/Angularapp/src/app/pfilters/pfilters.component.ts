@@ -212,7 +212,7 @@ export class PfiltersComponent implements OnInit {
 
   test(){
     this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
-    this.endtime, this.parks, this.museums, this.restaurants, this.movies])
+    this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, this.sports])
 
   }
 }
