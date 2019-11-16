@@ -16,6 +16,10 @@ export class PfiltersComponent implements OnInit {
   museums = false;
   restaurants = false;
   movies = false;
+  sports = false;
+  zoo = false;
+  shop = false;
+  bar = false;
 
   location: any;
   distance: any;
@@ -28,14 +32,26 @@ export class PfiltersComponent implements OnInit {
   set2: number;
   set3: number;
   set4: number;
+  set5: number;
+  set6: number;
+  set7: number;
+  set8: number;
   togglepark: boolean;
   togglemov: boolean;
   toggleres: boolean;
   togglemus: boolean;
+  togglebar: boolean;
+  togglesports: boolean;
+  toggleshop: boolean;
+  togglezoo: boolean;
   statuspark: any;
   statusmov: any;
   statusres: any;
   statusmus: any;
+  statuszoo: any;
+  statusbar: any;
+  statusshop: any;
+  statussports: any;
 
   onToggleFilter(filter){
     // Update the user's database for the filter
@@ -59,14 +75,26 @@ export class PfiltersComponent implements OnInit {
     this.set2 = 0;
     this.set3 = 0;
     this.set4 = 0;
+    this.set5 = 0;
+    this.set6 = 0;
+    this.set7 = 0;
+    this.set8 = 0;
     this.togglepark = true;
     this.toggleres = true;
     this.togglemov = true;
     this.togglemus = true;
+    this.togglezoo = true;
+    this.toggleshop = true;
+    this.togglesports = true;
+    this.togglebar = true;
     this.statuspark = 'Enable';
     this.statusres = 'Enable';
     this.statusmus = 'Enable';
     this.statusmov = 'Enable';
+    this.statusbar = 'Enable';
+    this.statuszoo = 'Enable';
+    this.statussports = 'Enable';
+    this.statusshop = 'Enable';
   }
   onClickpark(){
     this.togglepark = !this.togglepark;
@@ -125,10 +153,66 @@ export class PfiltersComponent implements OnInit {
       M.toast({ html: 'Movie toggled off', classes: 'rounded'});
     }
   }
+  onClickShop(){
+    this.toggleshop = !this.toggleshop;
+    this.statusshop = this.toggleshop ? 'Enable' : 'Disable';
+    if (this.set5 == 0){
+        this.shop = true;
+        this.set5 = 1;
+        M.toast({ html: 'Shopping toggled on', classes: 'rounded'});
+    }
+    else{
+      this.shop = false;
+      this.set5 = 0;
+      M.toast({ html: 'Shopping toggled off', classes: 'rounded'});
+    }
+  }
+  onClickBar(){
+    this.togglebar = !this.togglebar;
+    this.statusbar = this.togglebar ? 'Enable' : 'Disable';
+    if (this.set6 == 0){
+        this.bar = true;
+        this.set6 = 1;
+        M.toast({ html: 'Bar toggled on', classes: 'rounded'});
+    }
+    else{
+      this.bar = false;
+      this.set6 = 0;
+      M.toast({ html: 'Bar toggled off', classes: 'rounded'});
+    }
+  }
+  onClickZoo(){
+    this.togglezoo = !this.togglezoo;
+    this.statuszoo = this.togglezoo ? 'Enable' : 'Disable';
+    if (this.set7 == 0){
+        this.zoo = true;
+        this.set7 = 1;
+        M.toast({ html: 'Zoo toggled on', classes: 'rounded'});
+    }
+    else{
+      this.zoo = false;
+      this.set7 = 0;
+      M.toast({ html: 'Zoo toggled off', classes: 'rounded'});
+    }
+  }
+  onClickSports(){
+    this.togglesports = !this.togglesports;
+    this.statussports = this.togglesports ? 'Enable' : 'Disable';
+    if (this.set8 == 0){
+        this.sports = true;
+        this.set8 = 1;
+        M.toast({ html: 'Sports toggled on', classes: 'rounded'});
+    }
+    else{
+      this.sports = false;
+      this.set8 = 0;
+      M.toast({ html: 'Sports toggled off', classes: 'rounded'});
+    }
+  }
 
   test(){
     this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
-    this.endtime, this.parks, this.museums, this.restaurants, this.movies])
+    this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, this.sports])
 
   }
 }

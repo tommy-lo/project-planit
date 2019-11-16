@@ -26,6 +26,10 @@ export class TestComponent implements OnInit {
   restaurants: any;
   movies: any;
   parks: any;
+  sports: any;
+  zoo: any;
+  bar: any;
+  shop: any;
   budget: any;
   starttime: any;
   endtime: any;
@@ -42,6 +46,10 @@ export class TestComponent implements OnInit {
     this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
     this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
     this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
+    this.shop = this.activatedRoute.snapshot.paramMap.get('shop');
+    this.zoo = this.activatedRoute.snapshot.paramMap.get('zoo');
+    this.bar = this.activatedRoute.snapshot.paramMap.get('bar');
+    this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
     this.result = this.initialize();
   }
 
