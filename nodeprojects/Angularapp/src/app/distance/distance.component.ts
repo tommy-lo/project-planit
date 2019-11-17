@@ -44,7 +44,7 @@ export class DistanceComponent implements OnInit {
         Longitude: ['', Validators.required],
         Latitude: ['', Validators.required],
         Budget: ['', Validators.required],
-       // Location: ['', Validators.required],
+        Location: ['', Validators.required],
         Start: ['', Validators.required],
         End: ['', Validators.required]
       });
@@ -62,14 +62,14 @@ export class DistanceComponent implements OnInit {
     this.budget = this.sform.controls['Budget'].value;
     this.start = this.sform.controls['Start'].value;
     this.end = this.sform.controls['End'].value;
-    // this.location = this.sform.controls['Location'].value;
+    this.location = this.sform.controls['Location'].value;
   //  this.user = this.sform.controls['UserName'].value;
    // Displays the contents to the console
     console.log(this.dis);
     console.log(this.budget);
     console.log(this.longitude);
     console.log(this.latitude);
-    //console.log(this.location)
+    console.log(this.location)
     console.log(this.start);
     console.log(this.end);
     console.log(this.history);
@@ -77,7 +77,7 @@ export class DistanceComponent implements OnInit {
 
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end, {history: [this.history]}])
+    this.router.navigate(['pfilters', this.dis, this.location, this.longitude, this.latitude, this.budget, this.start, this.end, {history: [this.history]}])
 
   }
 

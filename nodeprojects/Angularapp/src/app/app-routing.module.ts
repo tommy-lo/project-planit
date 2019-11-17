@@ -14,10 +14,10 @@ const routes: Routes = [
   {path: '', redirectTo: '/startpage', pathMatch: 'full'},
   {path: 'distances', component: DistanceComponent},
   {path: 'directions', component: DirectionsComponent},
-  {path: 'test/:distance/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies', component: TestComponent},
+  {path: 'test/:distance/:location/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'pfilters/:distance/:longitude/:latitude/:budget/:start/:end', component: PfiltersComponent},
+  {path: 'pfilters/:distance/:location/:longitude/:latitude/:budget/:start/:end', component: PfiltersComponent},
   {path: 'startpage', component: StartpageComponent},
 
 

@@ -21,7 +21,7 @@ export class TestComponent implements OnInit {
   request: any;
   result: any;
   map: google.maps.Map;
-  location: any;
+  distance: any;
   museums: any;
   restaurants: any;
   movies: any;
@@ -30,12 +30,13 @@ export class TestComponent implements OnInit {
   starttime: any;
   endtime: any;
   history: any;
-
+  location: any;
+  city: any;
   constructor(private activatedRoute: ActivatedRoute) {
 
-    this.location = this.activatedRoute.snapshot.paramMap.get('distance');
-    this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
-    this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
+    this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
+    //this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
+    //this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
     this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
     this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
@@ -44,6 +45,8 @@ export class TestComponent implements OnInit {
     this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
     this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
     this.history = this.activatedRoute.snapshot.paramMap.get('history');
+    this.location = this.activatedRoute.snapshot.paramMap.get('location');
+
     this.result = this.initialize();
   }
 
@@ -54,21 +57,38 @@ export class TestComponent implements OnInit {
 // Get Current Location Coordinates
 private initialize() {
     let k:any;
-    const sydney = new google.maps.LatLng(this.latitude, this.longitude);
-    this.map = new google.maps.Map(
-        document.getElementById('map'), {center: sydney, zoom: 15});
-    this.request = {
-        location: sydney,
-        radius: this.location,
-        query: 'tourist',
-        minPriceLevel : 0
-      };
-    const service = new google.maps.places.PlacesService(this.map);
-    service.textSearch(this.request, function(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          k = results;
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode(
+      {address: this.location},
+      function (results, status) {
+        console.log(results)
+        if (status == google.maps.GeocoderStatus.OK) {
+          this.longitude = results[0].geometry.location.lng();
+          this.latitude = results[0].geometry.location.lat();
+          console.log(this.longitude)
+          console.log(this.latitude)
+          this.city = new google.maps.LatLng(this.latitude, this.longitude);
+
+          this.map = new google.maps.Map(
+            document.getElementById('map'), {center: this.city, zoom: 15});
+          this.request = {
+            location: this.city,
+            radius: this.distance,
+            query: 'tourist',
+            minPriceLevel : 0
+          };
+          const service = new google.maps.places.PlacesService(this.map);
+          service.textSearch(this.request, function(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              k = results;
+            }
+            });
         }
-        });
+      })
+      console.log(this.activatedRoute.snapshot.paramMap)
+
+
+    console.log(k)
     setTimeout(() => this.titleone = k[0], 6000);
     setTimeout(() => this.titletwo = k[1], 6000);
     setTimeout(() => this.titlethree = k[2], 6000);
