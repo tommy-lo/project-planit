@@ -63,7 +63,7 @@ export class TestComponent implements OnInit {
   }
 
 directsecond() {
-  this.router.navigate(['directions', this.latone, this.lngone]);
+  this.router.navigate(['directions', this.longitude, this.latitude, this.lngone, this.latone]);
   console.log(this.titleone);
 }
 
