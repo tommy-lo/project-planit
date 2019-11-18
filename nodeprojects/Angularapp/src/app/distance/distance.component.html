@@ -1,6 +1,8 @@
 
 
-    <form [formGroup]="sform">
+    
+
+    <form [formGroup]="sform" [ngClass]="{'grey' : toggle, 'white': !toggle}">
         <div class="row">
             <div class="col-md-6">
                     <div class="md-form">

@@ -5,7 +5,8 @@ var UserSchema = new Schema({
 	name: { 		type: String, 		default: "", unique : true},
     password: { 	type: String, 		default: ""},
 	history: {		type: [String], 	default: []},
-	preferences: {	type: [String], 	default: []}
+	preferences: {	type: [String], 	default: []},
+	mode: { 	type: String, 		default: "light"}
 });
 
 var User = mongoose.model('User', UserSchema);
