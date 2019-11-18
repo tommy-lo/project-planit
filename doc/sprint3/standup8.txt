@@ -1,2 +1,4 @@
 Nov 18
 PLAN-17 Brandon is workong on Dark mode
+
+PLAN-40 Joon Hong finished, now working on PLAN-2
