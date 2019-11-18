@@ -8,6 +8,7 @@ import { User } from './user.=model';
 export class UserService {
   newuser: User;
   user: User;
+  mode: String;
   readonly baseURL = 'http://localhost:3000/users';
   constructor(private http: HttpClient) { }
 
@@ -17,5 +18,9 @@ export class UserService {
   
   getUser(user:User) {
     return this.http.post(this.baseURL + "/getUser", user);
+  }
+  
+  updateUser(user:User){
+    return this.http.post(this.baseURL + "/updateUser", user);
   }
 }
