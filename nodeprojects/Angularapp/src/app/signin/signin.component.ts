@@ -13,6 +13,9 @@ declare var M: any;
 export class SigninComponent implements OnInit {
 mode: any;
 history: any;
+display: any;
+username: any;
+preferences: any;
 modetoggle: any;
 modeset: number;
 
@@ -34,28 +37,10 @@ modeset: number;
         password:"",
         history:[""],
         preferences:[""],
-        mode:""
+        mode:"",
+        display:""
       };
    }
-   modeChange(form : NgForm){
-
-    if (this.modeset == 0){
-      M.toast({ html: 'Dark mode on', classes: 'rounded'});
-      this.modeset = 1;
-    this.modetoggle = true;
-    }
-    else{
-      M.toast({ html: 'Light mode on', classes: 'rounded'});
-      this.modeset = 0;
-      this.modetoggle = false;
-      
-    }
-    console.log(form.value);
-
-    this.userService.updateUser(form.value).subscribe((res) => {
-  });
-  }
-
   
   onSubmit(form : NgForm){
     // get user
@@ -63,20 +48,16 @@ modeset: number;
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
       let user = JSON.parse(JSON.stringify(res));
-      let preferences = user[0].preferences;
-      this.history = user[0].history;
-      this.mode = user[0].mode;
-      if (this.modetoggle == true){
-        this.mode = "dark";
-      }
-      else{
-        this.mode = "light";
-      }
+      //console.log(this.username);
       // navigate to itinerary page
-      if (user != "") {
-        this.router.navigate(['distances', this.mode]);
-        // add user history and preferences
-       // this.router.navigate(['/distances']);
+      if (user != "" || user[0] != undefined || user == []) {
+        this.username = user[0].name;
+        this.display = user[0].display;
+        this.preferences = user[0].preferences;
+        this.history = user[0].history;
+        this.mode = user[0].mode;
+        //this.router.navigate(['distances', this.mode]);
+        this.router.navigate(['userpage', this.username, this.display, this.mode]);
 
       }
   });

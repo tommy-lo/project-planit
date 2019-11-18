@@ -21,6 +21,6 @@ export class UserService {
   }
   
   updateUser(user:User){
-    return this.http.post(this.baseURL + "/updateUser", user);
+    return this.http.put(this.baseURL + "/updateUser", user);
   }
 }

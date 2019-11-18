@@ -16,6 +16,7 @@ import { AgmCoreModule } from '@agm/core'            // @agm/core
 import { AgmDirectionModule } from 'agm-direction'   // agm-direction
 import { DirectionsComponent } from './directions/directions.component';
 import { StartpageComponent } from './startpage/startpage.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { StartpageComponent } from './startpage/startpage.component';
     TestComponent,
     PfiltersComponent,
     DirectionsComponent,
-    StartpageComponent
+    StartpageComponent,
+    UserpageComponent
  
   ],
   imports: [

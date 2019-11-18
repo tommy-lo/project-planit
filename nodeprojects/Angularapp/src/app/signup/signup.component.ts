@@ -37,7 +37,8 @@ export class SignupComponent implements OnInit {
       password:"",
       history:[""],
       preferences:[""],
-      mode:""
+      mode:"",
+      display:""
     };
  }
 
