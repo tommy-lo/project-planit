@@ -1,8 +1,22 @@
 
-<button (click)="getDirection()">Get Directions</button>
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-direction [origin]="origin" [destination]="destination" [panel]="setPanel()" [travelMode]="travelMode">
-    </agm-direction>
-      
-  </agm-map>   
-  <div id="myPanel"></div>
+
+<div class="container">
+  <form #travelForm="ngForm" (ngSubmit)="onSubmit(travelForm.value)">
+      <div class="form-group">
+        <label>Set Travel Mode</label>
+        <select class="form-control" ngModel="DRIVING" name=travelMode>
+          <option *ngFor="let tMode of listOfTravel">{{tMode}}</option>
+
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary b1">GET DIRECTIONS</button>
+
+  </form>
+</div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-direction [origin]="origin" [destination]="destination" [panel]="setPanel()" [travelMode]="travelMode">
+  </agm-direction>
+    
+</agm-map>   
+<div id="myPanel"></div>

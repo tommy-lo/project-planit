@@ -11,8 +11,17 @@ agm-map {
     width: 400px;
     float: left;
     overflow: auto;
+    padding: 5px;
 }
 
-button{
+.b1{
     float: right;
+}
+
+.b2{
+    float: right;
+}
+
+#travelForm{
+    width: 400px;
 }

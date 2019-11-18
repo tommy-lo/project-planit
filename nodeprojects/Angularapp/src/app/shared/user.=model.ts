@@ -3,5 +3,7 @@ export class User {
     name: String;
     password: String;
 	history: [String];
-	preferences: [String];
+    preferences: [String];
+    mode: String;
+    display: String;
 }

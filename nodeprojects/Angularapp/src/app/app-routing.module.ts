@@ -8,17 +8,19 @@ import { SigninComponent } from './signin/signin.component';
 import { PfiltersComponent } from './pfilters/pfilters.component';
 import { DirectionsComponent } from './directions/directions.component';
 import { StartpageComponent } from './startpage/startpage.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/startpage', pathMatch: 'full'},
-  {path: 'distances', component: DistanceComponent},
+  {path: 'distances/:mode', component: DistanceComponent},
   {path: 'directions/:longitude/:latitude', component: DirectionsComponent},
-  {path: 'test/:distance/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies', component: TestComponent},
+  {path: 'test/:distance/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'pfilters/:distance/:longitude/:latitude/:budget/:start/:end', component: PfiltersComponent},
   {path: 'startpage', component: StartpageComponent},
+  {path: 'userpage/:user/:display/:mode', component: UserpageComponent},
 
 
   //Have least specific on the bottom otherwise you will always get page not found
@@ -31,4 +33,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [DistanceComponent, TestComponent, PageNotFoundComponent, SignupComponent, SigninComponent, PfiltersComponent,
-DirectionsComponent, StartpageComponent];
+DirectionsComponent, StartpageComponent, UserpageComponent]

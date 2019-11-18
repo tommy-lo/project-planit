@@ -2,6 +2,7 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;
 var { User } = require('../models/User');
+var set = 1;
 
 // => localhost:3000/users/addUser
 router.post("/addUser", function (req, res) {
@@ -24,16 +25,32 @@ router.post("/getUser", function (req, res) {
     });
 })
 
-router.post("/updateUser", function(req,res) {
+router.put("/updateUser", function(req,res) {
     console.log("updating user " + req.body.username);
     User.find({name: req.body.username}, function (err, doc) {
         if (!err) {
+            console.log(doc);
             // Add location history
-            doc.history.push(req.body.history);
+           // doc.history.push(req.body.history);
             // Modify preferences
-            doc.preferences = req.body.preferences;
+           // doc.ypreferences = req.body.preferences;
             // Save the document
-            doc.save();
+        
+
+            if (set == 1){
+                set = 0;
+                doc[0].mode = "dark";
+                console.log(doc[0].mode); 
+                doc[0].save();
+            }
+            else{
+                set = 1;
+                doc[0].mode = "light";
+                console.log(doc[0].mode); 
+                doc[0].save();
+            } 
+
+            //doc.save();
         }
         else { console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
     });

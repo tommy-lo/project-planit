@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 //local import
 import { DistanceService } from '../shared/distance.service';
 import { Distance } from '../shared/distance.=model';
@@ -29,11 +29,18 @@ export class DistanceComponent implements OnInit {
   endi: any;
   longitude: any;
   latitude: any;
+  mode: any;
+  toggle: any;
+
 
   constructor(
      private distanceService: DistanceService,
      private router: Router,
+     private activatedRoute: ActivatedRoute,
+     
      fb: FormBuilder) {
+      this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
+      console.log(this.mode);
       this.sform = fb.group({
         Distance: ['', Validators.required],
         Longitude: ['', Validators.required],
@@ -45,6 +52,12 @@ export class DistanceComponent implements OnInit {
       });
     }
   ngOnInit() {
+    if (this.mode == "light"){
+      this.toggle = false;
+    }
+    else{
+      this.toggle = true;
+    }
     this.resetForm();
     this.refreshDistanceList();
 

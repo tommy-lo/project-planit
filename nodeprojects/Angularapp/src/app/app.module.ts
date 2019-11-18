@@ -16,6 +16,7 @@ import { AgmCoreModule } from '@agm/core'            // @agm/core
 import { AgmDirectionModule } from 'agm-direction'   // agm-direction
 import { DirectionsComponent } from './directions/directions.component';
 import { StartpageComponent } from './startpage/startpage.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { StartpageComponent } from './startpage/startpage.component';
     TestComponent,
     PfiltersComponent,
     DirectionsComponent,
-    StartpageComponent
+    StartpageComponent,
+    UserpageComponent
  
   ],
   imports: [
@@ -37,7 +39,7 @@ import { StartpageComponent } from './startpage/startpage.component';
     CommonModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({ // @agm/core
-      apiKey: 'AIzaSyDFTKbcSXEN22pUx3zfaabEOGyy7oOZtmI',
+      apiKey: 'AIzaSyBKdw28YUW0SsH2wCZDgTHbz9mkzSv5kFQ',
     }),
     AgmDirectionModule     // agm-direction
   ],

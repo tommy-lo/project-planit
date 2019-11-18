@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { NgForm } from '@angular/forms';
 import { Router} from '@angular/router';
-
+declare var M: any;
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -11,11 +11,20 @@ import { Router} from '@angular/router';
 
 })
 export class SigninComponent implements OnInit {
+mode: any;
+history: any;
+display: any;
+username: any;
+preferences: any;
+modetoggle: any;
+modeset: number;
 
   constructor(private userService: UserService, private router: Router) { }
 
 
   ngOnInit() {
+    this.modeset = 0;
+    this.modetoggle = false;
     this.resetForm();
   }
 
@@ -27,22 +36,31 @@ export class SigninComponent implements OnInit {
         name:"",
         password:"",
         history:[""],
-        preferences:[""]
+        preferences:[""],
+        mode:"",
+        display:""
       };
    }
+  
   onSubmit(form : NgForm){
     // get user
+    
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
       let user = JSON.parse(JSON.stringify(res));
-      let preferences = user[0].preferences;
-      let history = user[0].history;
-
+      //console.log(this.username);
       // navigate to itinerary page
-      if (user != "") {
-        // add user history and preferences
-        this.router.navigate(['/distances']);
+      if (user != "" || user[0] != undefined || user == []) {
+        this.username = user[0].name;
+        this.display = user[0].display;
+        this.preferences = user[0].preferences;
+        this.history = user[0].history;
+        this.mode = user[0].mode;
+        //this.router.navigate(['distances', this.mode]);
+        this.router.navigate(['userpage', this.username, this.display, this.mode]);
+
       }
   });
   }
 }
+

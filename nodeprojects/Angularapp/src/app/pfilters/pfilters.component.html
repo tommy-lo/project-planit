@@ -1,15 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: #b1b1b1;
+}
+/*
+h3 {
+    background-color: #e21a1a;
+}
+p {
+    background-color: #FFFFFF;
+}*/
+</style>
+</head>
+<body><div class="center">
+<!---
 <p>Parks</p><button (click)="onToggleFilter('parks')">Toggle Parks</button>
 <p>Museums</p><button (click)="onToggleFilter('museums')">Toggle Museums</button>
 <p>Restaurants</p><button (click)="onToggleFilter('restaurants')">Toggle Restaurants</button>
 <p>Movies</p><button (click)="onToggleFilter('movies')">Toggle Movies</button>
-<button class="btn btn-custom right" type="button" (click)="test()">Go to itinerary</button>
-<div class="divider"></div>
-<button class="btn btn-custom center" type="button" (click)="onClickpark()">Park</button>
-<div class="divider"></div>
-<button class="btn btn-custom center" type="button" (click)="onClickmuseum()">Museum</button>
-<div class="divider"></div>
-<button class="btn btn-custom center" type="button" (click)="onClickrestaurant()">Restaurant</button>
-<div class="divider"></div>
-<button class="btn btn-custom center" type="button" (click)="onClickmovie()">Movie</button>
+<div class="height"></div>
+-->
 
+<button class="btn btn-custom right" type="button" (click)="test()">Go to itinerary</button>
+<div class="topheight"></div>
+<h2>Click on button to toggle that filter on</h2>
+<div class="topheight"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickpark()" [ngClass]="{'teal' : togglepark, 'green': !togglepark}">Park</button>
+<div class="divider"></div>
+<button class="btn mat-button btn-custom center buttonwidth" type="button" (click)="onClickmuseum()" [ngClass]="{'teal' : togglemus, 'green': !togglemus}">Museum</button>
+
+<div class="divider"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickrestaurant()" [ngClass]="{'teal' : toggleres, 'green': !toggleres}">Restaurant</button>
+
+<div class="divider"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickmovie()" [ngClass]="{'teal' : togglemov, 'green': !togglemov}">Movie</button>
+
+
+</div>
+
+
+
+<div class="center">
+    
+<div class="topheight center"></div>
+<div class="divider"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickShop()" [ngClass]="{'teal' : toggleshop, 'green': !toggleshop}">Shopping</button>
+<div class="divider"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickZoo()" [ngClass]="{'teal' : togglezoo, 'green': !togglezoo}">Zoo</button>
+<div class="divider"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickBar()"  [ngClass]="{'teal' : togglebar, 'green': !togglebar}">Bar</button>
+<div class="divider"></div>
+<button class="btn btn-custom center buttonwidth" type="button" (click)="onClickSports()" [ngClass]="{'teal' : togglesports, 'green': !togglesports}">Sports</button>
+<div class="divider"></div>
+</div>
+<div class="topheight"></div>
+<div class="height center"></div>
+</body>
+</html>
 
