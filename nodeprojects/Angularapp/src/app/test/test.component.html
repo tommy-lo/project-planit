@@ -12,8 +12,16 @@
 <div>{{latitude}}</div>
 <div>1 - Name : {{titleone.name}}</div>
 <div>1 - Address : {{titleone.formatted_address}}</div>
+<div>1 - Place Id : {{titleone.place_id}}</div>
+<div>1 - lat : {{titleone.geometry.location}}</div>
+<div>1 - long : {{latone.lng}}</div>
 <div>2 - Name : {{titletwo.name}}</div>
 <div>2 - Address : {{titletwo.formatted_address}}</div>
+<div>2 - Place Id : {{titletwo.place_id}}</div>
+<div>2 - lat : {{titletwo.geometry.location.equals}}</div>
+<div>2 - lat : {{titletwo.geometry.location.toString}}</div>
+<div>2 - long : {{titletwo.geometry.location.lng}}</div>
+<button class="btn btn-custom right" type="button" (click)="directsecond()">Go to itinerary</button>
 <div>3 - Name : {{titlethree.name}}</div>
 <div>3 - Address : {{titlethree.formatted_address}}</div>
 <div>4 - Name : {{titlefour.name}}</div>

@@ -36,7 +36,7 @@ export class PfiltersComponent implements OnInit {
   }
 
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   this.location = this.activatedRoute.snapshot.paramMap.get('distance');
   this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
   this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
@@ -104,8 +104,8 @@ export class PfiltersComponent implements OnInit {
   }
 
   test(){
-    this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
-    this.endtime, this.parks, this.museums, this.restaurants, this.movies])
+    this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime,
+    this.endtime, this.parks, this.museums, this.restaurants, this.movies]);
 
   }
 }
