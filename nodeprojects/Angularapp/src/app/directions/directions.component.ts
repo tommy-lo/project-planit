@@ -13,6 +13,7 @@ export class DirectionsComponent implements OnInit {
   public origin: any
   public destination: any
 
+  public listOfTravel = ['DRIVING', 'TRANSIT', 'WALKING', 'BICYCLING']
   public travelMode: any
 
   public dMatrix = new google.maps.DistanceMatrixService();
@@ -23,7 +24,7 @@ export class DirectionsComponent implements OnInit {
   
   ngOnInit() {
     //this.getDirection()
-    this.setTravelModeDriving(); //Default
+    this.setTravelMode('DRIVING'); //Default
     //this.setTravelModeTransit();
   }
   
@@ -42,27 +43,25 @@ export class DirectionsComponent implements OnInit {
       this.distance = results[0].distance.text;
       console.log(this.duration)
       console.log(this.distance)
+    }else{
+      this.duration = 0;
+      this.distance = 0;
     }
+  }
+
+  public onSubmit(value:any){
+    console.log(value)
+    this.setTravelMode(value.travelMode)
+    console.log(this.travelMode)
+    this.getDirection()
   }
 
   public setPanel(){
     return document.querySelector('#myPanel');
   }
   
-  public setTravelModeDriving(){
-    this.travelMode = 'DRIVING';
-  }
-
-  public setTravelModeTransit(){
-    this.travelMode = 'TRANSIT';
-  }
-
-  public setTravelModeWalk(){
-    this.travelMode = 'WALKING';
-  }
-
-  public setTravelModeBicycle(){
-    this.travelMode = 'BICYCLING';
+  public setTravelMode(tMode:string){
+    this.travelMode = tMode;
   }
 
 }
