@@ -13,9 +13,9 @@ import { UserpageComponent } from './userpage/userpage.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/startpage', pathMatch: 'full'},
-  {path: 'distances/:mode', component: DistanceComponent},
+  {path: 'distances', component: DistanceComponent},
   {path: 'directions/:longitude/:latitude', component: DirectionsComponent},
-  {path: 'test/:distance/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports', component: TestComponent},
+  {path: 'test/:distance/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'pfilters/:distance/:longitude/:latitude/:budget/:start/:end', component: PfiltersComponent},
