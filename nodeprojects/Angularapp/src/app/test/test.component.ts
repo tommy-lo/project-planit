@@ -44,10 +44,12 @@ export class TestComponent implements OnInit {
     this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
     this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
     this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
-    this.history = this.activatedRoute.snapshot.paramMap.get('history');
+    this.history = this.activatedRoute.snapshot.paramMap.get('history').split(",");
     this.location = this.activatedRoute.snapshot.paramMap.get('location');
+    console.log(this.activatedRoute.snapshot.paramMap)
 
     this.result = this.initialize();
+
   }
 
   ngOnInit(){
@@ -61,7 +63,6 @@ private initialize() {
     geocoder.geocode(
       {address: this.location},
       function (results, status) {
-        console.log(results)
         if (status == google.maps.GeocoderStatus.OK) {
           this.longitude = results[0].geometry.location.lng();
           this.latitude = results[0].geometry.location.lat();
@@ -81,14 +82,19 @@ private initialize() {
           service.textSearch(this.request, function(results, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
               k = results;
+              console.log(k)
             }
             });
         }
       })
-      console.log(this.activatedRoute.snapshot.paramMap)
+    //setTimeout(() => this.history = this.history.split(","), 3000)
+    setTimeout(() => console.log(this.history), 4000)
+    setTimeout(() => k = k.filter(result =>       
+      !(this.history.includes(result.place_id)))
+      ,5000);
 
+    setTimeout(() => console.log(k), 6000)
 
-    console.log(k)
     setTimeout(() => this.titleone = k[0], 6000);
     setTimeout(() => this.titletwo = k[1], 6000);
     setTimeout(() => this.titlethree = k[2], 6000);
