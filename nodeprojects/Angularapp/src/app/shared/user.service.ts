@@ -19,14 +19,8 @@ export class UserService {
   getUser(user:User) {
     return this.http.post(this.baseURL + "/getUser", user);
   }
-<<<<<<< HEAD
-
-  updateUser(user:User){
-    return this.http.put(this.baseURL + "/updateUser", user);
-=======
   
   updateUser(user:User){
-    return this.http.post(this.baseURL + "/updateUser", user);
->>>>>>> 9c794e241e8803cfecebb843affbbb7f9da84ed7
+    return this.http.put(this.baseURL + "/updateUser", user);
   }
 }
