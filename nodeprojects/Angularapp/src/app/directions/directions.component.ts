@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-directions',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectionsComponent implements OnInit {
 
-  public lat: Number = 43.6532
-  public lng: Number = -79.3832
+  public slat: any = 43.6532
+  public slng: any = -79.3832
+
+  public elat: any = 45.4215
+  public elng: any = -75.6972
   
+  public dir = undefined
   public origin: any
   public destination: any
 
@@ -19,20 +24,37 @@ export class DirectionsComponent implements OnInit {
   public dMatrix = new google.maps.DistanceMatrixService();
   public duration: any
   public distance
-  public ori = new google.maps.LatLng(43.6532, -79.3832)
-  public dest = new google.maps.LatLng(45.4215, -75.6972)
+  public ori = new google.maps.LatLng(this.slat, this.slng)
+  public dest = new google.maps.LatLng(this.elat, this.elng)
   
+  constructor(private route: ActivatedRoute){}
+
   ngOnInit() {
     //this.getDirection()
+
     this.setTravelMode('DRIVING'); //Default
     //this.setTravelModeTransit();
   }
   
   getDirection() {
-    this.origin = { lat: this.lat, lng: this.lng }
-    this.destination = { lat: 45.4215, lng: -75.6972 }
-    console.log(this.origin)
+    this.slat = parseFloat(this.route.snapshot.paramMap.get('Olatitude'))
+    this.slng = parseFloat(this.route.snapshot.paramMap.get('Olongitude'))
+    this.elat = parseFloat(this.route.snapshot.paramMap.get('latitude'))
+    this.elng = parseFloat(this.route.snapshot.paramMap.get('longitude'))
 
+    console.log(this.slat)
+    console.log(this.slng)
+    console.log(this.elat)
+    console.log(this.elng)
+    this.dir = {
+      origin: { lat: this.slat, lng: this.slng },
+      destination: { lat: this.elat, lng: this.elng }
+    }
+    console.log(this.dir)
+
+    this.ori = new google.maps.LatLng(this.slat, this.slng)
+    this.dest = new google.maps.LatLng(this.elat, this.elng)
+    console.log(this.ori)
     this.dMatrix.getDistanceMatrix({origins: [this.ori], destinations:[this.dest], travelMode: this.travelMode}, this.callback);
   }
 
@@ -54,6 +76,16 @@ export class DirectionsComponent implements OnInit {
     this.setTravelMode(value.travelMode)
     console.log(this.travelMode)
     this.getDirection()
+  }
+
+  public setStartLatLng(lat:Number, lng:Number){
+    this.slat = lat;
+    this.slng = lng;
+  }
+
+  public setEndLatLng(lat:Number, lng:Number){
+    this.elat = lat;
+    this.elng = lng;
   }
 
   public setPanel(){

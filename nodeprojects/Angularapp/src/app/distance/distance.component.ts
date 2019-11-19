@@ -31,6 +31,7 @@ export class DistanceComponent implements OnInit {
   latitude: any;
   mode: any;
   toggle: any;
+  username: any;
 
 
   constructor(
@@ -40,6 +41,7 @@ export class DistanceComponent implements OnInit {
      
      fb: FormBuilder) {
       this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
+      this.username = this.activatedRoute.snapshot.paramMap.get('user');
       console.log(this.mode);
       this.sform = fb.group({
         Distance: ['', Validators.required],
@@ -70,6 +72,7 @@ export class DistanceComponent implements OnInit {
     this.budget = this.sform.controls['Budget'].value;
     this.start = this.sform.controls['Start'].value;
     this.end = this.sform.controls['End'].value;
+    
     // this.location = this.sform.controls['Location'].value;
   //  this.user = this.sform.controls['UserName'].value;
    // Displays the contents to the console
@@ -82,7 +85,7 @@ export class DistanceComponent implements OnInit {
     console.log(this.end);
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end])
+    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end, this.username])
 
   }
 
