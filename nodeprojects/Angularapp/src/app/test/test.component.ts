@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../shared/user.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -43,12 +44,13 @@ export class TestComponent implements OnInit {
   endtime: any;
   query = "";
   querylist = [];
-  query = "";
+
   saveitin: any;
   update: any;
   temp: any;
   username: any;
   usertemp: any;
+  data: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
@@ -127,7 +129,24 @@ private initialize() {
     k[4].name + " " + k[4].formatted_address 
     , 6000);
     }
-    saveItinerary(){
+
+    saveItinerary(form : NgForm){
+      this.data = form.value["username"];
+      console.log(form.value);  
+      console.log(this.data);
+    console.log(form.value);  
+  if (this.data != undefined){
+    this.temp = '"'+this.saveitin+'"';
+    this.usertemp = '"'+this.data+'"';
+    console.log(this.temp);
+    console.log(this.usertemp);
+    //this.usertemp = '"'+this.data+'"';
+    this.update = '{"username": '+this.usertemp+', "display": '+this.temp+'}';
+    var obj = JSON.parse(this.update);
+    console.log(obj);
+    this.userService.updateItin(obj).subscribe((res) => {
+  });
+  }
       console.log(this.saveitin);
       this.temp = '"'+this.saveitin+'"';
       this.usertemp = '"'+this.username+'"';

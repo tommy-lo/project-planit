@@ -23,10 +23,18 @@
 <div>4 - Address : {{titlefour.formatted_address}}</div>
 <div>5 - Name : {{titlefive.name}}</div>
 <div>5 - Address : {{titlefive.formatted_address}}</div>
-<div class="clearfix">
-  <button class="btn btn-custom right" type="button" (click)="saveItinerary()">Save intinerary</button>
-</div>
-<div>{{saveitin}}</div>
+<form #signinForm="ngForm" (ngSubmit)="saveItinerary(signinForm)">
+  <div class="ng-scope">
+	<label for="email"><b>Username</b></label>
+	<input #name="ngModel" [(ngModel)]="userService.name" placeholder="Enter username" name="username" required="">
+
+  <div class="clearfix">
+    <button class="btn btn-custom right" type="button" (click)="saveItinerary(signinForm)">Save intinerary</button>
+  </div>
+  </div>
+
+</form>
+
 <div class="height center"></div>
 
 <body>
