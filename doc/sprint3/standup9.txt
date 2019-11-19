@@ -1,1 +1,2 @@
 Nov 19
+PLAN-15 Kia Naderi finished working on sending info from test component to directions
