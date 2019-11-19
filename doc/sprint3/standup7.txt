@@ -4,4 +4,6 @@ PLAN-46 routing for additional filters done
 
 PLAN-40 Joon Hong working on translating from string to lat/long
 
-PLAN-15 Kia Naderi started working on sending long and lat from test component to test component
+PLAN-15 Kia Naderi started working on sending long and lat from test component to directions component
+
+PLAN-49 Still working on adding method of travel option to update on map
