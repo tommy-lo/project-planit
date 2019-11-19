@@ -3,3 +3,5 @@ Nov 12
 PLAN-41/46 Brandon Shewnarain has done pages link as filters->pfilters->itinerarypage and is working on linking rest
 
 No Update : Kia Naderi
+
+PLAN-47 Researching how to use distance matrix api
