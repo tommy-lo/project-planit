@@ -11,6 +11,7 @@ export class TestComponent implements OnInit {
   date = '';
   title = 'l';
   titleone = 't';
+  onetype = 't';
   latone = 'NoValue';
   lngone = 'NoValue';
   titletwo = 'l';
@@ -36,6 +37,7 @@ export class TestComponent implements OnInit {
   starttime: any;
   endtime: any;
   query = "";
+  querylist = [];
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router){
 
@@ -69,17 +71,25 @@ directsecond() {
 
 private initialize() {
     let k:any;
-    if(this.restaurants == "true"){this.query = this.query + "restaurant"}
-    if(this.parks == "true"){this.query = this.query + " " + "park"}
-    if(this.movies == "true"){this.query = this.query + " " + "movie_theater"}
+    if(this.restaurants == "true"){this.query = this.query + "restaurant| "}
+    if(this.parks == "true"){this.query = this.query + "park| "}
+    if(this.movies == "true"){this.query = this.query + "cinema| "}
+    if(this.museums == "true"){this.query = this.query + "museum| "}
+    if(this.shop == "true"){this.query = this.query + "shopping mall| "}
+    if(this.zoo == "true"){this.query = this.query + "zoo| "}
+    if(this.bar == "true"){this.query = this.query + "bar| "}
+    if(this.sports == "true"){this.query = this.query + "sport| "}
     console.log(this.query);
+    console.log(this.starttime);
+    console.log(this.endtime);
+    console.log(this.onetype);
     const sydney = new google.maps.LatLng(this.latitude, this.longitude);
     this.map = new google.maps.Map(
         document.getElementById('map'), {center: sydney, zoom: 15});
     this.request = {
         location: sydney,
         radius: this.location,
-        type: [this.query],
+        query: this.query,
         minPriceLevel : 0
       };
     const service = new google.maps.places.PlacesService(this.map);
@@ -95,6 +105,5 @@ private initialize() {
     setTimeout(() => this.titlethree = k[2], 6000);
     setTimeout(() => this.titlefour = k[3], 6000);
     setTimeout(() => this.titlefive = k[4], 6000);
-
     }
 }
