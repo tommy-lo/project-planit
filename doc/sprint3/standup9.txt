@@ -1,2 +1,4 @@
 Nov 19
 PLAN-15 Kia Naderi finished working on sending info from test component to directions
+
+PLAN-49 Thomas Lo working on gathering data from test component to use in directions component, working on creating service to send data back
