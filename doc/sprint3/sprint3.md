@@ -54,9 +54,9 @@ PLAN-17 Dark mode
 
 Sprint 2 Backlog Breakdown:
 
-Plan-7,8,29,30,31 Thomas Lo
+Plan-43, 47, 9, 48, 49 Thomas Lo
 
-Doing Those plans since they have to do with a google maps api and they are all related to each other in using that api.
+Doing those plans since they have to do with a google maps api and they are all related to each other in using that api.
 
 Plan-2, 26, 27, 40, 50 Joon Hong
 More familiar with database to get the user history
