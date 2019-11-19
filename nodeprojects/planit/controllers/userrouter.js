@@ -35,7 +35,6 @@ router.put("/updateUser", function(req,res) {
             // Modify preferences
            // doc.ypreferences = req.body.preferences;
             // Save the document
-        
 
             if (set == 1){
                 set = 0;
@@ -49,6 +48,28 @@ router.put("/updateUser", function(req,res) {
                 console.log(doc[0].mode); 
                 doc[0].save();
             } 
+
+            //doc.save();
+        }
+        else { console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
+    });
+})
+
+router.put("/updateItin", function(req,res) {
+    console.log("updating user " + req.body.username);
+    User.find({name: req.body.username}, function (err, doc) {
+        if (!err) {
+            console.log(doc);
+            // Add location history
+           // doc.history.push(req.body.history);
+            // Modify preferences
+           // doc.ypreferences = req.body.preferences;
+            // Save the document
+
+
+                doc[0].display = req.body.display;
+                doc[0].save();
+
 
             //doc.save();
         }

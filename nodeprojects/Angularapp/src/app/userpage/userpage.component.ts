@@ -20,6 +20,7 @@ export class UserpageComponent implements OnInit {
   modeset: number;
   update: any;
   tempuser: any;
+  
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
@@ -60,6 +61,6 @@ export class UserpageComponent implements OnInit {
     else{
       this.mode = "light";
     }
-    this.router.navigate(['distances', this.mode]);
+    this.router.navigate(['distances', this.mode, this.username]);
   }
 }
