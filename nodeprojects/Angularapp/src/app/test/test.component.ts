@@ -11,6 +11,11 @@ export class TestComponent implements OnInit {
   date = '';
   title = 'l';
   titleone = 't';
+  show1 = false;
+  show2 = false;
+  show3 = false;
+  show4 = false;
+  show5 = false;
   onetype = 't';
   latone = 'NoValue';
   lngone = 'NoValue';
@@ -36,6 +41,7 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+  limit: any;
   query = "";
   querylist = [];
 
@@ -69,6 +75,34 @@ directsecond() {
   console.log(this.titleone);
 }
 
+settitle(k: any) {
+  let load = 1;
+  while (load < this.limit + 1){
+    if(load == 1){
+      this.titleone = k[1]
+      this.show1 = true;
+    }
+    if(load == 2){
+      this.titletwo  = k[2]
+      this.show2 = true;
+    }
+    if(load == 3){
+      this.titlethree = k[3]
+      this.show3 = true;
+    }
+    if(load == 4){
+      this.titlefour = k[4]
+      this.show4 = true;
+    }
+    if(load == 5){
+      this.titlefive = k[5]
+      this.show5 = true;
+    }
+    load = load + 1;
+  }
+
+}
+
 private initialize() {
     let k:any;
     if(this.restaurants == "true"){this.query = this.query + "restaurant| "}
@@ -82,7 +116,8 @@ private initialize() {
     console.log(this.query);
     console.log(this.starttime);
     console.log(this.endtime);
-    console.log(this.onetype);
+    this.limit = Math.abs((this.endtime - this.starttime) / 2);
+    console.log(this.limit);
     const sydney = new google.maps.LatLng(this.latitude, this.longitude);
     this.map = new google.maps.Map(
         document.getElementById('map'), {center: sydney, zoom: 15});
@@ -98,12 +133,8 @@ private initialize() {
           k = results;
         }
         });
-    setTimeout(() => this.titleone = k[0], 6000);
+    setTimeout(() => this.settitle(k), 6000);
     setTimeout(() => this.latone = k[0].geometry.location.lat(), 6000);
     setTimeout(() => this.lngone = k[0].geometry.location.lng(), 6000);
-    setTimeout(() => this.titletwo = k[1], 6000);
-    setTimeout(() => this.titlethree = k[2], 6000);
-    setTimeout(() => this.titlefour = k[3], 6000);
-    setTimeout(() => this.titlefive = k[4], 6000);
     }
 }
