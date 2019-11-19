@@ -40,6 +40,7 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+  query:any;
 
   saveitin: any;
   update: any;
@@ -47,9 +48,9 @@ export class TestComponent implements OnInit {
   username: any;
   usertemp: any;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
-  query = "";
+  this.query = "";
 
 
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
