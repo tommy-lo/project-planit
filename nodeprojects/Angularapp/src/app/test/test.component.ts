@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../shared/user.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class TestComponent implements OnInit {
   date = '';
   title = 'l';
   titleone = 't';
+  onetype = 't';
   latone = 'NoValue';
   lngone = 'NoValue';
   titletwo = 'l';
@@ -40,13 +42,14 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
-  query:any;
-
+  query = "";
+  querylist = [];
   saveitin: any;
   update: any;
   temp: any;
   username: any;
   usertemp: any;
+  data: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
@@ -84,17 +87,25 @@ directsecond() {
 
 private initialize() {
     let k:any;
-    if(this.restaurants == "true"){this.query = this.query + "restaurant"}
-    if(this.parks == "true"){this.query = this.query + " " + "park"}
-    if(this.movies == "true"){this.query = this.query + " " + "movie_theater"}
+    if(this.restaurants == "true"){this.query = this.query + "restaurant| "}
+    if(this.parks == "true"){this.query = this.query + "park| "}
+    if(this.movies == "true"){this.query = this.query + "cinema| "}
+    if(this.museums == "true"){this.query = this.query + "museum| "}
+    if(this.shop == "true"){this.query = this.query + "shopping mall| "}
+    if(this.zoo == "true"){this.query = this.query + "zoo| "}
+    if(this.bar == "true"){this.query = this.query + "bar| "}
+    if(this.sports == "true"){this.query = this.query + "sport| "}
     console.log(this.query);
+    console.log(this.starttime);
+    console.log(this.endtime);
+    console.log(this.onetype);
     const sydney = new google.maps.LatLng(this.latitude, this.longitude);
     this.map = new google.maps.Map(
         document.getElementById('map'), {center: sydney, zoom: 15});
     this.request = {
         location: sydney,
         radius: this.location,
-        type: [this.query],
+        query: this.query,
         minPriceLevel : 0
       };
     const service = new google.maps.places.PlacesService(this.map);
@@ -116,9 +127,25 @@ private initialize() {
     k[3].name + " " + k[3].formatted_address +
     k[4].name + " " + k[4].formatted_address 
     , 6000);
-
     }
-    saveItinerary(){
+
+    saveItinerary(form : NgForm){
+      this.data = form.value["username"];
+      console.log(form.value);  
+      console.log(this.data);
+    console.log(form.value);  
+  if (this.data != undefined){
+    this.temp = '"'+this.saveitin+'"';
+    this.usertemp = '"'+this.data+'"';
+    console.log(this.temp);
+    console.log(this.usertemp);
+    //this.usertemp = '"'+this.data+'"';
+    this.update = '{"username": '+this.usertemp+', "display": '+this.temp+'}';
+    var obj = JSON.parse(this.update);
+    console.log(obj);
+    this.userService.updateItin(obj).subscribe((res) => {
+  });
+  }
       console.log(this.saveitin);
       this.temp = '"'+this.saveitin+'"';
       this.usertemp = '"'+this.username+'"';

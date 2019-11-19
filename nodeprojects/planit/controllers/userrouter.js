@@ -61,7 +61,6 @@ router.put("/updateItin", function(req,res) {
            // doc.ypreferences = req.body.preferences;
             // Save the document
 
-
                 doc[0].display = req.body.display;
                 doc[0].save();
 
