@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 //import { google } from '@google/maps';
 
 
@@ -22,7 +23,11 @@ export class ItenBComponent implements OnInit {
   result: any;
   map: google.maps.Map;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(params => {
+      let date = params['Start'];
+      console.log(date); // Print the parameter to the console.
+    });
     this.result = this.initialize();
   }
 

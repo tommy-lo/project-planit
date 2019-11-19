@@ -39,7 +39,7 @@ import { UserpageComponent } from './userpage/userpage.component';
     CommonModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({ // @agm/core
-      apiKey: 'AIzaSyDFTKbcSXEN22pUx3zfaabEOGyy7oOZtmI',
+      apiKey: 'AIzaSyBKdw28YUW0SsH2wCZDgTHbz9mkzSv5kFQ',
     }),
     AgmDirectionModule     // agm-direction
   ],

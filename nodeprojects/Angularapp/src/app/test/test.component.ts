@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
 import { UserService } from '../shared/user.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-iten-b',
@@ -12,7 +15,9 @@ export class TestComponent implements OnInit {
   public showContent = false;
   date = '';
   title = 'l';
-  titleone = 'l';
+  titleone = 't';
+  latone = 'NoValue';
+  lngone = 'NoValue';
   titletwo = 'l';
   titlethree = 'l';
   titlefour = 'l';
@@ -35,6 +40,7 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+
   saveitin: any;
   update: any;
   temp: any;
@@ -42,6 +48,9 @@ export class TestComponent implements OnInit {
   usertemp: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+
+  query = "";
+
 
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
     this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
@@ -63,19 +72,29 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit(){
+    console.log(this.parks);
+    console.log(this.movies);
+    console.log(this.restaurants);
+  }
 
-  } 
+directsecond() {
+  this.router.navigate(['directions', this.longitude, this.latitude, this.lngone, this.latone]);
+  console.log(this.titleone);
+}
 
-// Get Current Location Coordinates
 private initialize() {
     let k:any;
+    if(this.restaurants == "true"){this.query = this.query + "restaurant"}
+    if(this.parks == "true"){this.query = this.query + " " + "park"}
+    if(this.movies == "true"){this.query = this.query + " " + "movie_theater"}
+    console.log(this.query);
     const sydney = new google.maps.LatLng(this.latitude, this.longitude);
     this.map = new google.maps.Map(
         document.getElementById('map'), {center: sydney, zoom: 15});
     this.request = {
         location: sydney,
         radius: this.location,
-        query: 'tourist',
+        type: [this.query],
         minPriceLevel : 0
       };
     const service = new google.maps.places.PlacesService(this.map);
@@ -85,6 +104,8 @@ private initialize() {
         }
         });
     setTimeout(() => this.titleone = k[0], 6000);
+    setTimeout(() => this.latone = k[0].geometry.location.lat(), 6000);
+    setTimeout(() => this.lngone = k[0].geometry.location.lng(), 6000);
     setTimeout(() => this.titletwo = k[1], 6000);
     setTimeout(() => this.titlethree = k[2], 6000);
     setTimeout(() => this.titlefour = k[3], 6000);

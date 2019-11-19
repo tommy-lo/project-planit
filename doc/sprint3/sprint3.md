@@ -17,6 +17,10 @@ Anson Tran
 
 Sprint Backlog:
 
+PLAN-15 Link to reservations/ reserve for them
+  - PLAN-39 redirect user to website of location
+  - PLAN-44 design itenary screen
+  - PLAN-45 Dsiplays time to get to a place using directions 
 
 PLAN-7 Open up a map to view how to get there.
 - PLAN-29	Connect to Google directions API and itinerary to generate map
@@ -62,7 +66,7 @@ Plan-3,34,36(created filters screen then Anson took over) Brandon Shewnarain
 
 Doing those plans because he worked on setting up the basic filters for sprint one and converting  them to not use the database should be familar.
 
-Plan-1,6,35,36 Anson
+Plan-12,24,25 Anson
 
 Doing those plans because they involve personalized filters which is on a different page so they all are simlilar.
 

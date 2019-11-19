@@ -61,7 +61,7 @@ export class PfiltersComponent implements OnInit {
   }
 
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   this.location = this.activatedRoute.snapshot.paramMap.get('distance');
   this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
   this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
@@ -69,9 +69,6 @@ export class PfiltersComponent implements OnInit {
   this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
   this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
   this.username = this.activatedRoute.snapshot.paramMap.get('user');
-
-  
-
   }
   ngOnInit() {
     this.set1 = 0;
@@ -105,7 +102,7 @@ export class PfiltersComponent implements OnInit {
     if (this.set1 == 0){
         this.parks = true;
         this.set1 = 1;
-        
+
         M.toast({ html: 'Park toggled on', classes: 'rounded'});
     }
     else{
@@ -214,8 +211,11 @@ export class PfiltersComponent implements OnInit {
   }
 
   test(){
+
     this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, this.sports, this.username])
+
+
 
   }
 }

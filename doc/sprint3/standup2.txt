@@ -1,3 +1,4 @@
-Oct 24
-worked on retrieving data from url (distance component) and used it to generate itinerary 
-Made sure itinerry items are all withing the time frame given
+Nov 8
+PLAN-41 Brandon Shewnarain is still workong on creating a start page with signup/signin page
+
+PLAN-48 Thomas Lo still working on connecting the components

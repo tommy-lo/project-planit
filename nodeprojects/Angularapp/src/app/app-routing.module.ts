@@ -14,10 +14,9 @@ import { UserpageComponent } from './userpage/userpage.component';
 const routes: Routes = [
   {path: '', redirectTo: '/startpage', pathMatch: 'full'},
   {path: 'distances/:mode/:user', component: DistanceComponent},
-  {path: 'directions', component: DirectionsComponent},
+  {path: 'directions/:Olongitude/:Olatitude/:longitude/:latitude', component: DirectionsComponent},
   {path: 'test/:distance/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user', component: TestComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent},
   {path: 'pfilters/:distance/:longitude/:latitude/:budget/:start/:end/:user', component: PfiltersComponent},
   {path: 'startpage', component: StartpageComponent},
   {path: 'userpage/:user/:display/:mode', component: UserpageComponent},
