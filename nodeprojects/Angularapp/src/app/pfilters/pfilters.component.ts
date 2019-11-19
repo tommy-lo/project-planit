@@ -52,6 +52,7 @@ export class PfiltersComponent implements OnInit {
   statusbar: any;
   statusshop: any;
   statussports: any;
+  username: any;
 
   onToggleFilter(filter){
     // Update the user's database for the filter
@@ -67,8 +68,7 @@ export class PfiltersComponent implements OnInit {
   this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
   this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
   this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
-
-
+  this.username = this.activatedRoute.snapshot.paramMap.get('user');
   }
   ngOnInit() {
     this.set1 = 0;
@@ -211,8 +211,11 @@ export class PfiltersComponent implements OnInit {
   }
 
   test(){
-    this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime,
-    this.endtime, this.parks, this.museums, this.restaurants, this.movies]);
+
+    this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
+    this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, this.sports, this.username])
+
+
 
   }
 }

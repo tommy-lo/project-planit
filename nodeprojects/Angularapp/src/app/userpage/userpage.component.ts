@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../shared/user.service';
 import { NgForm } from '@angular/forms';
+import { AstMemoryEfficientTransformer } from '@angular/compiler';
 
 declare var M: any;
 @Component({
@@ -20,11 +21,15 @@ export class UserpageComponent implements OnInit {
   modeset: number;
   update: any;
   tempuser: any;
+  array: any;   
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.display = this.activatedRoute.snapshot.paramMap.get('display');
+    this.array = this.display.split(",");
+    console.log(this.array);
+
     
  }
 
@@ -60,6 +65,6 @@ export class UserpageComponent implements OnInit {
     else{
       this.mode = "light";
     }
-    this.router.navigate(['distances', this.mode]);
+    this.router.navigate(['distances', this.mode, this.username]);
   }
 }

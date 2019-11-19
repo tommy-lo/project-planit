@@ -23,4 +23,8 @@ export class UserService {
   updateUser(user:User){
     return this.http.put(this.baseURL + "/updateUser", user);
   }
+
+  updateItin(user:User){
+    return this.http.put(this.baseURL + "/updateItin", user);
+  }
 }

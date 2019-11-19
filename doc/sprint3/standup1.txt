@@ -5,3 +5,5 @@ PLAN-40 Joon Hong started working on getting long/lat from user input.
 PLAN-41 Brandon Shewnarain started working on creating start page with signup/signin page
 
 PLAN-48 Thomas Lo started working on connecting map component with itinerary component
+
+No Update : Kia Naderi

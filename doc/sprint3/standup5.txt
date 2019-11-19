@@ -5,3 +5,5 @@ PLAN-40 working on getting user in parameters for itinerary
 PLAN-41 fixed issue with restaurant button for pfilters and getting the value of museum from the url
 
 PLAN-47 added implementation of google distance matrix api in directions component to get travel duration and distance
+
+No Update : Kia Naderi

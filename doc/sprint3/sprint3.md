@@ -15,37 +15,41 @@ Brandon Shewnarain
 
 Anson Tran
 
-Sprint Backlog:
+Sprint 3 Backlog:
 
 PLAN-15 Link to reservations/ reserve for them
-  - PLAN-39 redirect user to website of location
-  - PLAN-44 design itenary screen
-  - PLAN-45 Dsiplays time to get to a place using directions 
+- PLAN-39	redirect user to website of location
+- PLAN-44	design itenary screen
+- PLAN-45	Displays time to get to a place using directions
 
-PLAN-7 Open up a map to view how to get there.
-- PLAN-29	Connect to Google directions API and itinerary to generate map
-- PLAN-30 Create map screen and navigation
+PLAN-12 Remove items that they don't like on the generated itinerary
+- PLAN-24	Store User history to user account
+- PLAN-25	recreate Itinerary
 
-PLAN-28 Create ItineraryBuilder to generate itineraries
-- PLAN-32	Connect to db to get filter options and user preferences 
-- PLAN-33	Order activities based on estimated wait times and time spent on activities and opening/closing times
+PLAN-2 Don't add items to itinerary that are in history
+- PLAN-26	get history
+- PLAN-27	don't include locations from history into itinerary
 
-PLAN-8 Find shortest route to destination
-- PLAN-31	Connect to Google directions API to get shortest route
+PLAN-41 Link the pages in order
+- PLAN-42	Create start page with signup/signin page
+- PLAN-46	Send personalized filters to itinerary too.
 
-PLAN-37 Create Login screen
-- PLAN-38	Login Page
+PLAN-43 Get the travel times between each location to show on generated itinerary
+- PLAN-47	Use Google Distance Matrix API to acquire travel times between locations
 
-PLAN-11 Estimated wait time and time spent on activities
+PLAN-9 link itinerary and map
+- PLAN-48	Get data from the itinerary component to send to map component
+- PLAN-49	Add option to select method of travel
 
-PLAN-3 Selecting distance of travel 
-- PLAN-34	Look into saving data between pages instead of database
+PLAN-14 Share itinerary between app/website users
+- PLAN-53	Add user home page
+- PLAN-54	Display current itinerary/name
 
-PLAN-6 Set optional time to eat
-- PLAN-35	Add to second filters page
+PLAN-10 Sync schedule into app
 
-PLAN-1 Select types of places preferred
-- PLAN-36	Add checkbox to second filter screen
+PLAN-17 Dark mode
+- PLAN-51	Allow user to change from Light to Dark and save it to their profile
+- PLAN-52	Have all pages change depending on what mode the user has
 
 
 Sprint 2 Backlog Breakdown:
@@ -54,17 +58,16 @@ Plan-7,8,29,30,31 Thomas Lo
 
 Doing Those plans since they have to do with a google maps api and they are all related to each other in using that api.
 
-Plan-37,38 Joon Hong
-
-Do those plans because he worked on signing in for sprint1 so these plans that involve signing will be similar to him.
+Plan-2, 26, 27, 40, 50 Joon Hong
+More familiar with database to get the user history
 
 Plan-28,32,33 Kia Naderi
 
 Doing those plans because he worked on the itinerary in sprint1 so these plans that involve generating the intinerary will be similar to him.
 
-Plan-3,34,36(created filters screen then Anson took over) Brandon Shewnarain
+Plan-17, 51, 52, 14, 53, 54, 41, 42, 46 Brandon Shewnarain
 
-Doing those plans because he worked on setting up the basic filters for sprint one and converting  them to not use the database should be familar.
+Doing those plans because he worked on routing in previous sprints and also worked on interacting with the mongodb in previous sprints. Also is used to creating pages/modifying html in pages.
 
 Plan-12,24,25 Anson
 

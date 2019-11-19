@@ -12,10 +12,12 @@
       <button type="submit" class="btn btn-primary b1">GET DIRECTIONS</button>
 
   </form>
+
+  
 </div>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-direction [origin]="origin" [destination]="destination" [panel]="setPanel()" [travelMode]="travelMode">
+<agm-map [latitude]="slat" [longitude]="slng">
+  <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [panel]="setPanel()" [travelMode]="travelMode">
   </agm-direction>
     
 </agm-map>   
