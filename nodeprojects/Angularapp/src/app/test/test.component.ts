@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-iten-b',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  styleUrls: ['./test.component.css'],
+  providers: [UserService]
 })
 export class TestComponent implements OnInit {
   public showContent = false;
@@ -33,8 +35,13 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+  saveitin: any;
+  update: any;
+  temp: any;
+  username: any;
+  usertemp: any;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
 
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
     this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
@@ -50,6 +57,8 @@ export class TestComponent implements OnInit {
     this.zoo = this.activatedRoute.snapshot.paramMap.get('zoo');
     this.bar = this.activatedRoute.snapshot.paramMap.get('bar');
     this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
+    this.username = this.activatedRoute.snapshot.paramMap.get('user');
+
     this.result = this.initialize();
   }
 
@@ -80,6 +89,23 @@ private initialize() {
     setTimeout(() => this.titlethree = k[2], 6000);
     setTimeout(() => this.titlefour = k[3], 6000);
     setTimeout(() => this.titlefive = k[4], 6000);
+    setTimeout(() => this.saveitin = k[0].name + " " + k[0].formatted_address +
+    k[1].name + " " + k[1].formatted_address +
+    k[2].name + " " + k[2].formatted_address +
+    k[3].name + " " + k[3].formatted_address +
+    k[4].name + " " + k[4].formatted_address 
+    , 6000);
 
+    }
+    saveItinerary(){
+      console.log(this.saveitin);
+      this.temp = '"'+this.saveitin+'"';
+      this.usertemp = '"'+this.username+'"';
+      console.log(this.temp);
+      this.update = '{"username": '+this.usertemp+', "display": '+this.temp+'}';
+      var obj = JSON.parse(this.update);
+      console.log(obj);
+      this.userService.updateItin(obj).subscribe((res) => {
+    });
     }
 }
