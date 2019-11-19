@@ -50,9 +50,8 @@ export class TestComponent implements OnInit {
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
-  this.query = "";
 
-
+    this.query = "";
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
     this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
     this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
