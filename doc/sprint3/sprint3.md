@@ -54,9 +54,8 @@ Plan-7,8,29,30,31 Thomas Lo
 
 Doing Those plans since they have to do with a google maps api and they are all related to each other in using that api.
 
-Plan-37,38 Joon Hong
-
-Do those plans because he worked on signing in for sprint1 so these plans that involve signing will be similar to him.
+Plan-2, 26, 27, 40, 50 Joon Hong
+More familiar with database to get the user history
 
 Plan-28,32,33 Kia Naderi
 
