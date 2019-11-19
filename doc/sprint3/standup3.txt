@@ -5,3 +5,5 @@ PLAN-42 is complete, Brandon Shewnarain is now working on PLAN-46/41
 PLAN-48/49 Thomas Lo Working on connecting components and adding additional options
 
 PLAN-40 researching how to convert user input to lat/long
+
+Joon Hong no update
