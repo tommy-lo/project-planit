@@ -4,4 +4,4 @@ PLAN-41 done, adding additional filters for PLAN-46
 
 PLAn-40 done getting history from user
 
-PLAN-49 added option to select method of travel
+PLAN-49 Thomas Lo added option to select method of travel
