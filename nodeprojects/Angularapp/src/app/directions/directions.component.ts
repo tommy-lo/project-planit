@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectionsComponent implements OnInit {
 
-  public lat: Number = 43.6532
-  public lng: Number = -79.3832
+  public slat: Number = 43.6532
+  public slng: Number = -79.3832
+
+  public elat: Number = 45.4215
+  public elng: Number = -75.6972
   
   public origin: any
   public destination: any
@@ -29,8 +32,8 @@ export class DirectionsComponent implements OnInit {
   }
   
   getDirection() {
-    this.origin = { lat: this.lat, lng: this.lng }
-    this.destination = { lat: 45.4215, lng: -75.6972 }
+    this.origin = { lat: this.slat, lng: this.slng }
+    this.destination = { lat: this.elat, lng: this.elng }
     console.log(this.origin)
 
     this.dMatrix.getDistanceMatrix({origins: [this.ori], destinations:[this.dest], travelMode: this.travelMode}, this.callback);
@@ -54,6 +57,16 @@ export class DirectionsComponent implements OnInit {
     this.setTravelMode(value.travelMode)
     console.log(this.travelMode)
     this.getDirection()
+  }
+
+  public setStartLatLng(lat:Number, lng:Number){
+    this.slat = lat;
+    this.slng = lng;
+  }
+
+  public setEndLatLng(lat:Number, lng:Number){
+    this.elat = lat;
+    this.elng = lng;
   }
 
   public setPanel(){
