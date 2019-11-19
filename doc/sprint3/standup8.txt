@@ -1,4 +1,4 @@
 Nov 18
-PLAN-17 Brandon is workong on Dark mode
+PLAN-17 Brandon is working on darkmode. Update: darkmode implemented for distances page, workong on adding it to other pages. Dark mode selection is saved to account. PLAN-53 Userpage created and it displays basic info including saved itinerary. PLAN-54 added button that saves current itinerary to account on generated itinerary page.
 
 PLAN-40 Joon Hong finished, now working on PLAN-2
