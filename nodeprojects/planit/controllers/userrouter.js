@@ -30,11 +30,6 @@ router.put("/updateUser", function(req,res) {
     User.find({name: req.body.username}, function (err, doc) {
         if (!err) {
             console.log(doc);
-            // Add location history
-           // doc.history.push(req.body.history);
-            // Modify preferences
-           // doc.ypreferences = req.body.preferences;
-            // Save the document
 
             if (set == 1){
                 set = 0;
