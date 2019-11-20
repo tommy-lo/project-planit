@@ -27,6 +27,7 @@ export class UserpageComponent implements OnInit {
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.display = this.activatedRoute.snapshot.paramMap.get('display');
+    this.history = this.activatedRoute.snapshot.paramMap.get('history');
     // The character that the stored itinerary is split by, the * is added when it is stored in the test page
     this.array = this.display.split("*");
  }
@@ -56,6 +57,6 @@ export class UserpageComponent implements OnInit {
   }
 
   gotoDistance(){
-    this.router.navigate(['distances', this.mode, this.username]);
+    this.router.navigate(['distances', this.mode, this.username, {history: [this.history]}]);
   }
 }

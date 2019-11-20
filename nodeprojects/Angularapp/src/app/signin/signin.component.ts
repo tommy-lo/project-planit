@@ -20,7 +20,6 @@ preferences: any;
 modetoggle: any;
 modeset: number;
 
-  history:any;
   constructor(private userService: UserService, private router: Router) { }
 
 

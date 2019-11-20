@@ -29,11 +29,9 @@ export class DistanceComponent implements OnInit {
   endi: any;
   longitude: any;
   latitude: any;
-
   mode: any;
   toggle: any;
   username: any;
-
   history: any;
 
 
@@ -80,7 +78,6 @@ export class DistanceComponent implements OnInit {
     this.budget = this.sform.controls['Budget'].value;
     this.start = this.sform.controls['Start'].value;
     this.end = this.sform.controls['End'].value;
-
     this.location = this.sform.controls['Location'].value;
 
   //  this.user = this.sform.controls['UserName'].value;
@@ -97,7 +94,7 @@ export class DistanceComponent implements OnInit {
 
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end, this.username, this.mode, {history: [this.history]}])
+    this.router.navigate(['pfilters', this.dis, this.location, this.longitude, this.latitude, this.budget, this.start, this.end, this.username, this.mode, {history: [this.history]}])
 
 
 

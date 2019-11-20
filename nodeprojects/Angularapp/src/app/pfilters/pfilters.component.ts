@@ -228,6 +228,10 @@ export class PfiltersComponent implements OnInit {
   }
 
   test(){
+    console.log(this.history);
+    console.log(this.distance);
+    console.log(this.location);
+
 
     this.router.navigate(['test', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 

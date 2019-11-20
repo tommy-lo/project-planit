@@ -83,8 +83,6 @@ export class TestComponent implements OnInit {
     this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
     this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
 
-  city: any;
-  constructor(private activatedRoute: ActivatedRoute) {
 
     this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
     //this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
