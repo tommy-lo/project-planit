@@ -68,6 +68,7 @@ export class TestComponent implements OnInit {
   username: any;
   usertemp: any;
   data: any;
+  savetouser: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
@@ -130,36 +131,42 @@ settitle(k: any) {
       this.lat1 = k[1].geometry.location.lat();
       this.lng1 = k[1].geometry.location.lng();
       this.show1 = true;
+      this.savetouser = k[1].name;
     }
     if (load == 2) {
       this.titletwo  = k[2];
       this.lat2 = k[2].geometry.location.lat();
       this.lng2 = k[2].geometry.location.lng();
       this.show2 = true;
+      this.savetouser = this.savetouser + "*" + k[2].name;
     }
     if (load == 3) {
       this.titlethree = k[3];
       this.lat3 = k[3].geometry.location.lat();
       this.lng3 = k[3].geometry.location.lng();
       this.show3 = true;
+      this.savetouser = this.savetouser + "*" +k[3].name;
     }
     if (load == 4) {
       this.titlefour = k[4];
       this.lat4 = k[4].geometry.location.lat();
       this.lng4 = k[4].geometry.location.lng();
       this.show4 = true;
+      this.savetouser = this.savetouser + "*" + k[4].name;
     }
     if (load == 5) {
       this.titlefive = k[5];
       this.lat5 = k[5].geometry.location.lat();
       this.lng5 = k[5].geometry.location.lng();
       this.show5 = true;
+      this.savetouser = this.savetouser + "*" + k[5].name;
     }
     if (load == 6) {
       this.titlefive = k[6];
       this.lat6 = k[6].geometry.location.lat();
       this.lng6 = k[6].geometry.location.lng();
       this.show6 = true;
+      this.savetouser = this.savetouser + "*" + k[6].name;
     }
     load = load + 1;
   }
@@ -193,39 +200,33 @@ private initialize() {
         }
         });
     setTimeout(() => this.settitle(k), 6000);
-    setTimeout(() => this.saveitin = k[0].name + ' ' + k[0].formatted_address +
-    k[1].name + ' ' + k[1].formatted_address +
-    k[2].name + ' ' + k[2].formatted_address +
-    k[3].name + ' ' + k[3].formatted_address +
-    k[4].name + ' ' + k[4].formatted_address
-    , 6000);
     }
 
     saveItinerary(form: NgForm) {
-      this.data = form.value['username'];
-      console.log(form.value);
-      console.log(this.data);
-      console.log(form.value);
-      if (this.data != undefined) {
-    this.temp = '"' + this.saveitin + '"';
-    this.usertemp = '"' + this.data + '"';
-    console.log(this.temp);
-    console.log(this.usertemp);
-    // this.usertemp = '"'+this.data+'"';
-    this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
-    let obj = JSON.parse(this.update);
-    console.log(obj);
-    this.userService.updateItin(obj).subscribe((res) => {
-  });
-  }
-      console.log(this.saveitin);
-      this.temp = '"' + this.saveitin + '"';
+      // Save for current user
+      this.temp = '"' + this.savetouser + '"';
+      // Format to json format
       this.usertemp = '"' + this.username + '"';
-      console.log(this.temp);
+      // combine all to format
       this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
+      // Create json
       let obj = JSON.parse(this.update);
-      console.log(obj);
+      // Update the display parameter
       this.userService.updateItin(obj).subscribe((res) => {
-    });
+      });
+
+      this.data = form.value['username'];
+      // Save for other username
+      if (this.data != undefined) {
+        // Format username to json format using the form info.
+        this.usertemp = '"' + this.data + '"';
+        // Format all to json format.
+        this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
+        // Create json.
+        let obj = JSON.parse(this.update);
+        // Update entered User
+        this.userService.updateItin(obj).subscribe((res) => {
+        });
+      }
     }
 }

@@ -27,7 +27,8 @@ export class UserpageComponent implements OnInit {
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.display = this.activatedRoute.snapshot.paramMap.get('display');
-    this.array = this.display.split(",");
+    // The character that the stored itinerary is split by, the * is added when it is stored in the test page
+    this.array = this.display.split("*");
     console.log(this.array);
 
     
