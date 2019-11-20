@@ -28,6 +28,7 @@ export class PfiltersComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+  history: any;
   set1: number;
   set2: number;
   set3: number;
@@ -63,8 +64,10 @@ export class PfiltersComponent implements OnInit {
   }
 
 
+
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-  this.location = this.activatedRoute.snapshot.paramMap.get('distance');
+  this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
+
   this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
   this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
   this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
@@ -72,6 +75,10 @@ export class PfiltersComponent implements OnInit {
   this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
   this.username = this.activatedRoute.snapshot.paramMap.get('user');
   this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
+  this.history = this.activatedRoute.snapshot.paramMap.get('history');
+  this.location = this.activatedRoute.snapshot.paramMap.get('location');
+
+  console.log(this.activatedRoute.snapshot.paramMap);
   }
   ngOnInit() {
     this.set1 = 0;
@@ -222,11 +229,9 @@ export class PfiltersComponent implements OnInit {
 
   test(){
 
-    this.router.navigate(['test', this.location, this.longitude, this.latitude, this.budget, this.starttime, 
+    this.router.navigate(['test', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-    this.sports, this.username, this.mode])
-
-
+    this.sports, this.username, this.mode, {history: [this.history]}])
 
   }
 }

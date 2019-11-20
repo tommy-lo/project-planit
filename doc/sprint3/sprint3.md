@@ -61,7 +61,9 @@ Doing those plans since they have to do with a google maps api and they are all 
 Plan-2, 26, 27, 40, 50 Joon Hong
 More familiar with database to get the user history
 
+
 Plan-39,44,45 Kia Naderi
+
 
 Doing those plans because he worked on the itinerary in sprint1 as well as sprint2 so the plan for designing the screen will be similar to his other task the redirecting of website and sending long and lat to direstions api will involve info from the api he has used for iten. 
 

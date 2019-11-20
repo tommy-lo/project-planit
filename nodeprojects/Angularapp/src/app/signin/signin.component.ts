@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { NgForm } from '@angular/forms';
-import { Router} from '@angular/router';
 declare var M: any;
+import { Router, ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -19,6 +20,7 @@ preferences: any;
 modetoggle: any;
 modeset: number;
 
+  history:any;
   constructor(private userService: UserService, private router: Router) { }
 
 
@@ -48,6 +50,7 @@ modeset: number;
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
       let user = JSON.parse(JSON.stringify(res));
+
       //console.log(this.username);
       // navigate to itinerary page
       if (user != "" || user[0] != undefined || user == []) {
@@ -55,10 +58,11 @@ modeset: number;
         this.display = user[0].display;
         this.preferences = user[0].preferences;
         this.history = user[0].history;
+
         this.mode = user[0].mode;
         //this.router.navigate(['distances', this.mode]);
-        this.router.navigate(['userpage', this.username, this.display, this.mode]);
-
+        if (user != "")
+        this.router.navigate(['userpage', this.username, this.display, this.mode, {history: [this.history]}]);
       }
   });
   }

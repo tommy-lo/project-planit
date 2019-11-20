@@ -47,7 +47,7 @@ export class TestComponent implements OnInit {
   request: any;
   result: any;
   map: google.maps.Map;
-  location: any;
+  distance: any;
   museums: any;
   restaurants: any;
   movies: any;
@@ -59,6 +59,7 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
+
   limit: any;
   query = '';
   querylist = [];
@@ -71,6 +72,8 @@ export class TestComponent implements OnInit {
   savetouser: any;
   mode: any;
   toggle: any;
+  history: any;
+  location: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
@@ -79,6 +82,13 @@ export class TestComponent implements OnInit {
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
     this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
     this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
+
+  city: any;
+  constructor(private activatedRoute: ActivatedRoute) {
+
+    this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
+    //this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
+    //this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
     this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
     this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
@@ -92,7 +102,12 @@ export class TestComponent implements OnInit {
     this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
+    this.history = this.activatedRoute.snapshot.paramMap.get('history').split(",");
+    this.location = this.activatedRoute.snapshot.paramMap.get('location');
+    console.log(this.activatedRoute.snapshot.paramMap)
+
     this.result = this.initialize();
+
   }
 
   ngOnInit() {
@@ -184,6 +199,8 @@ settitle(k: any) {
 
 private initialize() {
     let k: any;
+    let geocoder = new google.maps.Geocoder();
+
     if (this.restaurants == 'true') {this.query = this.query + 'restaurant| '}
     if (this.parks == 'true') {this.query = this.query + 'park| '}
     if (this.movies == 'true') {this.query = this.query + 'cinema| '}
@@ -193,21 +210,36 @@ private initialize() {
     if (this.bar == 'true') {this.query = this.query + 'bar| '}
     if (this.sports == 'true') {this.query = this.query + 'sport| '}
     this.limit = Math.abs((this.endtime - this.starttime) / 2);
-    const sydney = new google.maps.LatLng(this.latitude, this.longitude);
-    this.map = new google.maps.Map(
-        document.getElementById('map'), {center: sydney, zoom: 15});
-    this.request = {
-        location: sydney,
-        radius: this.location,
-        query: this.query,
-        minPriceLevel : 0
-      };
-    const service = new google.maps.places.PlacesService(this.map);
-    service.textSearch(this.request, function(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          k = results;
+    geocoder.geocode(
+      {address: this.location},
+      function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          this.longitude = results[0].geometry.location.lng();
+          this.latitude = results[0].geometry.location.lat();
+          console.log(this.longitude)
+          console.log(this.latitude)
+          this.city = new google.maps.LatLng(this.latitude, this.longitude);
+
+          this.map = new google.maps.Map(
+            document.getElementById('map'), {center: this.city, zoom: 15});
+          this.request = {
+            location: this.city,
+            radius: this.distance,
+            query: 'tourist',
+            minPriceLevel : 0
+          };
+          const service = new google.maps.places.PlacesService(this.map);
+          service.textSearch(this.request, function(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              k = results;
+              console.log(k)
+            }
+            });
         }
-        });
+      });
+     setTimeout(() => k = k.filter(result =>       
+     !(this.history.includes(result.place_id)))
+     ,5000);
     setTimeout(() => this.settitle(k), 6000);
     }
 
@@ -223,6 +255,7 @@ private initialize() {
       // Update the display parameter
       this.userService.updateItin(obj).subscribe((res) => {
       });
+
 
       this.data = form.value['username'];
       // Save for other username
