@@ -85,7 +85,7 @@ export class DistanceComponent implements OnInit {
     console.log(this.end);
     // Navigates to a page called /test and then add url based on above
     // Eg. localhost:4200/test/John121/12/1100/2100/200/Toronto
-    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end, this.username])
+    this.router.navigate(['pfilters', this.dis, this.longitude, this.latitude, this.budget, this.start, this.end, this.username, this.mode])
 
   }
 

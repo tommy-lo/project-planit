@@ -38,17 +38,19 @@ export class UserpageComponent implements OnInit {
     this.modetoggle = false;
     this.tempuser = '"'+this.username+'"';
   }
-  modeChange(form : NgForm){
+  modeChange(){
 
     if (this.modeset == 0){
       M.toast({ html: 'Dark mode on', classes: 'rounded'});
       this.modeset = 1;
       this.modetoggle = true;
+      this.mode = "dark";
     }
     else{
       M.toast({ html: 'Light mode on', classes: 'rounded'});
       this.modeset = 0;
       this.modetoggle = false;
+      this.mode = "light"
       
     }
     this.update = '{"username": '+this.tempuser+', "password": "something"}';
@@ -59,12 +61,7 @@ export class UserpageComponent implements OnInit {
   }
 
   gotoDistance(){
-    if (this.modetoggle == true){
-      this.mode = "dark";
-    }
-    else{
-      this.mode = "light";
-    }
+
     this.router.navigate(['distances', this.mode, this.username]);
   }
 }

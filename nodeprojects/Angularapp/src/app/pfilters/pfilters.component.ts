@@ -53,6 +53,8 @@ export class PfiltersComponent implements OnInit {
   statusshop: any;
   statussports: any;
   username: any;
+  toggle: any;
+  mode: any;
 
   onToggleFilter(filter){
     // Update the user's database for the filter
@@ -69,6 +71,7 @@ export class PfiltersComponent implements OnInit {
   this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
   this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
   this.username = this.activatedRoute.snapshot.paramMap.get('user');
+  this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
   }
   ngOnInit() {
     this.set1 = 0;
@@ -95,6 +98,12 @@ export class PfiltersComponent implements OnInit {
     this.statuszoo = 'Enable';
     this.statussports = 'Enable';
     this.statusshop = 'Enable';
+    if (this.mode == "light"){
+      this.toggle = false;
+    }
+    else{
+      this.toggle = true;
+    }
   }
   onClickpark(){
     this.togglepark = !this.togglepark;
@@ -131,7 +140,7 @@ export class PfiltersComponent implements OnInit {
     if (this.set3 == 0){
         this.restaurants = true;
         this.set3 = 1;
-        M.toast({ html: 'Restaurant toggled on', classes: 'rounded'});
+        M.toast({ html: 'Restaurant toggled on', classes: 'toast'});
     }
     else{
       this.restaurants = false;
