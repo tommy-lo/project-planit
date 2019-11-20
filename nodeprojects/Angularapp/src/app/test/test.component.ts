@@ -37,14 +37,9 @@ export class TestComponent implements OnInit {
   result: any;
   map: google.maps.Map;
   distance: any;
-  museums: any;
-  restaurants: any;
-  movies: any;
-  parks: any;
-  sports: any;
-  zoo: any;
-  bar: any;
-  shop: any;
+
+  pfilters: any;
+
   budget: any;
   starttime: any;
   endtime: any;
@@ -81,14 +76,16 @@ export class TestComponent implements OnInit {
     this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
 
-    this.museums = this.activatedRoute.snapshot.paramMap.get('museums');
-    this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
-    this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
-    this.parks = this.activatedRoute.snapshot.paramMap.get('parks');
-    this.shop = this.activatedRoute.snapshot.paramMap.get('shop');
-    this.zoo = this.activatedRoute.snapshot.paramMap.get('zoo');
-    this.bar = this.activatedRoute.snapshot.paramMap.get('bar');
-    this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
+    this.pfilters = {
+      museums: this.activatedRoute.snapshot.paramMap.get('museums'),
+      restaurants: this.activatedRoute.snapshot.paramMap.get('restaurants'),
+      movies: this.activatedRoute.snapshot.paramMap.get('movies'),
+      parks: this.activatedRoute.snapshot.paramMap.get('parks'),
+      shop: this.activatedRoute.snapshot.paramMap.get('shop'),
+      zoo: this.activatedRoute.snapshot.paramMap.get('zoo'),
+      bar: this.activatedRoute.snapshot.paramMap.get('bar'),
+      sports: this.activatedRoute.snapshot.paramMap.get('sports')
+    }
 
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
@@ -107,11 +104,11 @@ export class TestComponent implements OnInit {
       this.toggle = true;
     }
 
-    this.dataS.currentModes.subscribe(tMode => this.cModes = tMode)
-    this.dataS.currentTimes.subscribe(tTime => this.cTimes = tTime)
-    console.log(this.parks);
-    console.log(this.movies);
-    console.log(this.restaurants);
+    this.dataS.currentModes.subscribe(tMode => this.cModes = tMode);
+    this.dataS.currentTimes.subscribe(tTime => this.cTimes = tTime);
+    console.log(this.pfilters.parks);
+    console.log(this.pfilters.movies);
+    console.log(this.pfilters.restaurants);
   }
 
 // Navigate to directions from place1 to place2
@@ -119,7 +116,8 @@ direct(place1, place2){
   this.router.navigate(['directions', this.distance, this.location,
                         this.placeLng[place1], this.placeLat[place1],
                         this.budget, this.starttime, this.endtime,
-                        this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, this.sports,
+                        this.pfilters.parks, this.pfilters.museums, this.pfilters.restaurants, this.pfilters.movies,
+                        this.pfilters.shop, this.pfilters.zoo, this.pfilters.bar, this.pfilters.sports,
                         this.username,
                         this.placeLng[place2], this.placeLat[place2], place1, this.mode, {history: [this.history]}]);
 }
@@ -129,8 +127,8 @@ direct1() {
   console.log(this.placeLng[0])
   console.log(this.placeLat[0])
   this.router.navigate(['directions', this.distance, this.location, this.placeLng[0], this.placeLat[0], this.budget, this.starttime,
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLng[1], this.placeLat[1], 0, this.mode, {history: [this.history]}])
+  this.endtime, this.pfilters.parks, this.pfilters.museums, this.pfilters.restaurants, this.pfilters.movies, this.pfilters.shop, this.pfilters.zoo, this.pfilters.bar,
+  this.pfilters.sports, this.username,  this.placeLng[1], this.placeLat[1], 0, this.mode, {history: [this.history]}])
   //this.router.navigate(['directions', this.placeLng[0], this.placeLat[0], this.placeLng[1], this.placeLat[1], this.mode]);
   console.log(this.title[0]);
 }
@@ -186,18 +184,24 @@ settitle(k: any) {
 
 }
 
+private buildQuery(pfilters){
+  // Build query string
+  let filter: any;
+  let query = '';
+  for (filter of Object.keys(this.pfilters)){
+    if (this.pfilters[filter] === 'true'){
+      query += filter + '| ';
+    }
+  }
+  return query;
+}
+
 private initialize() {
     let k: any;
     let geocoder = new google.maps.Geocoder();
 
-    if (this.restaurants == 'true') {this.query = this.query + 'restaurant| '}
-    if (this.parks == 'true') {this.query = this.query + 'park| '}
-    if (this.movies == 'true') {this.query = this.query + 'cinema| '}
-    if (this.museums == 'true') {this.query = this.query + 'museum| '}
-    if (this.shop == 'true') {this.query = this.query + 'shopping mall| '}
-    if (this.zoo == 'true') {this.query = this.query + 'zoo| '}
-    if (this.bar == 'true') {this.query = this.query + 'bar| '}
-    if (this.sports == 'true') {this.query = this.query + 'sport| '}
+    this.query = this.buildQuery(this.pfilters);
+
     this.limit = Math.abs((this.endtime - this.starttime) / 2);
     geocoder.geocode(
       {address: this.location},
