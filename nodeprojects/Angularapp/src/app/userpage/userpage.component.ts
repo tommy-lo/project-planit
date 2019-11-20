@@ -17,11 +17,11 @@ export class UserpageComponent implements OnInit {
   display: any;
   username: any;
   preferences: any;
-  modetoggle: any;
-  modeset: number;
   update: any;
   tempuser: any;
-  array: any;   
+  tempmode: any;
+  array: any; 
+  toggle: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
@@ -29,30 +29,26 @@ export class UserpageComponent implements OnInit {
     this.display = this.activatedRoute.snapshot.paramMap.get('display');
     // The character that the stored itinerary is split by, the * is added when it is stored in the test page
     this.array = this.display.split("*");
-    console.log(this.array);
-
-    
  }
 
   ngOnInit() {
-    this.modeset = 0;
-    this.modetoggle = false;
     this.tempuser = '"'+this.username+'"';
   }
   modeChange(form : NgForm){
 
-    if (this.modeset == 0){
+    if (this.mode == "light"){
       M.toast({ html: 'Dark mode on', classes: 'rounded'});
-      this.modeset = 1;
-      this.modetoggle = true;
+      this.mode = "dark";
+      this.toggle = true;
     }
     else{
       M.toast({ html: 'Light mode on', classes: 'rounded'});
-      this.modeset = 0;
-      this.modetoggle = false;
+      this.mode = "light";
+      this.toggle = false;
       
     }
-    this.update = '{"username": '+this.tempuser+', "password": "something"}';
+    this.tempmode = '"'+this.mode+'"';
+    this.update = '{"username": '+this.tempuser+', "mode": '+this.tempmode+'}';
     var obj = JSON.parse(this.update);
     console.log(obj);
     this.userService.updateUser(obj).subscribe((res) => {
@@ -60,12 +56,6 @@ export class UserpageComponent implements OnInit {
   }
 
   gotoDistance(){
-    if (this.modetoggle == true){
-      this.mode = "dark";
-    }
-    else{
-      this.mode = "light";
-    }
     this.router.navigate(['distances', this.mode, this.username]);
   }
 }

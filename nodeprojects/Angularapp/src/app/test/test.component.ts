@@ -69,6 +69,8 @@ export class TestComponent implements OnInit {
   usertemp: any;
   data: any;
   savetouser: any;
+  mode: any;
+  toggle: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
@@ -89,10 +91,17 @@ export class TestComponent implements OnInit {
     this.bar = this.activatedRoute.snapshot.paramMap.get('bar');
     this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
+    this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.result = this.initialize();
   }
 
   ngOnInit() {
+    if (this.mode == "light"){
+      this.toggle = false;
+    }
+    else{
+      this.toggle = true;
+    }
     console.log(this.parks);
     console.log(this.movies);
     console.log(this.restaurants);

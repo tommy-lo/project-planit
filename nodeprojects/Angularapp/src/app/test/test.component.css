@@ -15,3 +15,7 @@ body {
   position: relative;
   width: 900px;
 }
+
+.labelcolor {
+  color: black;
+}

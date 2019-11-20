@@ -14,7 +14,7 @@ p {
 }*/
 </style>
 </head>
-<body><div class="center">
+<body><div class="center"  [ngClass]="{'grey' : toggle, 'white': !toggle}">
 <!---
 <p>Parks</p><button (click)="onToggleFilter('parks')">Toggle Parks</button>
 <p>Museums</p><button (click)="onToggleFilter('museums')">Toggle Museums</button>
@@ -26,7 +26,7 @@ p {
 <button class="btn btn-custom right" type="button" (click)="test()">Go to itinerary</button>
 <div class="topheight"></div>
 <h2>Click on button to toggle that filter on</h2>
-<div class="topheight"></div>
+<div class="topheight" [ngClass]="{'grey' : toggle, 'white': !toggle}"></div>
 <button class="btn btn-custom center buttonwidth" type="button" (click)="onClickpark()" [ngClass]="{'teal' : togglepark, 'green': !togglepark}">Park</button>
 <div class="divider"></div>
 <button class="btn mat-button btn-custom center buttonwidth" type="button" (click)="onClickmuseum()" [ngClass]="{'teal' : togglemus, 'green': !togglemus}">Museum</button>
@@ -42,9 +42,9 @@ p {
 
 
 
-<div class="center">
+<div class="center" [ngClass]="{'grey' : toggle, 'white': !toggle}">
     
-<div class="topheight center"></div>
+<div class="topheight center" [ngClass]="{'grey' : toggle, 'white': !toggle}"></div>
 <div class="divider"></div>
 <button class="btn btn-custom center buttonwidth" type="button" (click)="onClickShop()" [ngClass]="{'teal' : toggleshop, 'green': !toggleshop}">Shopping</button>
 <div class="divider"></div>
@@ -55,8 +55,8 @@ p {
 <button class="btn btn-custom center buttonwidth" type="button" (click)="onClickSports()" [ngClass]="{'teal' : togglesports, 'green': !togglesports}">Sports</button>
 <div class="divider"></div>
 </div>
-<div class="topheight"></div>
-<div class="height center"></div>
+<div class="topheight"[ngClass]="{'grey' : toggle, 'white': !toggle}"></div>
+<div class="height center" [ngClass]="{'grey' : toggle, 'white': !toggle}"></div>
 </body>
 </html>
 

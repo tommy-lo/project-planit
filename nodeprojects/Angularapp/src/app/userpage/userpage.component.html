@@ -1,3 +1,4 @@
+<div [ngClass]="{'grey' : toggle, 'white': !toggle}">
 <div class="center">
 <h1>Hello, {{username}}</h1>
 <h2>Current Itinerary stored:</h2>
@@ -12,4 +13,6 @@
 <div class="clearfix">
     <button class="btn btn-custom right" type="button" (click)="gotoDistance()">Go to basic filters</button>
 </div>
+</div>
+<div class="height center"></div>
 </div>

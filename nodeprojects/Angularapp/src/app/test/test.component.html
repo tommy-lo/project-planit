@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>title</title>
 </head>
+<div [ngClass]="{'grey' : toggle, 'white': !toggle}">
 <div [style.visibility]="show1 ? 'visible' : 'hidden'" class="card">
     <p></p>
     <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titleone.name}}(2.15 hours)</p>
@@ -39,8 +40,8 @@
 <div [style.visibility]="kia ? 'visible' : 'hidden'">1 - Name : {{titleone.name}}</div>
 <form #signinForm="ngForm" (ngSubmit)="saveItinerary(signinForm)">
   <div class="ng-scope">
-	<label for="email"><b>Username</b></label>
-	<input #name="ngModel" [(ngModel)]="userService.name" placeholder="Enter username" name="username" required="">
+	<label for="email" class="labelcolor"><b>Enter Username Below</b></label>
+	<input #name="ngModel" [(ngModel)]="userService.name" placeholder="Enter username of who you want to share this itinerary with here" name="username" required="">
 
   <div class="clearfix">
     <button class="btn btn-custom right" type="button" (click)="saveItinerary(signinForm)">Save intinerary</button>
@@ -50,7 +51,7 @@
 </form>
 
 <div class="height center"></div>
-
+</div>
 <body>
 </body>
 </html>
