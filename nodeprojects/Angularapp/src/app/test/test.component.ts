@@ -16,7 +16,6 @@ import { DataService } from '../data.service';
 export class TestComponent implements OnInit {
   public showContent = false;
   date = '';
-  title = 'l';
   show1 = false;
   show2 = false;
   show3 = false;
@@ -24,26 +23,13 @@ export class TestComponent implements OnInit {
   show5 = false;
   show6 = false;
   onetype = 't';
-  lat1 = 'NoValue';
-  lng1 = 'NoValue';
-  lat2 = 'NoValue';
-  lng2 = 'NoValue';
-  lat3 = 'NoValue';
-  lng3 = 'NoValue';
-  lat4 = 'NoValue';
-  lng4 = 'NoValue';
-  lat5 = 'NoValue';
-  lng5 = 'NoValue';
-  lat6 = 'NoValue';
-  lng6 = 'NoValue';
-  titleone = 'None';
-  titletwo = 'None';
-  titlethree = 'None';
-  titlefour = 'None';
-  titlefive = 'None';
-  titlesix = 'None';
-  longitude: any;
-  latitude: any;
+
+  userLat: any;
+  userLng: any;
+  placeLat = ['NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue'];
+  placeLng = ['NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue'];
+
+  title = ['None', 'None', 'None', 'None', 'None', 'None'];
   zoom: number;
   request: any;
   result: any;
@@ -84,16 +70,17 @@ export class TestComponent implements OnInit {
 
     this.query = '';
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
-    this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
-    this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
+    this.userLng = this.activatedRoute.snapshot.paramMap.get('userLng');
+    this.userLat = this.activatedRoute.snapshot.paramMap.get('userLat');
 
 
     this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
-    //this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
-    //this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
+    //this.userLng = this.activatedRoute.snapshot.paramMap.get('userLng');
+    //this.userLat = this.activatedRoute.snapshot.paramMap.get('userLat');
     this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
     this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
+
     this.museums = this.activatedRoute.snapshot.paramMap.get('museums');
     this.restaurants = this.activatedRoute.snapshot.paramMap.get('restaurants');
     this.movies = this.activatedRoute.snapshot.paramMap.get('movies');
@@ -102,6 +89,7 @@ export class TestComponent implements OnInit {
     this.zoo = this.activatedRoute.snapshot.paramMap.get('zoo');
     this.bar = this.activatedRoute.snapshot.paramMap.get('bar');
     this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
+
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.history = this.activatedRoute.snapshot.paramMap.get('history');
@@ -128,87 +116,87 @@ export class TestComponent implements OnInit {
   }
 
 direct1() {
-  console.log(this.longitude)
-  console.log(this.latitude)
-  this.router.navigate(['directions', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-  this.sports, this.username,  this.lng1, this.lat1, 0, this.mode, {history: [this.history]}])
-  //this.router.navigate(['directions', this.longitude, this.latitude, this.lng1, this.lat1, this.mode]);
-  console.log(this.titleone);
+  console.log(this.userLng)
+  console.log(this.userLat)
+  this.router.navigate(['directions', this.distance, this.location, this.userLng, this.userLat, this.budget, this.starttime,
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
+  this.sports, this.username,  this.placeLng[0], this.placeLat[0], 0, this.mode, {history: [this.history]}])
+  //this.router.navigate(['directions', this.userLng, this.userLat, this.placeLng[0], this.placeLat[0], this.mode]);
+  console.log(this.title[0]);
 }
 direct2() {
-  this.router.navigate(['directions', this.distance, this.location, this.lng1, this.lat1, this.budget, this.starttime, 
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-  this.sports, this.username,  this.lng2, this.lat2, 1, this.mode, {history: [this.history]}])
-  console.log(this.titleone);
+  this.router.navigate(['directions', this.distance, this.location, this.placeLng[0], this.placeLat[0], this.budget, this.starttime,
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
+  this.sports, this.username,  this.placeLng[1], this.placeLat[1], 1, this.mode, {history: [this.history]}])
+  console.log(this.title[0]);
 }
 direct3() {
-  this.router.navigate(['directions', this.distance, this.location, this.lng2, this.lat2, this.budget, this.starttime, 
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-  this.sports, this.username,  this.lng3, this.lat3, 2, this.mode, {history: [this.history]}])
-  console.log(this.titleone);
+  this.router.navigate(['directions', this.distance, this.location, this.placeLng[1], this.placeLat[1], this.budget, this.starttime,
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
+  this.sports, this.username,  this.placeLng[2], this.placeLat[2], 2, this.mode, {history: [this.history]}])
+  console.log(this.title[0]);
 }
 direct4() {
-  this.router.navigate(['directions', this.distance, this.location, this.lng3, this.lat3, this.budget, this.starttime, 
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-  this.sports, this.username,  this.lng4, this.lat4, 3, this.mode, {history: [this.history]}])
-  console.log(this.titleone);
+  this.router.navigate(['directions', this.distance, this.location, this.placeLng[2], this.placeLat[2], this.budget, this.starttime,
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
+  this.sports, this.username,  this.placeLng[3], this.placeLat[3], 3, this.mode, {history: [this.history]}])
+  console.log(this.title[0]);
 }
 direct5() {
-  this.router.navigate(['directions', this.distance, this.location, this.lng4, this.lat4, this.budget, this.starttime, 
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-  this.sports, this.username,  this.lng5, this.lat5, 4, this.mode, {history: [this.history]}])
-  console.log(this.titleone);
+  this.router.navigate(['directions', this.distance, this.location, this.placeLng[3], this.placeLat[3], this.budget, this.starttime,
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
+  this.sports, this.username,  this.placeLat[4], this.placeLat[4], 4, this.mode, {history: [this.history]}])
+  console.log(this.title[0]);
 }
 direct6() {
-  this.router.navigate(['directions', this.distance, this.location, this.lng5, this.lat5, this.budget, this.starttime, 
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
-  this.sports, this.username,  this.lng6, this.lat6, 5, this.mode, {history: [this.history]}])
-  console.log(this.titleone);
+  this.router.navigate(['directions', this.distance, this.location, this.placeLat[4], this.placeLat[4], this.budget, this.starttime,
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
+  this.sports, this.username,  this.placeLng[5], this.placeLat[5], 5, this.mode, {history: [this.history]}])
+  console.log(this.title[0]);
 }
 
 settitle(k: any) {
   let load = 1;
   while (load < this.limit + 1) {
     if (load == 1) {
-      this.titleone = k[1];
-      this.lat1 = k[1].geometry.location.lat();
-      this.lng1 = k[1].geometry.location.lng();
+      this.title[0] = k[1];
+      this.placeLat[0] = k[1].geometry.location.lat();
+      this.placeLng[0] = k[1].geometry.location.lng();
       this.show1 = true;
       this.savetouser = k[1].name;
     }
     if (load == 2) {
-      this.titletwo  = k[2];
-      this.lat2 = k[2].geometry.location.lat();
-      this.lng2 = k[2].geometry.location.lng();
+      this.title[1]  = k[2];
+      this.placeLat[1] = k[2].geometry.location.lat();
+      this.placeLng[1] = k[2].geometry.location.lng();
       this.show2 = true;
       this.savetouser = this.savetouser + "*" + k[2].name;
     }
     if (load == 3) {
-      this.titlethree = k[3];
-      this.lat3 = k[3].geometry.location.lat();
-      this.lng3 = k[3].geometry.location.lng();
+      this.title[2] = k[3];
+      this.placeLat[2] = k[3].geometry.location.lat();
+      this.placeLng[2] = k[3].geometry.location.lng();
       this.show3 = true;
       this.savetouser = this.savetouser + "*" +k[3].name;
     }
     if (load == 4) {
-      this.titlefour = k[4];
-      this.lat4 = k[4].geometry.location.lat();
-      this.lng4 = k[4].geometry.location.lng();
+      this.title[3] = k[4];
+      this.placeLat[3] = k[4].geometry.location.lat();
+      this.placeLng[3] = k[4].geometry.location.lng();
       this.show4 = true;
       this.savetouser = this.savetouser + "*" + k[4].name;
     }
     if (load == 5) {
-      this.titlefive = k[5];
-      this.lat5 = k[5].geometry.location.lat();
-      this.lng5 = k[5].geometry.location.lng();
+      this.title[4] = k[5];
+      this.placeLat[4] = k[5].geometry.location.lat();
+      this.placeLat[4] = k[5].geometry.location.lng();
       this.show5 = true;
       this.savetouser = this.savetouser + "*" + k[5].name;
     }
     if (load == 6) {
-      this.titlefive = k[6];
-      this.lat6 = k[6].geometry.location.lat();
-      this.lng6 = k[6].geometry.location.lng();
+      this.title[4] = k[6];
+      this.placeLat[5] = k[6].geometry.location.lat();
+      this.placeLng[5] = k[6].geometry.location.lng();
       this.show6 = true;
       this.savetouser = this.savetouser + "*" + k[6].name;
     }
@@ -234,11 +222,11 @@ private initialize() {
       {address: this.location},
       function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          this.longitude = results[0].geometry.location.lng();
-          this.latitude = results[0].geometry.location.lat();
-          console.log(this.longitude)
-          console.log(this.latitude)
-          this.city = new google.maps.LatLng(this.latitude, this.longitude);
+          this.userLng = results[0].geometry.location.lng();
+          this.userLat = results[0].geometry.location.lat();
+          console.log(this.userLng)
+          console.log(this.userLat)
+          this.city = new google.maps.LatLng(this.userLat, this.userLng);
 
           this.map = new google.maps.Map(
             document.getElementById('map'), {center: this.city, zoom: 15});
@@ -257,7 +245,7 @@ private initialize() {
             });
         }
       }.bind(this));
-     setTimeout(() => k = k.filter(result =>       
+     setTimeout(() => k = k.filter(result =>
      !(this.history.split(",").includes(result.place_id)))
      ,5000);
     setTimeout(() => this.settitle(k), 6000);
