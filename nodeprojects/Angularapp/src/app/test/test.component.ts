@@ -24,10 +24,12 @@ export class TestComponent implements OnInit {
   show6 = false;
   onetype = 't';
 
-  userLat: any;
-  userLng: any;
-  placeLat = ['NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue'];
-  placeLng = ['NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue'];
+  // placeLat[0] is latitude, placeLng[0] is longitude
+  // placeLat[1] to placeLat[6] is latOne to latSix
+  // placeLng[1] to placeLng[6] is lngOne to lngSix
+  placeLat = ['NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue'];
+  placeLng = ['NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue', 'NoValue'];
+
 
   title = ['None', 'None', 'None', 'None', 'None', 'None'];
   zoom: number;
@@ -70,13 +72,11 @@ export class TestComponent implements OnInit {
 
     this.query = '';
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
-    this.userLng = this.activatedRoute.snapshot.paramMap.get('userLng');
-    this.userLat = this.activatedRoute.snapshot.paramMap.get('userLat');
+    this.placeLng[0] = this.activatedRoute.snapshot.paramMap.get('longitude');
+    this.placeLat[0] = this.activatedRoute.snapshot.paramMap.get('latitude');
 
 
     this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
-    //this.userLng = this.activatedRoute.snapshot.paramMap.get('userLng');
-    //this.userLat = this.activatedRoute.snapshot.paramMap.get('userLat');
     this.budget = this.activatedRoute.snapshot.paramMap.get('budget');
     this.starttime = this.activatedRoute.snapshot.paramMap.get('start');
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
@@ -94,10 +94,9 @@ export class TestComponent implements OnInit {
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.history = this.activatedRoute.snapshot.paramMap.get('history');
     this.location = this.activatedRoute.snapshot.paramMap.get('location');
-    console.log(this.activatedRoute.snapshot.paramMap)
+    console.log(this.activatedRoute.snapshot.paramMap);
 
     this.result = this.initialize();
-
   }
 
   ngOnInit() {
@@ -115,88 +114,70 @@ export class TestComponent implements OnInit {
     console.log(this.restaurants);
   }
 
-direct1() {
-  console.log(this.userLng)
-  console.log(this.userLat)
-  this.router.navigate(['directions', this.distance, this.location, this.userLng, this.userLat, this.budget, this.starttime,
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLng[0], this.placeLat[0], 0, this.mode, {history: [this.history]}])
-  //this.router.navigate(['directions', this.userLng, this.userLat, this.placeLng[0], this.placeLat[0], this.mode]);
-  console.log(this.title[0]);
+// Navigate to directions from place1 to place2
+direct(place1, place2){
+  this.router.navigate(['directions', this.distance, this.location,
+                        this.placeLng[place1], this.placeLat[place1],
+                        this.budget, this.starttime, this.endtime,
+                        this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, this.sports,
+                        this.username,
+                        this.placeLng[place2], this.placeLat[place2], place1, this.mode, {history: [this.history]}]);
 }
-direct2() {
+
+/**
+direct1() {
+  console.log(this.placeLng[0])
+  console.log(this.placeLat[0])
   this.router.navigate(['directions', this.distance, this.location, this.placeLng[0], this.placeLat[0], this.budget, this.starttime,
   this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLng[1], this.placeLat[1], 1, this.mode, {history: [this.history]}])
+  this.sports, this.username,  this.placeLng[1], this.placeLat[1], 0, this.mode, {history: [this.history]}])
+  //this.router.navigate(['directions', this.placeLng[0], this.placeLat[0], this.placeLng[1], this.placeLat[1], this.mode]);
   console.log(this.title[0]);
 }
-direct3() {
-  this.router.navigate(['directions', this.distance, this.location, this.placeLng[1], this.placeLat[1], this.budget, this.starttime,
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLng[2], this.placeLat[2], 2, this.mode, {history: [this.history]}])
-  console.log(this.title[0]);
-}
-direct4() {
-  this.router.navigate(['directions', this.distance, this.location, this.placeLng[2], this.placeLat[2], this.budget, this.starttime,
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLng[3], this.placeLat[3], 3, this.mode, {history: [this.history]}])
-  console.log(this.title[0]);
-}
-direct5() {
-  this.router.navigate(['directions', this.distance, this.location, this.placeLng[3], this.placeLat[3], this.budget, this.starttime,
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLat[4], this.placeLat[4], 4, this.mode, {history: [this.history]}])
-  console.log(this.title[0]);
-}
-direct6() {
-  this.router.navigate(['directions', this.distance, this.location, this.placeLat[4], this.placeLat[4], this.budget, this.starttime,
-  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
-  this.sports, this.username,  this.placeLng[5], this.placeLat[5], 5, this.mode, {history: [this.history]}])
-  console.log(this.title[0]);
-}
+*/
 
 settitle(k: any) {
   let load = 1;
   while (load < this.limit + 1) {
     if (load == 1) {
       this.title[0] = k[1];
-      this.placeLat[0] = k[1].geometry.location.lat();
-      this.placeLng[0] = k[1].geometry.location.lng();
+      this.placeLat[1] = k[1].geometry.location.lat();
+      this.placeLng[1] = k[1].geometry.location.lng();
       this.show1 = true;
       this.savetouser = k[1].name;
     }
     if (load == 2) {
       this.title[1]  = k[2];
-      this.placeLat[1] = k[2].geometry.location.lat();
-      this.placeLng[1] = k[2].geometry.location.lng();
+      this.placeLat[2] = k[2].geometry.location.lat();
+      this.placeLng[2] = k[2].geometry.location.lng();
       this.show2 = true;
       this.savetouser = this.savetouser + "*" + k[2].name;
     }
     if (load == 3) {
       this.title[2] = k[3];
-      this.placeLat[2] = k[3].geometry.location.lat();
-      this.placeLng[2] = k[3].geometry.location.lng();
+      this.placeLat[3] = k[3].geometry.location.lat();
+      this.placeLng[3] = k[3].geometry.location.lng();
       this.show3 = true;
       this.savetouser = this.savetouser + "*" +k[3].name;
     }
     if (load == 4) {
       this.title[3] = k[4];
-      this.placeLat[3] = k[4].geometry.location.lat();
-      this.placeLng[3] = k[4].geometry.location.lng();
+      this.placeLat[4] = k[4].geometry.location.lat();
+      this.placeLng[4] = k[4].geometry.location.lng();
       this.show4 = true;
       this.savetouser = this.savetouser + "*" + k[4].name;
     }
     if (load == 5) {
       this.title[4] = k[5];
-      this.placeLat[4] = k[5].geometry.location.lat();
-      this.placeLat[4] = k[5].geometry.location.lng();
+      this.placeLat[5] = k[5].geometry.location.lat();
+      this.placeLat[5] = k[5].geometry.location.lng();
       this.show5 = true;
       this.savetouser = this.savetouser + "*" + k[5].name;
     }
     if (load == 6) {
       this.title[4] = k[6];
-      this.placeLat[5] = k[6].geometry.location.lat();
-      this.placeLng[5] = k[6].geometry.location.lng();
+      this.placeLat[6] = k[6].geometry.location.lat();
+      this.placeLng[6] = k[6].geometry.location.lng();
       this.show6 = true;
       this.savetouser = this.savetouser + "*" + k[6].name;
     }
@@ -222,11 +203,11 @@ private initialize() {
       {address: this.location},
       function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          this.userLng = results[0].geometry.location.lng();
-          this.userLat = results[0].geometry.location.lat();
-          console.log(this.userLng)
-          console.log(this.userLat)
-          this.city = new google.maps.LatLng(this.userLat, this.userLng);
+          this.placeLng[0] = results[0].geometry.location.lng();
+          this.placeLat[0] = results[0].geometry.location.lat();
+          console.log(this.placeLng[0])
+          console.log(this.placeLat[0])
+          this.city = new google.maps.LatLng(this.placeLat[0], this.placeLng[0]);
 
           this.map = new google.maps.Map(
             document.getElementById('map'), {center: this.city, zoom: 15});
