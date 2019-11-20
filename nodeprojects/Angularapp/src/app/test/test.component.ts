@@ -16,14 +16,31 @@ export class TestComponent implements OnInit {
   public showContent = false;
   date = '';
   title = 'l';
-  titleone = 't';
+  show1 = false;
+  show2 = false;
+  show3 = false;
+  show4 = false;
+  show5 = false;
+  show6 = false;
   onetype = 't';
-  latone = 'NoValue';
-  lngone = 'NoValue';
-  titletwo = 'l';
-  titlethree = 'l';
-  titlefour = 'l';
-  titlefive = 'l';
+  lat1 = 'NoValue';
+  lng1 = 'NoValue';
+  lat2 = 'NoValue';
+  lng2 = 'NoValue';
+  lat3 = 'NoValue';
+  lng3 = 'NoValue';
+  lat4 = 'NoValue';
+  lng4 = 'NoValue';
+  lat5 = 'NoValue';
+  lng5 = 'NoValue';
+  lat6 = 'NoValue';
+  lng6 = 'NoValue';
+  titleone = 'None';
+  titletwo = 'None';
+  titlethree = 'None';
+  titlefour = 'None';
+  titlefive = 'None';
+  titlesix = 'None';
   longitude: any;
   latitude: any;
   zoom: number;
@@ -42,7 +59,8 @@ export class TestComponent implements OnInit {
   budget: any;
   starttime: any;
   endtime: any;
-  query = "";
+  limit: any;
+  query = '';
   querylist = [];
   saveitin: any;
   update: any;
@@ -54,7 +72,7 @@ export class TestComponent implements OnInit {
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
 
-    this.query = "";
+    this.query = '';
     this.location = this.activatedRoute.snapshot.paramMap.get('distance');
     this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
     this.latitude = this.activatedRoute.snapshot.paramMap.get('latitude');
@@ -70,35 +88,95 @@ export class TestComponent implements OnInit {
     this.bar = this.activatedRoute.snapshot.paramMap.get('bar');
     this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
-
     this.result = this.initialize();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log(this.parks);
     console.log(this.movies);
     console.log(this.restaurants);
   }
 
-directsecond() {
-  this.router.navigate(['directions', this.longitude, this.latitude, this.lngone, this.latone]);
+direct1() {
+  this.router.navigate(['directions', this.longitude, this.latitude, this.lng1, this.lat1]);
+  console.log(this.titleone);
+}
+direct2() {
+  this.router.navigate(['directions', this.lng1, this.lat1, this.lng2, this.lat2]);
+  console.log(this.titleone);
+}
+direct3() {
+  this.router.navigate(['directions', this.lng2, this.lat2, this.lng3, this.lat3]);
+  console.log(this.titleone);
+}
+direct4() {
+  this.router.navigate(['directions', this.lng3, this.lat3, this.lng4, this.lat4]);
+  console.log(this.titleone);
+}
+direct5() {
+  this.router.navigate(['directions', this.lng4, this.lat4, this.lng5, this.lat5]);
+  console.log(this.titleone);
+}
+direct6() {
+  this.router.navigate(['directions', this.lng5, this.lat5, this.lng6, this.lat6]);
   console.log(this.titleone);
 }
 
+settitle(k: any) {
+  let load = 1;
+  while (load < this.limit + 1) {
+    if (load == 1) {
+      this.titleone = k[1];
+      this.lat1 = k[1].geometry.location.lat();
+      this.lng1 = k[1].geometry.location.lng();
+      this.show1 = true;
+    }
+    if (load == 2) {
+      this.titletwo  = k[2];
+      this.lat2 = k[2].geometry.location.lat();
+      this.lng2 = k[2].geometry.location.lng();
+      this.show2 = true;
+    }
+    if (load == 3) {
+      this.titlethree = k[3];
+      this.lat3 = k[3].geometry.location.lat();
+      this.lng3 = k[3].geometry.location.lng();
+      this.show3 = true;
+    }
+    if (load == 4) {
+      this.titlefour = k[4];
+      this.lat4 = k[4].geometry.location.lat();
+      this.lng4 = k[4].geometry.location.lng();
+      this.show4 = true;
+    }
+    if (load == 5) {
+      this.titlefive = k[5];
+      this.lat5 = k[5].geometry.location.lat();
+      this.lng5 = k[5].geometry.location.lng();
+      this.show5 = true;
+    }
+    if (load == 6) {
+      this.titlefive = k[6];
+      this.lat6 = k[6].geometry.location.lat();
+      this.lng6 = k[6].geometry.location.lng();
+      this.show6 = true;
+    }
+    load = load + 1;
+  }
+
+}
+
 private initialize() {
-    let k:any;
-    if(this.restaurants == "true"){this.query = this.query + "restaurant| "}
-    if(this.parks == "true"){this.query = this.query + "park| "}
-    if(this.movies == "true"){this.query = this.query + "cinema| "}
-    if(this.museums == "true"){this.query = this.query + "museum| "}
-    if(this.shop == "true"){this.query = this.query + "shopping mall| "}
-    if(this.zoo == "true"){this.query = this.query + "zoo| "}
-    if(this.bar == "true"){this.query = this.query + "bar| "}
-    if(this.sports == "true"){this.query = this.query + "sport| "}
-    console.log(this.query);
-    console.log(this.starttime);
-    console.log(this.endtime);
-    console.log(this.onetype);
+    let k: any;
+    if (this.restaurants == 'true') {this.query = this.query + 'restaurant| '}
+    if (this.parks == 'true') {this.query = this.query + 'park| '}
+    if (this.movies == 'true') {this.query = this.query + 'cinema| '}
+    if (this.museums == 'true') {this.query = this.query + 'museum| '}
+    if (this.shop == 'true') {this.query = this.query + 'shopping mall| '}
+    if (this.zoo == 'true') {this.query = this.query + 'zoo| '}
+    if (this.bar == 'true') {this.query = this.query + 'bar| '}
+    if (this.sports == 'true') {this.query = this.query + 'sport| '}
+    this.limit = Math.abs((this.endtime - this.starttime) / 2);
     const sydney = new google.maps.LatLng(this.latitude, this.longitude);
     this.map = new google.maps.Map(
         document.getElementById('map'), {center: sydney, zoom: 15});
@@ -114,44 +192,38 @@ private initialize() {
           k = results;
         }
         });
-    setTimeout(() => this.titleone = k[0], 6000);
-    setTimeout(() => this.latone = k[0].geometry.location.lat(), 6000);
-    setTimeout(() => this.lngone = k[0].geometry.location.lng(), 6000);
-    setTimeout(() => this.titletwo = k[1], 6000);
-    setTimeout(() => this.titlethree = k[2], 6000);
-    setTimeout(() => this.titlefour = k[3], 6000);
-    setTimeout(() => this.titlefive = k[4], 6000);
-    setTimeout(() => this.saveitin = k[0].name + " " + k[0].formatted_address +
-    k[1].name + " " + k[1].formatted_address +
-    k[2].name + " " + k[2].formatted_address +
-    k[3].name + " " + k[3].formatted_address +
-    k[4].name + " " + k[4].formatted_address 
+    setTimeout(() => this.settitle(k), 6000);
+    setTimeout(() => this.saveitin = k[0].name + ' ' + k[0].formatted_address +
+    k[1].name + ' ' + k[1].formatted_address +
+    k[2].name + ' ' + k[2].formatted_address +
+    k[3].name + ' ' + k[3].formatted_address +
+    k[4].name + ' ' + k[4].formatted_address
     , 6000);
     }
 
-    saveItinerary(form : NgForm){
-      this.data = form.value["username"];
-      console.log(form.value);  
+    saveItinerary(form: NgForm) {
+      this.data = form.value['username'];
+      console.log(form.value);
       console.log(this.data);
-    console.log(form.value);  
-  if (this.data != undefined){
-    this.temp = '"'+this.saveitin+'"';
-    this.usertemp = '"'+this.data+'"';
+      console.log(form.value);
+      if (this.data != undefined) {
+    this.temp = '"' + this.saveitin + '"';
+    this.usertemp = '"' + this.data + '"';
     console.log(this.temp);
     console.log(this.usertemp);
-    //this.usertemp = '"'+this.data+'"';
-    this.update = '{"username": '+this.usertemp+', "display": '+this.temp+'}';
-    var obj = JSON.parse(this.update);
+    // this.usertemp = '"'+this.data+'"';
+    this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
+    let obj = JSON.parse(this.update);
     console.log(obj);
     this.userService.updateItin(obj).subscribe((res) => {
   });
   }
       console.log(this.saveitin);
-      this.temp = '"'+this.saveitin+'"';
-      this.usertemp = '"'+this.username+'"';
+      this.temp = '"' + this.saveitin + '"';
+      this.usertemp = '"' + this.username + '"';
       console.log(this.temp);
-      this.update = '{"username": '+this.usertemp+', "display": '+this.temp+'}';
-      var obj = JSON.parse(this.update);
+      this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
+      let obj = JSON.parse(this.update);
       console.log(obj);
       this.userService.updateItin(obj).subscribe((res) => {
     });

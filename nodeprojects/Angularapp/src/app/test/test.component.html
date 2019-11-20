@@ -6,23 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>title</title>
 </head>
-<h3>Displaying results for tourist atraction; low price; radius 100;location sydeney google</h3>
-<div>{{location}}</div>
-<div>{{longitude}}</div>
-<div>{{latitude}}</div>
-<div>1 - Name : {{titleone.name}}</div>
-<div>1 - Address : {{titleone.formatted_address}}</div>
-<div>1 - Place Id : {{titleone.place_id}}</div>
-<div>2 - Name : {{titletwo.name}}</div>
-<div>2 - Address : {{titletwo.formatted_address}}</div>
-<div>2 - Place Id : {{titletwo.place_id}}</div>
-<button class="btn btn-custom right" type="button" (click)="directsecond()">Go to direction</button>
-<div>3 - Name : {{titlethree.name}}</div>
-<div>3 - Address : {{titlethree.formatted_address}}</div>
-<div>4 - Name : {{titlefour.name}}</div>
-<div>4 - Address : {{titlefour.formatted_address}}</div>
-<div>5 - Name : {{titlefive.name}}</div>
-<div>5 - Address : {{titlefive.formatted_address}}</div>
+<div [style.visibility]="show1 ? 'visible' : 'hidden'" class="card">
+    <p></p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titleone.name}}(2.15 hours)</p>
+    <button class="btn btn-custom right" type="button" (click)="direct1()">Go to direction</button>
+</div>
+<div [style.visibility]="show2 ? 'visible' : 'hidden'" class="card">
+    <p></p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titletwo.name}}(1.45 hours)</p>
+    <button class="btn btn-custom right" type="button" (click)="direct2()">Go to direction</button>
+</div>
+<div [style.visibility]="show3 ? 'visible' : 'hidden'" class="card">
+    <p></p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titlethree.name}}(1.5 hours)</p>
+    <button class="btn btn-custom right" type="button" (click)="direct3()">Go to direction</button>
+</div>
+<div [style.visibility]="show4 ? 'visible' : 'hidden'" class="card">
+    <p></p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titlefour.name}}(2.5 hours)</p>
+    <button class="btn btn-custom right" type="button" (click)="direct4()">Go to direction</button>
+</div>
+<div [style.visibility]="show5 ? 'visible' : 'hidden'" class="card">
+    <p></p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titlefive.name}}(2 hours)</p>
+    <button class="btn btn-custom right" type="button" (click)="direct5()">Go to direction</button>
+</div>
+<div [style.visibility]="show6 ? 'visible' : 'hidden'" class="card">
+  <p></p>
+  <p style="font-family:Cursive; color:black; font-size: 25px;"> {{titlefive.name}}(2 hours)</p>
+  <button class="btn btn-custom right" type="button" (click)="direct6()">Go to direction</button>
+</div>
+<div [style.visibility]="kia ? 'visible' : 'hidden'">1 - Name : {{titleone.name}}</div>
 <form #signinForm="ngForm" (ngSubmit)="saveItinerary(signinForm)">
   <div class="ng-scope">
 	<label for="email"><b>Username</b></label>
