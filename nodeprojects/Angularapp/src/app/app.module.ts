@@ -19,6 +19,7 @@ import { StartpageComponent } from './startpage/startpage.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { DataService } from './data.service';
 
 
 
@@ -50,7 +51,7 @@ import { SignupComponent } from './signup/signup.component';
     }),
     AgmDirectionModule     // agm-direction
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

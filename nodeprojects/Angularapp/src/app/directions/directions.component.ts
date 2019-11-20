@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-directions',
@@ -20,20 +21,22 @@ export class DirectionsComponent implements OnInit {
 
   public listOfTravel = ['DRIVING', 'TRANSIT', 'WALKING', 'BICYCLING']
   public travelMode: any
+  public cModes: any
+  public cTimes: any
 
   public dMatrix = new google.maps.DistanceMatrixService();
   public duration: any
-  public distance
+  public distance: any
   public ori = new google.maps.LatLng(this.slat, this.slng)
   public dest = new google.maps.LatLng(this.elat, this.elng)
   
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute, private data:DataService){}
 
   ngOnInit() {
     //this.getDirection()
-
-    this.setTravelMode('DRIVING'); //Default
-    //this.setTravelModeTransit();
+    this.data.currentModes.subscribe(tMode => this.cModes = tMode)
+    this.data.currentTimes.subscribe(tTime => this.cTimes = tTime)
+    this.setTravelMode('DRIVING', 0); //Default
   }
   
   getDirection() {
@@ -42,10 +45,6 @@ export class DirectionsComponent implements OnInit {
     this.elat = parseFloat(this.route.snapshot.paramMap.get('latitude'))
     this.elng = parseFloat(this.route.snapshot.paramMap.get('longitude'))
 
-    console.log(this.slat)
-    console.log(this.slng)
-    console.log(this.elat)
-    console.log(this.elng)
     this.dir = {
       origin: { lat: this.slat, lng: this.slng },
       destination: { lat: this.elat, lng: this.elng }
@@ -55,45 +54,45 @@ export class DirectionsComponent implements OnInit {
     this.ori = new google.maps.LatLng(this.slat, this.slng)
     this.dest = new google.maps.LatLng(this.elat, this.elng)
     console.log(this.ori)
-    this.dMatrix.getDistanceMatrix({origins: [this.ori], destinations:[this.dest], travelMode: this.travelMode}, this.callback);
+    this.dMatrix.getDistanceMatrix({origins: [this.ori], destinations:[this.dest], travelMode: this.travelMode}, this.callback.bind(this));
+
+
   }
 
-  private callback(response, status){
-    if (status == 'OK'){
+   callback(response){
+
       var results = response.rows[0].elements;
       this.duration = results[0].duration.text;
       this.distance = results[0].distance.text;
       console.log(this.duration)
       console.log(this.distance)
-    }else{
-      this.duration = 0;
-      this.distance = 0;
-    }
+
   }
 
   public onSubmit(value:any){
     console.log(value)
-    this.setTravelMode(value.travelMode)
+    this.setTravelMode(value.travelMode, 0)
+    this.data.updateTravelModes(this.cModes)
     console.log(this.travelMode)
     this.getDirection()
+    setTimeout(() => this.setTravelTime(this.duration, 0), 2000)
+    setTimeout(() => this.data.updateTravelTimes(this.cTimes), 2000)
+    setTimeout(() => console.log(this.cModes), 2000)
+    setTimeout(() => console.log(this.cTimes), 2000)
   }
 
-  public setStartLatLng(lat:Number, lng:Number){
-    this.slat = lat;
-    this.slng = lng;
-  }
-
-  public setEndLatLng(lat:Number, lng:Number){
-    this.elat = lat;
-    this.elng = lng;
-  }
 
   public setPanel(){
     return document.querySelector('#myPanel');
   }
   
-  public setTravelMode(tMode:string){
-    this.travelMode = tMode;
+  public setTravelMode(t:string, index:any){
+    this.travelMode = t;
+    this.cModes[index] = t;
+  }
+
+  public setTravelTime(t:any, index:any){
+    this.cTimes[index] = t;
   }
 
 }
