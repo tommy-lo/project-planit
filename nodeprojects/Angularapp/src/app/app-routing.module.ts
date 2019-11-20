@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/startpage', pathMatch: 'full'},
 
   {path: 'distances/:mode/:user', component: DistanceComponent},
-  {path: 'directions/:Olongitude/:Olatitude/:longitude/:latitude', component: DirectionsComponent},
+  {path: 'directions/:distance/:location/:Olongitude/:Olatitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user/:longitude/:latitude/:index/:mode', component: DirectionsComponent},
   {path: 'test/:distance/:location/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user/:mode', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},

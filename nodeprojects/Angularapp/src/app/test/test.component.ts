@@ -4,6 +4,7 @@ import { UserService } from '../shared/user.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -75,7 +76,10 @@ export class TestComponent implements OnInit {
   history: any;
   location: any;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
+  cModes: any;
+  cTimes: any;
+
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private dataS:DataService) {
 
 
     this.query = '';
@@ -100,7 +104,7 @@ export class TestComponent implements OnInit {
     this.sports = this.activatedRoute.snapshot.paramMap.get('sports');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
-    this.history = this.activatedRoute.snapshot.paramMap.get('history').split(",");
+    this.history = this.activatedRoute.snapshot.paramMap.get('history');
     this.location = this.activatedRoute.snapshot.paramMap.get('location');
     console.log(this.activatedRoute.snapshot.paramMap)
 
@@ -115,33 +119,51 @@ export class TestComponent implements OnInit {
     else{
       this.toggle = true;
     }
+
+    this.dataS.currentModes.subscribe(tMode => this.cModes = tMode)
+    this.dataS.currentTimes.subscribe(tTime => this.cTimes = tTime)
     console.log(this.parks);
     console.log(this.movies);
     console.log(this.restaurants);
   }
 
 direct1() {
-  this.router.navigate(['directions', this.longitude, this.latitude, this.lng1, this.lat1]);
+  console.log(this.longitude)
+  console.log(this.latitude)
+  this.router.navigate(['directions', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+  this.sports, this.username,  this.lng1, this.lat1, 0, this.mode, {history: [this.history]}])
+  //this.router.navigate(['directions', this.longitude, this.latitude, this.lng1, this.lat1, this.mode]);
   console.log(this.titleone);
 }
 direct2() {
-  this.router.navigate(['directions', this.lng1, this.lat1, this.lng2, this.lat2]);
+  this.router.navigate(['directions', this.distance, this.location, this.lng1, this.lat1, this.budget, this.starttime, 
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+  this.sports, this.username,  this.lng2, this.lat2, 1, this.mode, {history: [this.history]}])
   console.log(this.titleone);
 }
 direct3() {
-  this.router.navigate(['directions', this.lng2, this.lat2, this.lng3, this.lat3]);
+  this.router.navigate(['directions', this.distance, this.location, this.lng2, this.lat2, this.budget, this.starttime, 
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+  this.sports, this.username,  this.lng3, this.lat3, 2, this.mode, {history: [this.history]}])
   console.log(this.titleone);
 }
 direct4() {
-  this.router.navigate(['directions', this.lng3, this.lat3, this.lng4, this.lat4]);
+  this.router.navigate(['directions', this.distance, this.location, this.lng3, this.lat3, this.budget, this.starttime, 
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+  this.sports, this.username,  this.lng4, this.lat4, 3, this.mode, {history: [this.history]}])
   console.log(this.titleone);
 }
 direct5() {
-  this.router.navigate(['directions', this.lng4, this.lat4, this.lng5, this.lat5]);
+  this.router.navigate(['directions', this.distance, this.location, this.lng4, this.lat4, this.budget, this.starttime, 
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+  this.sports, this.username,  this.lng5, this.lat5, 4, this.mode, {history: [this.history]}])
   console.log(this.titleone);
 }
 direct6() {
-  this.router.navigate(['directions', this.lng5, this.lat5, this.lng6, this.lat6]);
+  this.router.navigate(['directions', this.distance, this.location, this.lng5, this.lat5, this.budget, this.starttime, 
+  this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+  this.sports, this.username,  this.lng6, this.lat6, 5, this.mode, {history: [this.history]}])
   console.log(this.titleone);
 }
 
@@ -234,9 +256,9 @@ private initialize() {
             }
             });
         }
-      });
+      }.bind(this));
      setTimeout(() => k = k.filter(result =>       
-     !(this.history.includes(result.place_id)))
+     !(this.history.split(",").includes(result.place_id)))
      ,5000);
     setTimeout(() => this.settitle(k), 6000);
     }

@@ -1,5 +1,5 @@
 
-
+<div [ngClass]="{'grey' : toggle, 'white': !toggle}">
 <div class="container">
   <form #travelForm="ngForm" (ngSubmit)="onSubmit(travelForm.value)">
       <div class="form-group">
@@ -22,3 +22,5 @@
     
 </agm-map>   
 <div id="myPanel"></div>
+<button class="btn btn-custom right" type="button" (click)="test()">Go to itinerary</button>
+</div>

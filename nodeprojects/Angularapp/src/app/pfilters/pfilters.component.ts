@@ -12,6 +12,7 @@ declare var M: any;
   providers: [PfiltersService]
 })
 export class PfiltersComponent implements OnInit {
+  directions: any;
   parks = false;
   museums = false;
   restaurants = false;
