@@ -52,7 +52,7 @@ PLAN-17 Dark mode
 - PLAN-52	Have all pages change depending on what mode the user has
 
 
-Sprint 2 Backlog Breakdown:
+Sprint 3 Backlog Breakdown:
 
 Plan-43, 47, 9, 48, 49 Thomas Lo
 
