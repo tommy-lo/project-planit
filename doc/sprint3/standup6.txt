@@ -1,6 +1,6 @@
 Nov 14
 
-PLAN-41 done, adding additional filters for PLAN-46
+PLAN-41 Brandon finished this plan, working on adding additional filters for PLAN-46
 
 PLAn-40 Joon Hong done getting history from user
 
