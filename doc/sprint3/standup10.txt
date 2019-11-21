@@ -6,3 +6,5 @@ PLAN-17 Brandon added darkmode to directions page
 PLAN-48 Thomas finished work on service
 
 Joon Hong no update
+
+Anson Tran grouping similar variables together into arrays in test.component.ts
