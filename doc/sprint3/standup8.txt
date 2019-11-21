@@ -6,3 +6,5 @@ PLAN-40 Joon Hong finished, now working on PLAN-2
 PLAN-15 Kia Naderi started working on showing only a number of items in itenerary based on start and end time
 
 PLAN-48 Thomas working on getting  data from itinerary component to directions component to update on map
+
+PLAN-25 Anson Tran working on storing history and generating new itinerary
