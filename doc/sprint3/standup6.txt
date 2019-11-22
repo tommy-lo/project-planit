@@ -7,3 +7,5 @@ PLAn-40 Joon Hong done getting history from user
 PLAN-15 started working on iten screen
 
 PLAN-49 Thomas Lo added option to select method of travel
+
+No update: Anson Tran
