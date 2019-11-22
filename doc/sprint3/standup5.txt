@@ -6,4 +6,4 @@ PLAN-41 Brandon fixed issue with restaurant button for pfilters and getting the 
 
 PLAN-47 Thomas Lo added implementation of google distance matrix api in directions component to get travel duration and distance
 
-No Update : Kia Naderi
+No Update : Kia Naderi, Anson Tran
