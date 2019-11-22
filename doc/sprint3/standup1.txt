@@ -6,4 +6,4 @@ PLAN-41 Brandon Shewnarain started working on creating start page with signup/si
 
 PLAN-48 Thomas Lo started working on connecting map component with itinerary component
 
-No Update : Kia Naderi
+No Update : Kia Naderi, Anson Tran
