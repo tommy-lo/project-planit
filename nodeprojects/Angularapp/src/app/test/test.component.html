@@ -7,37 +7,44 @@
   <title>title</title>
 </head>
 <div [ngClass]="{'grey' : toggle, 'white': !toggle}">
-<div [style.visibility]="show1 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[1].show ? 'visible' : 'hidden'" class="card">
     <p></p>
-    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{title[0].name}}(2.15 hours)</p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[1].title}}(2.15 hours)</p>
     <button class="btn btn-custom right" type="button" (click)="direct(0,1)">Go to direction</button>
+    <button class="btn btn-custom right" type="button" (click)="settitle(places[1])">Get New Place</button>
 </div>
-<div [style.visibility]="show2 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[2].show ? 'visible' : 'hidden'" class="card">
     <p></p>
-    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{title[1].name}}(1.45 hours)</p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[2].title}}(1.45 hours)</p>
     <button class="btn btn-custom right" type="button" (click)="direct(1,2)">Go to direction</button>
+    <button class="btn btn-custom right" type="button" (click)="settitle(places[2])">Get New Place</button>
 </div>
-<div [style.visibility]="show3 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[3].show ? 'visible' : 'hidden'" class="card">
     <p></p>
-    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{title[2].name}}(1.5 hours)</p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[3].title}}(1.5 hours)</p>
     <button class="btn btn-custom right" type="button" (click)="direct(2,3)">Go to direction</button>
+    <button class="btn btn-custom right" type="button" (click)="settitle(places[3])">Get New Place</button>
 </div>
-<div [style.visibility]="show4 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[4].show ? 'visible' : 'hidden'" class="card">
     <p></p>
-    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{title[3].name}}(2.5 hours)</p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[4].title}}(2.5 hours)</p>
     <button class="btn btn-custom right" type="button" (click)="direct(3,4)">Go to direction</button>
+    <button class="btn btn-custom right" type="button" (click)="settitle(places[4])">Get New Place</button>
 </div>
-<div [style.visibility]="show5 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[5].show ? 'visible' : 'hidden'" class="card">
     <p></p>
-    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{title[4].name}}(2 hours)</p>
+    <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[5].title}}(2 hours)</p>
     <button class="btn btn-custom right" type="button" (click)="direct(4,5)">Go to direction</button>
+    <button class="btn btn-custom right" type="button" (click)="settitle(places[5])">Get New Place</button>
 </div>
-<div [style.visibility]="show6 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[6].show ? 'visible' : 'hidden'" class="card">
   <p></p>
-  <p style="font-family:Cursive; color:black; font-size: 25px;"> {{title[5].name}}(2 hours)</p>
+  <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[6].title}}(2 hours)</p>
   <button class="btn btn-custom right" type="button" (click)="direct(5,6)">Go to direction</button>
+  <button class="btn btn-custom right" type="button" (click)="settitle(places[6])">Get New Place</button>
 </div>
-<div [style.visibility]="kia ? 'visible' : 'hidden'">1 - Name : {{title[0].name}}</div>
+
+<div [style.visibility]="kia ? 'visible' : 'hidden'">1 - Name : {{places[0].title}}</div>
 <form #signinForm="ngForm" (ngSubmit)="saveItinerary(signinForm)">
   <div class="ng-scope">
 	<label for="email" class="labelcolor"><b>Enter Username Below</b></label>

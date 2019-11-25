@@ -1,9 +1,9 @@
 export class User {
-    _id: string;
-    name: String;
-    password: String;
-	history: [String];
-    preferences: [String];
-    mode: String;
-    display: String;
+  _id: string;
+  name: string;
+  password: string;
+  history: [string];
+  preferences: [string];
+  mode: string;
+  display: string;
 }
