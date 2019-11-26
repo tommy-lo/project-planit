@@ -23,12 +23,9 @@ export class TestComponent implements OnInit {
 
   query: string;
   limit: number;
-  k: any;
+  searches: any;
 
   zoom: number;
-  request: any;
-  result: any;
-  map: google.maps.Map;
   distance: any;
 
   pfilters: any;
@@ -54,8 +51,8 @@ export class TestComponent implements OnInit {
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute,
               private router: Router, private dataS: DataService) {
     this.location = this.activatedRoute.snapshot.paramMap.get("distance");
-    this.places[0].lng = this.activatedRoute.snapshot.paramMap.get("longitude");
-    this.places[0].lat = this.activatedRoute.snapshot.paramMap.get("latitude");
+    this.places[0].lng = parseInt(this.activatedRoute.snapshot.paramMap.get("longitude"));
+    this.places[0].lat = parseInt(this.activatedRoute.snapshot.paramMap.get("latitude"));
 
     this.distance = this.activatedRoute.snapshot.paramMap.get("distance");
     this.budget = this.activatedRoute.snapshot.paramMap.get("budget");
@@ -80,7 +77,7 @@ export class TestComponent implements OnInit {
     console.log(this.activatedRoute.snapshot.paramMap);
 
     // Generate results
-    this.result = this.initialize();
+    this.initialize();
   }
 
   ngOnInit() {
@@ -92,9 +89,6 @@ export class TestComponent implements OnInit {
 
     this.dataS.currentModes.subscribe(tMode => (this.cModes = tMode));
     this.dataS.currentTimes.subscribe(tTime => (this.cTimes = tTime));
-    console.log(this.pfilters.parks);
-    console.log(this.pfilters.movies);
-    console.log(this.pfilters.restaurants);
   }
 
   // Navigate to directions from place1 to place2
@@ -126,21 +120,26 @@ export class TestComponent implements OnInit {
     ]);
   }
 
-  settitle(place: any) {
-    const result = this.k.shift();
+  private settitle(place: Place) {
+    const result = this.searches.shift();
 
-    place.title = result;
-    place.lat = result.geometry.location.lat();
-    place.lng = result.geometry.location.lng();
-    place.show = true;
-    this.savetouser.push(result.name);
+    if (result !== undefined) {
+      place.title = result.name;
+      place.lat = result.geometry.location.lat();
+      place.lng = result.geometry.location.lng();
+      place.show = true;
+      this.savetouser.push(result.name);
+    }
+    else {
+      console.log('No more results to give');
+    }
   }
 
   private buildQuery(pfilters) {
     // Build query string
     let filter: any;
     let query = "";
-    for (filter of Object.keys(this.pfilters)) {
+    for (filter of Object.keys(pfilters)) {
       if (this.pfilters[filter] === "true") {
         query += filter + "| ";
       }
@@ -151,73 +150,79 @@ export class TestComponent implements OnInit {
   private initialize() {
     // Build the string query
     this.query = this.buildQuery(this.pfilters);
+    console.log(this.query);
+
     // Calculate the number of places we can have
-    this.limit = Math.abs((this.endtime - this.starttime) / 2);
+    // At most 6
+    this.limit = Math.min(6, Math.abs((this.endtime - this.starttime) / 2));
+
     // Generate the results
     this.generate();
 
     // Set the titles for items from the generated results
-    let load = 1;
-    while (load < this.limit + 1){
-      setTimeout(() => this.settitle(this.places[load]), 6000);
-      load++;
-    }
+    let i: number;
+    setTimeout(() => {
+      for (i = 1; i <= this.limit; i++){
+        this.settitle(this.places[i]);
+      }
+    }, 6000);
   }
 
   private generate() {
     let geocoder = new google.maps.Geocoder();
-    this.k = [];
 
-    geocoder.geocode({ address: this.location }, function(results, status) {
+    geocoder.geocode({ address: this.location }, (results, status) => {
       if (status == google.maps.GeocoderStatus.OK) {
         this.places[0].lng = results[0].geometry.location.lng();
         this.places[0].lat = results[0].geometry.location.lat();
-        console.log(this.places[0].lng);
-        console.log(this.places[0].lat);
-        this.city = new google.maps.LatLng(
-          this.places[0].lat,
-          this.places[0].lng
-        );
+        let city = new google.maps.LatLng(this.places[0].lat, this.places[0].lng);
 
-        this.map = new google.maps.Map(document.getElementById("map"), {
-          center: this.city,
+        let map = new google.maps.Map(document.getElementById("map"), {
+          center: city,
           zoom: 15
         });
-        this.request = {
-          location: this.city,
+        let request = {
+          location: city,
           radius: this.distance,
           query: "tourist",
           minPriceLevel: 0
         };
-        const service = new google.maps.places.PlacesService(this.map);
-        service.textSearch(this.request, function(results, status) {
+        const service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, (results, status) => {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
-            console.log(results);
-            this.k = results;
+            this.searches = results;
           }
         });
       }
-    }.bind(this)
-    );
+    });
     // Filter out results based on the history
-    setTimeout(() => (this.k = this.k.filter(result => !this.history.split(',').includes(result.place_id))), 5000);
+    setTimeout(() => this.searches = this.searches.filter(result => !(this.history.split(',').includes(result.place_id))), 5000);
   }
 
   saveItinerary(form: NgForm) {
-    this.update = {
-      username: this.username,
-      display: this.savetouser
-    };
-    this.userService.updateItin(this.update).subscribe(res => {});
+    // Save for current user
+    this.temp = '"' + this.savetouser + '"';
+    // Format to json format
+    this.usertemp = '"' + this.username + '"';
+    // combine all to format
+    this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
+    // Create json
+    let obj = JSON.parse(this.update);
+    // Update the display parameter
+    this.userService.updateItin(obj).subscribe((res) => {});
 
-    const otherUser = form.value['username'];
 
-    if (otherUser != undefined) {
-      this.update = {
-        username: otherUser,
-        display: this.savetouser
-      };
-      this.userService.updateItin(this.update).subscribe(res => {});
+    this.data = form.value['username'];
+    // Save for other username
+    if (this.data != undefined) {
+      // Format username to json format using the form info.
+      this.usertemp = '"' + this.data + '"';
+      // Format all to json format.
+      this.update = '{"username": ' + this.usertemp + ', "display": ' + this.temp + '}';
+      // Create json.
+      let obj = JSON.parse(this.update);
+      // Update entered User
+      this.userService.updateItin(obj).subscribe((res) => {});
     }
   }
 
