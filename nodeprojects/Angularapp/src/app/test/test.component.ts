@@ -211,6 +211,8 @@ export class TestComponent implements OnInit {
     // Update the display parameter
     this.userService.updateItin(obj).subscribe((res) => {});
 
+    console.log(obj);
+
 
     this.data = form.value['username'];
     // Save for other username
