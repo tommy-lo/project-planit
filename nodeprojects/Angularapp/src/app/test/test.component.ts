@@ -138,10 +138,10 @@ export class TestComponent implements OnInit {
   private buildQuery(pfilters) {
     // Build query string
     let filter: any;
-    let query = "";
+    let query = '';
     for (filter of Object.keys(pfilters)) {
-      if (this.pfilters[filter] === "true") {
-        query += filter + "| ";
+      if (this.pfilters[filter] === 'true') {
+        query += filter + '| ';
       }
     }
     return query;
