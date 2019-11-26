@@ -40,10 +40,8 @@ export class UserpageComponent implements OnInit {
       this.toggle = false;
     }
     this.tempuser = '"'+this.username+'"';
-    
-    console.log(this.toggle);
   }
-  modeChange(form : NgForm){
+  modeChange(){
 
     if (this.mode == "light"){
       M.toast({ html: 'Dark mode on', classes: 'rounded'});
@@ -59,8 +57,7 @@ export class UserpageComponent implements OnInit {
     this.tempmode = '"'+this.mode+'"';
     this.update = '{"username": '+this.tempuser+', "mode": '+this.tempmode+'}';
     var obj = JSON.parse(this.update);
-    console.log(obj);
-    this.userService.updateUser(obj).subscribe((res) => {
+    this.userService.updateMode(obj).subscribe((res) => {
   });
   }
 

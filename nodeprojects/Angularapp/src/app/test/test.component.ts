@@ -5,7 +5,7 @@ import { UserService } from '../shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DataService } from '../data.service';
-
+declare var M: any;
 
 @Component({
   selector: 'app-iten-b',
@@ -251,8 +251,9 @@ private initialize() {
 
 
       this.data = form.value['username'];
-      // Save for other username
-      if (this.data != undefined) {
+      // check if form isn't undefined if not then save based on it
+     if (this.data) {
+        console.log("something")
         // Format username to json format using the form info.
         this.usertemp = '"' + this.data + '"';
         // Format all to json format.
@@ -261,7 +262,18 @@ private initialize() {
         let obj = JSON.parse(this.update);
         // Update entered User
         this.userService.updateItin(obj).subscribe((res) => {
-        });
+          let user = JSON.parse(JSON.stringify(res));
+          // Check if sent res is empty doc
+          if (user.length == 0)
+            M.toast({ html: 'Wrong entered username for second account, saving only to your account for now', classes: 'rounded'});      
+          else 
+            M.toast({ html: 'Saved Itinerary to both accounts', classes: 'rounded'});
+        }
+        
+        );
+      }
+      else{
+        M.toast({ html: 'Saved Itinerary to only your account', classes: 'rounded'});
       }
     }
 }

@@ -60,8 +60,11 @@ modeset: number;
 
         this.mode = user[0].mode;
         //this.router.navigate(['distances', this.mode]);
-        if (user != "")
         this.router.navigate(['userpage', this.username, this.display, this.mode, {history: [this.history]}]);
+      }
+      else{
+        M.toast({ html: 'Wrong Username or Password, try again', classes: 'rounded'});
+
       }
   });
   }

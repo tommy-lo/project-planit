@@ -10,7 +10,9 @@ router.post("/addUser", function (req, res) {
 	var newuser = new User({ name: req.body.username, password: req.body.password });
 	newuser.save(function (err, doc) {
         if (!err) {res.send(doc);}
-        else { console.log('Error in adding user : ' + JSON.stringify(err, undefined, 2));}
+        else {
+            res.send(doc); 
+            console.log('Error in adding user : ' + JSON.stringify(err, undefined, 2));}
     })
 })
 
@@ -25,7 +27,7 @@ router.post("/getUser", function (req, res) {
     });
 })
 
-router.put("/updateUser", function(req,res) {
+router.put("/updateMode", function(req,res) {
     console.log("updating user " + req.body.username + "to " + req.body.mode + "mode");
     User.find({name: req.body.username}, function (err, doc) {
         if (!err) {
@@ -33,19 +35,29 @@ router.put("/updateUser", function(req,res) {
             doc[0].mode = req.body.mode;
             doc[0].save();
         }
-        else { console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
+        else {
+            
+             console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
     });
 })
 
 router.put("/updateItin", function(req,res) {
     console.log("updating user " + req.body.username);
     User.find({name: req.body.username}, function (err, doc) {
-        if (!err) {
-            console.log(doc);
+        console.log(doc);
+        if (err) {
+            console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));
+        }
+        if (doc.length){
+            
+            console.log("working on it");
             doc[0].display = req.body.display;
             doc[0].save();
-        }
-        else { console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
+            res.send(doc);
+        } 
+        else {
+            res.send(doc);
+         console.log('Error in updating user : ' + JSON.stringify(err, undefined, 2));}
     });
 })
 

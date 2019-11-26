@@ -20,8 +20,8 @@ export class UserService {
     return this.http.post(this.baseURL + "/getUser", user);
   }
   
-  updateUser(user:User){
-    return this.http.put(this.baseURL + "/updateUser", user);
+  updateMode(user:User){
+    return this.http.put(this.baseURL + "/updateMode", user);
   }
 
   updateItin(user:User){
