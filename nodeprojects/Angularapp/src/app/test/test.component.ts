@@ -5,6 +5,7 @@ import { UserService } from '../shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DataService } from '../data.service';
+import { Place } from '../shared/place.model';
 declare var M: any;
 
 @Component({
@@ -236,6 +237,8 @@ private initialize() {
     setTimeout(() => this.settitle(k), 6000);
     }
 
+
+    
     saveItinerary(form: NgForm) {
       // Save for current user
       this.temp = '"' + this.savetouser + '"';
@@ -275,5 +278,14 @@ private initialize() {
       else{
         M.toast({ html: 'Saved Itinerary to only your account', classes: 'rounded'});
       }
+    }
+
+
+    private storeHistory(places: string) {
+      this.update = {
+        username: this.username,
+        history: places
+      };
+      this.userService.updateMode(this.update).subscribe(res => {});
     }
 }

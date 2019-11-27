@@ -79,7 +79,7 @@ export class PfiltersComponent implements OnInit {
   this.history = this.activatedRoute.snapshot.paramMap.get('history');
   this.location = this.activatedRoute.snapshot.paramMap.get('location');
 
-  console.log(this.activatedRoute.snapshot.paramMap);
+
   }
   ngOnInit() {
     this.set1 = 0;
@@ -229,11 +229,6 @@ export class PfiltersComponent implements OnInit {
   }
 
   test(){
-    console.log(this.history);
-    console.log(this.distance);
-    console.log(this.location);
-
-
     this.router.navigate(['test', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
     this.sports, this.username, this.mode, {history: [this.history]}])

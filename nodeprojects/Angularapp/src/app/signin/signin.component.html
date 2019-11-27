@@ -18,13 +18,12 @@
 <form #signinForm="ngForm" (ngSubmit)="onSubmit(signinForm)">
   <div class="ng-scope">
     <h1>Sign In</h1>
-
-	<label for="email"><b>Username</b></label>
-	<input #name="ngModel" [(ngModel)]="userService.name" placeholder="Enter username" name="username" required="">
+    <p>Please enter username and password to sign in.</p>
+	<label for="email" class= "labelcolor"><b>Username</b></label>
+	<input #name="ngModel" [(ngModel)]="userService.name"  placeholder="Enter username" name="username" required="">
 	
-	<label for="psw"><b>Password</b></label>
-	<input #name="ngModel" [(ngModel)]="userService.password"placeholder="Enter Password" name="password" required="">
-	<p ng-model="response"> {{response}}</p>
+	<label for="psw" class= "labelcolor"><b>Password</b></label>
+	<input #name="ngModel" [(ngModel)]="userService.password" placeholder="Enter Password" name="password" required="">
 
   <div class="clearfix">
       <button class="btn btn-custom right" type="button" (click)="onSubmit(signinForm)">Sign In</button>
