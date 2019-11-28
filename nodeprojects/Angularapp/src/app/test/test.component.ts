@@ -62,20 +62,20 @@ export class TestComponent implements OnInit {
     this.endtime = this.activatedRoute.snapshot.paramMap.get("end");
 
     this.pfilters = {
-      museums: this.activatedRoute.snapshot.paramMap.get("museums"),
-      restaurants: this.activatedRoute.snapshot.paramMap.get("restaurants"),
-      movies: this.activatedRoute.snapshot.paramMap.get("movies"),
-      parks: this.activatedRoute.snapshot.paramMap.get("parks"),
-      shop: this.activatedRoute.snapshot.paramMap.get("shop"),
-      zoo: this.activatedRoute.snapshot.paramMap.get("zoo"),
-      bar: this.activatedRoute.snapshot.paramMap.get("bar"),
-      sports: this.activatedRoute.snapshot.paramMap.get("sports")
-    };
+      museum: this.activatedRoute.snapshot.paramMap.get('museums'),
+      restaurant: this.activatedRoute.snapshot.paramMap.get('restaurants'),
+      cinema: this.activatedRoute.snapshot.paramMap.get('movies'),
+      parks: this.activatedRoute.snapshot.paramMap.get('parks'),
+      shop: this.activatedRoute.snapshot.paramMap.get('shop'),
+      zoo: this.activatedRoute.snapshot.paramMap.get('zoo'),
+      bar: this.activatedRoute.snapshot.paramMap.get('bar'),
+      sports: this.activatedRoute.snapshot.paramMap.get('sports')
+    }
 
-    this.username = this.activatedRoute.snapshot.paramMap.get("user");
-    this.history = this.activatedRoute.snapshot.paramMap.get("history");
-    this.mode = this.activatedRoute.snapshot.paramMap.get("mode");
-    this.location = this.activatedRoute.snapshot.paramMap.get("location");
+    this.username = this.activatedRoute.snapshot.paramMap.get('user');
+    this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
+    this.history = this.activatedRoute.snapshot.paramMap.get('history');
+    this.location = this.activatedRoute.snapshot.paramMap.get('location');
     console.log(this.activatedRoute.snapshot.paramMap);
 
     // Generate results
@@ -93,34 +93,17 @@ export class TestComponent implements OnInit {
     this.dataS.currentTimes.subscribe(tTime => (this.cTimes = tTime));
   }
 
-  // Navigate to directions from place1 to place2
-  direct(place1: number, place2: number) {
-    this.storeHistory(this.username, this.places[place2]._id);
-    this.router.navigate([
-      "directions",
-      this.distance,
-      this.location,
-      this.places[place1].lng,
-      this.places[place1].lat,
-      this.budget,
-      this.starttime,
-      this.endtime,
-      this.pfilters.parks,
-      this.pfilters.museums,
-      this.pfilters.restaurants,
-      this.pfilters.movies,
-      this.pfilters.shop,
-      this.pfilters.zoo,
-      this.pfilters.bar,
-      this.pfilters.sports,
-      this.username,
-      this.places[place2].lng,
-      this.places[place2].lat,
-      place1,
-      this.mode,
-      { history: [this.history] }
-    ]);
-  }
+// Navigate to directions from place1 to place2
+direct(place1: number, place2: number){
+  this.storeHistory(this.username, this.places[place2]._id);
+  this.router.navigate(['directions', this.distance, this.location,
+                        this.places[place1].lng, this.places[place1].lat,
+                        this.budget, this.starttime, this.endtime,
+                        this.pfilters.parks, this.pfilters.museum, this.pfilters.restaurant, this.pfilters.cinema,
+                        this.pfilters.shop, this.pfilters.zoo, this.pfilters.bar, this.pfilters.sports,
+                        this.username,
+                        this.places[place2].lng, this.places[place2].lat, place1, this.mode, {history: [this.history]}]);
+}
 
   private settitle(place: Place) {
     const result = this.searches.shift();
@@ -146,6 +129,7 @@ export class TestComponent implements OnInit {
       if (pfilters[filter] === 'true') {
         query += filter + '|';
       }
+      console.log(query);
     }
     return query;
   }

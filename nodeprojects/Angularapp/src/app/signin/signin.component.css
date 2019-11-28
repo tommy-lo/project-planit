@@ -6,3 +6,20 @@
     height:auto;
     display:inline-block;
 }
+.labelcolor {
+    color: black;
+}
+/* Below is to change placeholder text that supports all browsers*/
+
+::placeholder { 
+    color: rgb(73, 73, 73);
+    opacity: 1; 
+}
+  
+:-ms-input-placeholder { 
+    color: rgb(73, 73, 73);
+}
+  
+::-ms-input-placeholder { 
+    color: rgb(73, 73, 73);
+ }

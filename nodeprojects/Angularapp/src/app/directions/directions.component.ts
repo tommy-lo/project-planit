@@ -104,7 +104,7 @@ export class DirectionsComponent implements OnInit {
     //this.getDirection()
     this.data.currentModes.subscribe(tMode => this.cModes = tMode)
     this.data.currentTimes.subscribe(tTime => this.cTimes = tTime)
-    this.setTravelMode('DRIVING', 0); //Default
+
   }
   
   getDirection() {
@@ -145,7 +145,7 @@ export class DirectionsComponent implements OnInit {
   test(){
     console.log(this.distance);
     console.log(this.location);
-    this.router.navigate(['test', this.distance, this.location, this.slng, this.slat, this.budget, this.starttime, 
+    this.router.navigate(['itinerary', this.distance, this.location, this.slng, this.slat, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
     this.sports, this.username, this.mode, {history: [this.history]}])
     //{path: 'test/:distance/:location/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user/:mode', component: TestComponent},

@@ -15,7 +15,7 @@
 
   
 </div>
-
+<div [ngClass]="{'grey' : toggle, 'white': !toggle}">
 <agm-map [latitude]="slat" [longitude]="slng">
   <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [panel]="setPanel()" [travelMode]="travelMode">
   </agm-direction>
@@ -23,4 +23,6 @@
 </agm-map>   
 <div id="myPanel"></div>
 <button class="btn btn-custom right" type="button" (click)="test()">Go to itinerary</button>
+</div>
+<div class="height"></div>
 </div>
