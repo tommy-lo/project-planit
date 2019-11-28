@@ -4,3 +4,5 @@ PLAN-15 Kia Naderi finished working on sending info from test component to direc
 PLAN-49 Thomas Lo working on gathering data from test component to use in directions component, working on creating service to send data back
 
 PLAN-14 Brandon updated the saveitinerary function to use new way of generating intinerary, PLAN-17/52 fixed darkmode changes for user and implemented it on more pages.
+
+PLAn-40 Joon Hong merged history branch to master

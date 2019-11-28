@@ -19,12 +19,20 @@ export class UserService {
   getUser(user:User) {
     return this.http.post(this.baseURL + "/getUser", user);
   }
-  
-  updateUser(user:User){
-    return this.http.put(this.baseURL + "/updateUser", user);
+
+  updateMode(user:User){
+    return this.http.post(this.baseURL + "/updateMode", user);
   }
 
   updateItin(user:User){
-    return this.http.put(this.baseURL + "/updateItin", user);
+    return this.http.post(this.baseURL + "/updateItin", user);
+  }
+
+  updateHistory(user:User){
+    return this.http.post(this.baseURL + "/updateHistory", user);
+  }
+
+  getHistory(user:User){
+    return this.http.post(this.baseURL + "/getHistory", user);
   }
 }

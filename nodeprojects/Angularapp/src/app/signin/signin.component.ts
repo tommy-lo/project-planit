@@ -30,7 +30,7 @@ modeset: number;
   }
 
   resetForm(form?: NgForm) {
-    if (form)
+    if (form){
       form.reset();
       this.userService.user = {
         _id:"",
@@ -41,11 +41,12 @@ modeset: number;
         mode:"",
         display:""
       };
-   }
-  
-  onSubmit(form : NgForm){
+    }
+  }
+
+  onSubmit(form: NgForm){
     // get user
-    
+
     this.userService.getUser(form.value).subscribe((res) => {
       this.resetForm(form);
       let user = JSON.parse(JSON.stringify(res));
@@ -60,8 +61,11 @@ modeset: number;
 
         this.mode = user[0].mode;
         //this.router.navigate(['distances', this.mode]);
-        if (user != "")
         this.router.navigate(['userpage', this.username, this.display, this.mode, {history: [this.history]}]);
+      }
+      else{
+        M.toast({ html: 'Wrong Username or Password, try again', classes: 'rounded'});
+
       }
   });
   }

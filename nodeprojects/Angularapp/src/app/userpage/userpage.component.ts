@@ -24,6 +24,7 @@ export class UserpageComponent implements OnInit {
   toggle: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
+    
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.display = this.activatedRoute.snapshot.paramMap.get('display');
@@ -33,9 +34,14 @@ export class UserpageComponent implements OnInit {
  }
 
   ngOnInit() {
+    if (this.mode == "dark")
+    this.toggle = true;
+    else{
+      this.toggle = false;
+    }
     this.tempuser = '"'+this.username+'"';
   }
-  modeChange(form : NgForm){
+  modeChange(){
 
     if (this.mode == "light"){
       M.toast({ html: 'Dark mode on', classes: 'rounded'});
@@ -51,8 +57,7 @@ export class UserpageComponent implements OnInit {
     this.tempmode = '"'+this.mode+'"';
     this.update = '{"username": '+this.tempuser+', "mode": '+this.tempmode+'}';
     var obj = JSON.parse(this.update);
-    console.log(obj);
-    this.userService.updateUser(obj).subscribe((res) => {
+    this.userService.updateMode(obj).subscribe((res) => {
   });
   }
 

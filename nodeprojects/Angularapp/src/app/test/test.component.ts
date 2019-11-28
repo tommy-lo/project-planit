@@ -7,6 +7,8 @@ import { NgForm } from "@angular/forms";
 import { DataService } from "../data.service";
 import { Place } from '../shared/place.model';
 
+declare var M: any;
+
 @Component({
   selector: "app-iten-b",
   templateUrl: "./test.component.html",
@@ -71,8 +73,8 @@ export class TestComponent implements OnInit {
     };
 
     this.username = this.activatedRoute.snapshot.paramMap.get("user");
-    this.mode = this.activatedRoute.snapshot.paramMap.get("mode");
     this.history = this.activatedRoute.snapshot.paramMap.get("history");
+    this.mode = this.activatedRoute.snapshot.paramMap.get("mode");
     this.location = this.activatedRoute.snapshot.paramMap.get("location");
     console.log(this.activatedRoute.snapshot.paramMap);
 
@@ -93,7 +95,7 @@ export class TestComponent implements OnInit {
 
   // Navigate to directions from place1 to place2
   direct(place1: number, place2: number) {
-    this.storeHistory(this.places[place2]._id);
+    this.storeHistory(this.username, this.places[place2]._id);
     this.router.navigate([
       "directions",
       this.distance,
@@ -124,6 +126,7 @@ export class TestComponent implements OnInit {
     const result = this.searches.shift();
 
     if (result !== undefined) {
+      place._id = result.place_id;
       place.title = result.name;
       place.lat = result.geometry.location.lat();
       place.lng = result.geometry.location.lng();
@@ -140,8 +143,8 @@ export class TestComponent implements OnInit {
     let filter: any;
     let query = '';
     for (filter of Object.keys(pfilters)) {
-      if (this.pfilters[filter] === 'true') {
-        query += filter + '| ';
+      if (pfilters[filter] === 'true') {
+        query += filter + '|';
       }
     }
     return query;
@@ -155,6 +158,9 @@ export class TestComponent implements OnInit {
     // Calculate the number of places we can have
     // At most 6
     this.limit = Math.min(6, Math.abs((this.endtime - this.starttime) / 2));
+
+
+    this.history = this.getHistory(this.username);
 
     // Generate the results
     this.generate();
@@ -190,13 +196,14 @@ export class TestComponent implements OnInit {
         const service = new google.maps.places.PlacesService(map);
         service.textSearch(request, (results, status) => {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log(results);
             this.searches = results;
           }
         });
       }
     });
     // Filter out results based on the history
-    setTimeout(() => this.searches = this.searches.filter(result => !(this.history.split(',').includes(result.place_id))), 5000);
+    setTimeout(() => this.searches = this.searches.filter(result => !(this.history.includes(result.place_id))), 5000);
   }
 
   saveItinerary(form: NgForm) {
@@ -209,14 +216,14 @@ export class TestComponent implements OnInit {
     // Create json
     let obj = JSON.parse(this.update);
     // Update the display parameter
-    this.userService.updateItin(obj).subscribe((res) => {});
-
-    console.log(obj);
+    this.userService.updateItin(obj).subscribe((res) => {
+    });
 
 
     this.data = form.value['username'];
-    // Save for other username
-    if (this.data != undefined) {
+    // check if form isn't undefined if not then save based on it
+    if (this.data) {
+      console.log('something');
       // Format username to json format using the form info.
       this.usertemp = '"' + this.data + '"';
       // Format all to json format.
@@ -224,15 +231,36 @@ export class TestComponent implements OnInit {
       // Create json.
       let obj = JSON.parse(this.update);
       // Update entered User
-      this.userService.updateItin(obj).subscribe((res) => {});
+      this.userService.updateItin(obj).subscribe((res) => {
+        let user = JSON.parse(JSON.stringify(res));
+        // Check if sent res is empty doc
+        if (user.length == 0){
+          M.toast({ html: 'Wrong entered username for second account, saving only to your account for now', classes: 'rounded'});
+        }
+        else {
+          M.toast({ html: 'Saved Itinerary to both accounts', classes: 'rounded'});
+        }
+      });
+    }
+    else{
+      M.toast({ html: 'Saved Itinerary to only your account', classes: 'rounded'});
     }
   }
 
-  private storeHistory(places: string) {
+  private storeHistory(username: string, placeID: string) {
     this.update = {
-      username: this.username,
-      history: places
+      name: username,
+      history: placeID
     };
-    this.userService.updateUser(this.update).subscribe(res => {});
+    this.userService.updateHistory(this.update).subscribe();
+  }
+
+  private getHistory(username: string) {
+    this.update = {
+      name: username
+    };
+    this.userService.getHistory(this.update).subscribe(res => {
+      this.history = res;
+    });
   }
 }

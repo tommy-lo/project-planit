@@ -23,13 +23,20 @@ export class SignupComponent implements OnInit {
     // Uses the post request to add to the db.
     this.userService.addUser(form.value).subscribe((res) => {
       this.resetForm(form);
+      let user = JSON.parse(JSON.stringify(res));
+      console.log(user);
+      if (user == null){
+        M.toast({ html: 'Username taken, pick another', classes: 'rounded'});
+      }
+      else{
       // Indicates save
       M.toast({ html: 'Sign up sucess', classes: 'rounded'});
+      }
   });
-  
- } 
+
+ }
  resetForm(form?: NgForm) {
-  if (form)
+  if (form){
     form.reset();
     this.userService.newuser = {
       _id:"",
@@ -40,6 +47,7 @@ export class SignupComponent implements OnInit {
       mode:"",
       display:""
     };
+  }
  }
 
  goToPage(){
