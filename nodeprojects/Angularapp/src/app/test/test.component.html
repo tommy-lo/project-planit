@@ -41,7 +41,7 @@
     <button class="btn btn-custom right" type="button" (click)="settitle(places[4])">Get New Place</button>
 </div>
 <div class="h"></div>
-<div [style.visibility]="show5 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[5].show ? 'visible' : 'hidden'" class="card">
     <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[5].title}}(2 hours)</p>
     <p style="font-family:Cursive; color:black; font-size: 25px;"> Travel Mode: {{cModes[4]}} Travel Time: {{cTimes[4]}}</p>
     <button class="btn btn-custom right" type="button" (click)="direct(4,5)">Go to direction</button>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="h"></div>
-<div [style.visibility]="show6 ? 'visible' : 'hidden'" class="card">
+<div [style.visibility]="places[6].show ? 'visible' : 'hidden'" class="card">
   <p style="font-family:Cursive; color:black; font-size: 25px;"> {{places[6].title}}(2 hours)</p>
   <p style="font-family:Cursive; color:black; font-size: 25px;"> Travel Mode: {{cModes[5]}} Travel Time:{{cTimes[5]}}</p>
   <button class="btn btn-custom right" type="button" (click)="direct(5,6)">Go to direction</button>
