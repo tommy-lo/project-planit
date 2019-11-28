@@ -14,9 +14,9 @@ import { DirectionsComponent } from './directions/directions.component';
 const routes: Routes = [
   {path: '', redirectTo: '/startpage', pathMatch: 'full'},
 
-  {path: 'distances/:mode/:user', component: BasicFiltersComponent},
+  {path: 'bfilters/:mode/:user', component: BasicFiltersComponent},
   {path: 'directions/:distance/:location/:Olongitude/:Olatitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user/:longitude/:latitude/:index/:mode', component: DirectionsComponent},
-  {path: 'test/:distance/:location/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user/:mode', component: TestComponent},
+  {path: 'itinerary/:distance/:location/:longitude/:latitude/:budget/:start/:end/:parks/:museums/:restaurants/:movies/:shop/:zoo/:bar/:sports/:user/:mode', component: TestComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'pfilters/:distance/:location/:longitude/:latitude/:budget/:start/:end/:user/:mode', component: PfiltersComponent},

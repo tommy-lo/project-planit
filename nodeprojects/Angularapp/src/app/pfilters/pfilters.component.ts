@@ -4,6 +4,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 //local import
 import { PfiltersService } from '../shared/pfilters.service';
 import { Pfilters } from '../shared/pfilters.model';
+import { runInThisContext } from 'vm';
 declare var M: any;
 @Component({
   selector: 'app-distance',
@@ -30,14 +31,6 @@ export class PfiltersComponent implements OnInit {
   starttime: any;
   endtime: any;
   history: any;
-  set1: number;
-  set2: number;
-  set3: number;
-  set4: number;
-  set5: number;
-  set6: number;
-  set7: number;
-  set8: number;
   togglepark: boolean;
   togglemov: boolean;
   toggleres: boolean;
@@ -82,14 +75,6 @@ export class PfiltersComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.set1 = 0;
-    this.set2 = 0;
-    this.set3 = 0;
-    this.set4 = 0;
-    this.set5 = 0;
-    this.set6 = 0;
-    this.set7 = 0;
-    this.set8 = 0;
     this.togglepark = true;
     this.toggleres = true;
     this.togglemov = true;
@@ -117,119 +102,110 @@ export class PfiltersComponent implements OnInit {
   onClickpark(){
     this.togglepark = !this.togglepark;
     this.statuspark = this.togglepark ? 'Enable' : 'Disable';
-    if (this.set1 == 0){
-        this.parks = true;
-        this.set1 = 1;
-
-        M.toast({ html: 'Park toggled on', classes: 'rounded'});
+    if (this.parks){
+        this.parks = false;
+        M.toast({ html: 'Park toggled off', classes: 'rounded'});
     }
     else{
-      this.parks = false;
-      this.set1 = 0;
-      M.toast({ html: 'Park toggled off', classes: 'rounded'});
+      this.parks = true;
+      M.toast({ html: 'Park toggled on', classes: 'rounded'});
     }
   }
   onClickmuseum(){
     this.togglemus = !this.togglemus;
     this.statusmus = this.togglemus ? 'Enable' : 'Disable';
-    if (this.set2 == 0){
-        this.museums = true;
-        this.set2 = 1;
-        M.toast({ html: 'Museum toggled on', classes: 'rounded'});
+    if (this.museums){
+      this.museums = false;
+      M.toast({ html: 'Museum toggled off', classes: 'rounded'});
     }
     else{
-      this.museums = false;
-      this.set2 = 0;
-      M.toast({ html: 'Museum toggled off', classes: 'rounded'});
+      this.museums = true;
+      M.toast({ html: 'Museum toggled on', classes: 'rounded'});
     }
   }
   onClickrestaurant(){
     this.toggleres = !this.toggleres;
     this.statusres = this.toggleres ? 'Enable' : 'Disable';
-    if (this.set3 == 0){
-        this.restaurants = true;
-        this.set3 = 1;
-        M.toast({ html: 'Restaurant toggled on', classes: 'rounded'});
+    if (this.restaurants){
+        this.restaurants = false;
+        M.toast({ html: 'Restaurant toggled off', classes: 'rounded'});
     }
     else{
-      this.restaurants = false;
-      this.set3 = 0;
-      M.toast({ html: 'Restaurant toggled off', classes: 'rounded'});
+      this.restaurants = true;
+      M.toast({ html: 'Restaurant toggled on', classes: 'rounded'});
     }
   }
   onClickmovie(){
     this.togglemov = !this.togglemov;
     this.statusmov = this.togglemov ? 'Enable' : 'Disable';
-    if (this.set4 == 0){
-        this.movies = true;
-        this.set4 = 1;
-        M.toast({ html: 'Movie toggled on', classes: 'rounded'});
+    if (this.movies){
+        this.movies = false;
+        M.toast({ html: 'Movie toggled off', classes: 'rounded'});
     }
     else{
-      this.movies = false;
-      this.set4 = 0;
-      M.toast({ html: 'Movie toggled off', classes: 'rounded'});
-    }
-  }
-  onClickShop(){
-    this.toggleshop = !this.toggleshop;
-    this.statusshop = this.toggleshop ? 'Enable' : 'Disable';
-    if (this.set5 == 0){
-        this.shop = true;
-        this.set5 = 1;
-        M.toast({ html: 'Shopping toggled on', classes: 'rounded'});
-    }
-    else{
-      this.shop = false;
-      this.set5 = 0;
-      M.toast({ html: 'Shopping toggled off', classes: 'rounded'});
-    }
-  }
-  onClickBar(){
-    this.togglebar = !this.togglebar;
-    this.statusbar = this.togglebar ? 'Enable' : 'Disable';
-    if (this.set6 == 0){
-        this.bar = true;
-        this.set6 = 1;
-        M.toast({ html: 'Bar toggled on', classes: 'rounded'});
-    }
-    else{
-      this.bar = false;
-      this.set6 = 0;
-      M.toast({ html: 'Bar toggled off', classes: 'rounded'});
-    }
-  }
-  onClickZoo(){
-    this.togglezoo = !this.togglezoo;
-    this.statuszoo = this.togglezoo ? 'Enable' : 'Disable';
-    if (this.set7 == 0){
-        this.zoo = true;
-        this.set7 = 1;
-        M.toast({ html: 'Zoo toggled on', classes: 'rounded'});
-    }
-    else{
-      this.zoo = false;
-      this.set7 = 0;
-      M.toast({ html: 'Zoo toggled off', classes: 'rounded'});
-    }
-  }
-  onClickSports(){
-    this.togglesports = !this.togglesports;
-    this.statussports = this.togglesports ? 'Enable' : 'Disable';
-    if (this.set8 == 0){
-        this.sports = true;
-        this.set8 = 1;
-        M.toast({ html: 'Sports toggled on', classes: 'rounded'});
-    }
-    else{
-      this.sports = false;
-      this.set8 = 0;
-      M.toast({ html: 'Sports toggled off', classes: 'rounded'});
+      this.movies = true;
+      M.toast({ html: 'Movie toggled on', classes: 'rounded'});
     }
   }
 
-  test(){
-    this.router.navigate(['test', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
+  onClickShop(){
+    this.toggleshop = !this.toggleshop;
+    this.statusshop = this.toggleshop ? 'Enable' : 'Disable';
+    if (this.shop){
+        this.shop = false;
+        M.toast({ html: 'Shopping toggled off', classes: 'rounded'});
+    }
+    else{
+      this.shop = true;
+      M.toast({ html: 'Shopping toggled on', classes: 'rounded'});
+    }
+  }
+
+  onClickBar(){
+    this.togglebar = !this.togglebar;
+    this.statusbar = this.togglebar ? 'Enable' : 'Disable';
+    if (this.bar){
+        this.bar = false;
+        M.toast({ html: 'Bar toggled off', classes: 'rounded'});
+    }
+    else{
+      this.bar = true;
+      M.toast({ html: 'Bar toggled on', classes: 'rounded'});
+    }
+  }
+
+  onClickZoo(){
+    this.togglezoo = !this.togglezoo;
+    this.statuszoo = this.togglezoo ? 'Enable' : 'Disable';
+    if (this.zoo){
+        this.zoo = false;
+        M.toast({ html: 'Zoo toggled off', classes: 'rounded'});
+    }
+    else{
+      this.zoo = true;
+      M.toast({ html: 'Zoo toggled on', classes: 'rounded'});
+    }
+  }
+
+  onClickSports(){
+    this.togglesports = !this.togglesports;
+    this.statussports = this.togglesports ? 'Enable' : 'Disable';
+    if (this.sports){
+        this.sports = false;
+        M.toast({ html: 'Sports toggled off', classes: 'rounded'});
+    }
+    else{
+      this.sports = true;
+      M.toast({ html: 'Sports toggled on', classes: 'rounded'});
+    }
+  }
+
+  gotoitinerary(){
+    // Make default enabled as bar
+    if (!(this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks)){
+      this.bar = true;
+    }
+    this.router.navigate(['itinerary', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
     this.sports, this.username, this.mode, {history: [this.history]}])
 

@@ -62,6 +62,6 @@ export class UserpageComponent implements OnInit {
   }
 
   gotoDistance(){
-    this.router.navigate(['distances', this.mode, this.username, {history: [this.history]}]);
+    this.router.navigate(['bfilters', this.mode, this.username, {history: [this.history]}]);
   }
 }
