@@ -129,7 +129,6 @@ direct(place1: number, place2: number){
       if (pfilters[filter] === 'true') {
         query += filter + '|';
       }
-      console.log(query);
     }
     return query;
   }
@@ -174,7 +173,7 @@ direct(place1: number, place2: number){
         let request = {
           location: city,
           radius: this.distance,
-          query: "tourist",
+          query: this.query,
           minPriceLevel: 0
         };
         const service = new google.maps.places.PlacesService(map);
