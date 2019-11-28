@@ -104,7 +104,7 @@ export class DirectionsComponent implements OnInit {
     //this.getDirection()
     this.data.currentModes.subscribe(tMode => this.cModes = tMode)
     this.data.currentTimes.subscribe(tTime => this.cTimes = tTime)
-    this.setTravelMode('DRIVING', 0); //Default
+
   }
   
   getDirection() {

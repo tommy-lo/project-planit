@@ -1,4 +1,6 @@
-
+.height{
+    height:1000px;
+}
 agm-map {
     height: 400px;
     width: 400px;

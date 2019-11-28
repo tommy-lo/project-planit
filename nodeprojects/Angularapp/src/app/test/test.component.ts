@@ -78,9 +78,9 @@ export class TestComponent implements OnInit {
     this.endtime = this.activatedRoute.snapshot.paramMap.get('end');
 
     this.pfilters = {
-      museums: this.activatedRoute.snapshot.paramMap.get('museums'),
-      restaurants: this.activatedRoute.snapshot.paramMap.get('restaurants'),
-      movies: this.activatedRoute.snapshot.paramMap.get('movies'),
+      museum: this.activatedRoute.snapshot.paramMap.get('museums'),
+      restaurant: this.activatedRoute.snapshot.paramMap.get('restaurants'),
+      cinema: this.activatedRoute.snapshot.paramMap.get('movies'),
       parks: this.activatedRoute.snapshot.paramMap.get('parks'),
       shop: this.activatedRoute.snapshot.paramMap.get('shop'),
       zoo: this.activatedRoute.snapshot.paramMap.get('zoo'),
@@ -117,7 +117,7 @@ direct(place1, place2){
   this.router.navigate(['directions', this.distance, this.location,
                         this.placeLng[place1], this.placeLat[place1],
                         this.budget, this.starttime, this.endtime,
-                        this.pfilters.parks, this.pfilters.museums, this.pfilters.restaurants, this.pfilters.movies,
+                        this.pfilters.parks, this.pfilters.museum, this.pfilters.restaurant, this.pfilters.cinema,
                         this.pfilters.shop, this.pfilters.zoo, this.pfilters.bar, this.pfilters.sports,
                         this.username,
                         this.placeLng[place2], this.placeLat[place2], place1, this.mode, {history: [this.history]}]);
@@ -193,6 +193,7 @@ private buildQuery(pfilters){
     if (this.pfilters[filter] === 'true'){
       query += filter + '| ';
     }
+    console.log(query)
   }
   return query;
 }
@@ -219,7 +220,7 @@ private initialize() {
           this.request = {
             location: this.city,
             radius: this.distance,
-            query: 'tourist',
+            query: this.query,
             minPriceLevel : 0
           };
           const service = new google.maps.places.PlacesService(this.map);

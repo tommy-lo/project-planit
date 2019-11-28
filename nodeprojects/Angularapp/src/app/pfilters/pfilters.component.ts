@@ -5,6 +5,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { PfiltersService } from '../shared/pfilters.service';
 import { Pfilters } from '../shared/pfilters.model';
 import { runInThisContext } from 'vm';
+import { DataService } from '../data.service';
 declare var M: any;
 @Component({
   selector: 'app-distance',
@@ -51,6 +52,9 @@ export class PfiltersComponent implements OnInit {
   toggle: any;
   mode: any;
 
+  cModes: any;
+  cTimes: any;
+
   onToggleFilter(filter){
     // Update the user's database for the filter
     alert(filter);
@@ -59,7 +63,7 @@ export class PfiltersComponent implements OnInit {
 
 
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private dataS:DataService) {
   this.distance = this.activatedRoute.snapshot.paramMap.get('distance');
 
   this.longitude = this.activatedRoute.snapshot.paramMap.get('longitude');
@@ -97,6 +101,9 @@ export class PfiltersComponent implements OnInit {
     else{
       this.toggle = true;
     }
+
+    this.dataS.currentModes.subscribe(tMode => this.cModes = tMode);
+    this.dataS.currentTimes.subscribe(tTime => this.cTimes = tTime);
     
   }
   onClickpark(){
@@ -203,8 +210,12 @@ export class PfiltersComponent implements OnInit {
   gotoitinerary(){
     // Make default enabled as bar
     if (!(this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks)){
+      console.log(!(this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks))
       this.bar = true;
     }
+
+    this.dataS.resetTravelModes()
+    this.dataS.resetTravelTimes()
     this.router.navigate(['itinerary', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
     this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
     this.sports, this.username, this.mode, {history: [this.history]}])
