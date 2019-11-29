@@ -73,7 +73,6 @@ export class TestComponent implements OnInit {
 
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
-    this.history = this.activatedRoute.snapshot.paramMap.get('history');
     this.location = this.activatedRoute.snapshot.paramMap.get('location');
     console.log(this.activatedRoute.snapshot.paramMap);
 
@@ -207,7 +206,9 @@ export class TestComponent implements OnInit {
     let savetouser = [];
 
     for (const place of this.places) {
-      savetouser.push(place.title);
+      if (place.title !== 'None'){
+        savetouser.push(place.title);
+      }
     }
 
     // Save for current user
