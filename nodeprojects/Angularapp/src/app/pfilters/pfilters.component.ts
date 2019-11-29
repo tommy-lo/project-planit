@@ -209,8 +209,8 @@ export class PfiltersComponent implements OnInit {
 
   gotoitinerary(){
     // Make default enabled as bar
-    if (!(this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks)){
-      console.log(!(this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks))
+    if ((this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks) === false){
+      console.log((this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks) === false)
       this.bar = true;
     }
 
