@@ -20,17 +20,17 @@ export class UserpageComponent implements OnInit {
   update: any;
   tempuser: any;
   tempmode: any;
-  array: any; 
+  array: any;
   toggle: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
-    
+
     this.mode = this.activatedRoute.snapshot.paramMap.get('mode');
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     this.display = this.activatedRoute.snapshot.paramMap.get('display');
     this.history = this.activatedRoute.snapshot.paramMap.get('history');
     // The character that the stored itinerary is split by, the * is added when it is stored in the test page
-    this.array = this.display.split("*");
+    this.array = this.display.split(",");
  }
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class UserpageComponent implements OnInit {
       M.toast({ html: 'Light mode on', classes: 'rounded'});
       this.mode = "light";
       this.toggle = false;
-      
+
     }
     this.tempmode = '"'+this.mode+'"';
     this.update = '{"username": '+this.tempuser+', "mode": '+this.tempmode+'}';

@@ -104,7 +104,7 @@ export class PfiltersComponent implements OnInit {
 
     this.dataS.currentModes.subscribe(tMode => this.cModes = tMode);
     this.dataS.currentTimes.subscribe(tTime => this.cTimes = tTime);
-    
+
   }
   onClickpark(){
     this.togglepark = !this.togglepark;
@@ -209,15 +209,15 @@ export class PfiltersComponent implements OnInit {
 
   gotoitinerary(){
     // Make default enabled as bar
-    if ((this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks) === false){
+    if ((this.sports || this.restaurants || this.shop || this.zoo || this.bar || this.movies || this.museums || this.parks) === false){
       console.log((this.sports && this.restaurants && this.shop && this.zoo && this.bar && this.movies && this.museums && this.parks) === false)
       this.bar = true;
     }
 
     this.dataS.resetTravelModes()
     this.dataS.resetTravelTimes()
-    this.router.navigate(['itinerary', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime, 
-    this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar, 
+    this.router.navigate(['itinerary', this.distance, this.location, this.longitude, this.latitude, this.budget, this.starttime,
+    this.endtime, this.parks, this.museums, this.restaurants, this.movies, this.shop, this.zoo, this.bar,
     this.sports, this.username, this.mode, {history: [this.history]}])
 
   }

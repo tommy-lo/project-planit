@@ -21,7 +21,7 @@ export class TestComponent implements OnInit {
   onetype = "t";
 
   places = [new Place(), new Place(), new Place(), new Place(), new Place(), new Place(), new Place()];
-  savetouser = [];
+  savetouser = ['','','','','','',''];
 
   query: string;
   limit: number;
@@ -114,7 +114,7 @@ export class TestComponent implements OnInit {
       place.lat = result.geometry.location.lat();
       place.lng = result.geometry.location.lng();
       place.show = true;
-      this.savetouser.push(result.name);
+      this.savetouser[this.places.indexOf(place)] = result.name;
     }
     else {
       // Generate new results
@@ -128,9 +128,10 @@ export class TestComponent implements OnInit {
     let query = '';
     for (filter of Object.keys(pfilters)) {
       if (pfilters[filter] === 'true') {
-        query += filter + '|';
+        query += filter + ' - ';
       }
     }
+    console.log(query);
     return query;
   }
 
@@ -177,7 +178,7 @@ export class TestComponent implements OnInit {
             location: city,
             radius: this.distance,
             query: this.query,
-            minPriceLevel: 0
+            maxPriceLevel: this.budget
           };
           const service = new google.maps.places.PlacesService(map);
           service.textSearch(request, (results, status) => {
@@ -235,6 +236,7 @@ export class TestComponent implements OnInit {
     else{
       M.toast({ html: 'Saved Itinerary to only your account', classes: 'rounded'});
     }
+    //this.savetouser = [];
   }
 
   private storeHistory(username: string, placeID: string) {
