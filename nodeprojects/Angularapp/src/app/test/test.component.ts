@@ -21,7 +21,6 @@ export class TestComponent implements OnInit {
   onetype = "t";
 
   places = [new Place(), new Place(), new Place(), new Place(), new Place(), new Place(), new Place()];
-  savetouser = ['','','','','','',''];
 
   query: string;
   limit: number;
@@ -95,7 +94,6 @@ export class TestComponent implements OnInit {
 
   // Navigate to directions from place1 to place2
   direct(place1: number, place2: number){
-    this.storeHistory(this.username, this.places[place2]._id);
     this.router.navigate(['directions', this.distance, this.location,
                         this.places[place1].lng, this.places[place1].lat,
                         this.budget, this.starttime, this.endtime,
@@ -114,12 +112,20 @@ export class TestComponent implements OnInit {
       place.lat = result.geometry.location.lat();
       place.lng = result.geometry.location.lng();
       place.show = true;
-      this.savetouser[this.places.indexOf(place)] = result.name;
     }
     else {
       // Generate new results
       console.log('No more results to give');
     }
+  }
+
+  private removeItem(place: Place){
+    // Store the removed id into the database
+    const removedId = place._id;
+    this.storeHistory(this.username, removedId);
+
+    // Update the place with a new place
+    this.settitle(place);
   }
 
   private buildQuery(pfilters) {
@@ -138,11 +144,11 @@ export class TestComponent implements OnInit {
   private async initialize() {
 
     // Build the string query
-    this.query = this.buildQuery(this.pfilters);
+    this.query = await this.buildQuery(this.pfilters);
 
     // Calculate the number of places we can have
     // At most 6
-    this.limit = Math.min(6, Math.abs((this.endtime - this.starttime) / 2));
+    this.limit = await Math.min(6, Math.abs((this.endtime - this.starttime) / 2));
 
     // Get history from the user
     this.history = await this.getHistory(this.username);
@@ -151,7 +157,7 @@ export class TestComponent implements OnInit {
     this.searches = await this.generate();
 
     // Filter results
-    this.filterResults(this.searches);
+    this.searches = await this.filterResults(this.searches, this.history);
 
     // Set the titles for items from the generated results
     let i: number;
@@ -191,15 +197,21 @@ export class TestComponent implements OnInit {
     });
   }
 
-  private filterResults(results) {
+  private filterResults(searches, filters) {
     // Filter out results based on the history
-    return this.searches.filter(result => !(this.history.includes(result.place_id)));
+    return searches.filter(result => !(filters.includes(result.place_id)));
   }
 
 
   saveItinerary(form: NgForm) {
+    let savetouser = [];
+
+    for (const place of this.places) {
+      savetouser.push(place.title);
+    }
+
     // Save for current user
-    this.temp = '"' + this.savetouser + '"';
+    this.temp = '"' + savetouser + '"';
     // Format to json format
     this.usertemp = '"' + this.username + '"';
     // combine all to format
@@ -236,7 +248,6 @@ export class TestComponent implements OnInit {
     else{
       M.toast({ html: 'Saved Itinerary to only your account', classes: 'rounded'});
     }
-    //this.savetouser = [];
   }
 
   private storeHistory(username: string, placeID: string) {
