@@ -2,7 +2,6 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;
 var { User } = require('../models/User');
-var set = 1;
 
 // => localhost:3000/users/addUser
 router.post("/addUser", function (req, res) {
