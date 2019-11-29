@@ -93,17 +93,17 @@ export class TestComponent implements OnInit {
     this.dataS.currentTimes.subscribe(tTime => (this.cTimes = tTime));
   }
 
-// Navigate to directions from place1 to place2
-direct(place1: number, place2: number){
-  this.storeHistory(this.username, this.places[place2]._id);
-  this.router.navigate(['directions', this.distance, this.location,
+  // Navigate to directions from place1 to place2
+  direct(place1: number, place2: number){
+    this.storeHistory(this.username, this.places[place2]._id);
+    this.router.navigate(['directions', this.distance, this.location,
                         this.places[place1].lng, this.places[place1].lat,
                         this.budget, this.starttime, this.endtime,
                         this.pfilters.parks, this.pfilters.museum, this.pfilters.restaurant, this.pfilters.cinema,
                         this.pfilters.shop, this.pfilters.zoo, this.pfilters.bar, this.pfilters.sports,
                         this.username,
                         this.places[place2].lng, this.places[place2].lat, place1, this.mode, {history: [this.history]}]);
-}
+  }
 
   private settitle(place: Place) {
     const result = this.searches.shift();
@@ -117,6 +117,7 @@ direct(place1: number, place2: number){
       this.savetouser.push(result.name);
     }
     else {
+      // Generate new results
       console.log('No more results to give');
     }
   }
@@ -133,61 +134,67 @@ direct(place1: number, place2: number){
     return query;
   }
 
-  private initialize() {
+  private async initialize() {
+
     // Build the string query
     this.query = this.buildQuery(this.pfilters);
-    console.log(this.query);
 
     // Calculate the number of places we can have
     // At most 6
     this.limit = Math.min(6, Math.abs((this.endtime - this.starttime) / 2));
 
-
-    this.history = this.getHistory(this.username);
+    // Get history from the user
+    this.history = await this.getHistory(this.username);
 
     // Generate the results
-    this.generate();
+    this.searches = await this.generate();
+
+    // Filter results
+    this.filterResults(this.searches);
 
     // Set the titles for items from the generated results
     let i: number;
-    setTimeout(() => {
-      for (i = 1; i <= this.limit; i++){
-        this.settitle(this.places[i]);
-      }
-    }, 6000);
+    for (i = 1; i <= this.limit; i++) {
+      this.settitle(this.places[i]);
+    }
   }
 
   private generate() {
     let geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({ address: this.location }, (results, status) => {
-      if (status == google.maps.GeocoderStatus.OK) {
-        this.places[0].lng = results[0].geometry.location.lng();
-        this.places[0].lat = results[0].geometry.location.lat();
-        let city = new google.maps.LatLng(this.places[0].lat, this.places[0].lng);
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ address: this.location }, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          this.places[0].lng = results[0].geometry.location.lng();
+          this.places[0].lat = results[0].geometry.location.lat();
+          let city = new google.maps.LatLng(this.places[0].lat, this.places[0].lng);
 
-        let map = new google.maps.Map(document.getElementById("map"), {
-          center: city,
-          zoom: 15
-        });
-        let request = {
-          location: city,
-          radius: this.distance,
-          query: this.query,
-          minPriceLevel: 0
-        };
-        const service = new google.maps.places.PlacesService(map);
-        service.textSearch(request, (results, status) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            console.log(results);
-            this.searches = results;
-          }
-        });
-      }
+          let map = new google.maps.Map(document.getElementById("map"), {
+            center: city,
+            zoom: 15
+          });
+          let request = {
+            location: city,
+            radius: this.distance,
+            query: this.query,
+            minPriceLevel: 0
+          };
+          const service = new google.maps.places.PlacesService(map);
+          service.textSearch(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              resolve(results);
+            }
+          });
+        }
+      });
     });
-    // Filter out results based on the history
-    setTimeout(() => this.searches = this.searches.filter(result => !(this.history.includes(result.place_id))), 5000);
   }
+
+  private filterResults(results) {
+    // Filter out results based on the history
+    return this.searches.filter(result => !(this.history.includes(result.place_id)));
+  }
+
 
   saveItinerary(form: NgForm) {
     // Save for current user
@@ -242,8 +249,10 @@ direct(place1: number, place2: number){
     this.update = {
       name: username
     };
-    this.userService.getHistory(this.update).subscribe(res => {
-      this.history = res;
+    return new Promise((resolve,reject) => {
+      this.userService.getHistory(this.update).subscribe(res => {
+        resolve(res);
+      });
     });
   }
 }
